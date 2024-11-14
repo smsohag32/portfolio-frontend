@@ -23,20 +23,21 @@ const Header = () => {
       setOpen(false)
    }
    return (
-      <div className='px-5 py-2'>
-         <div className='main-container flex items-center justify-between py-1 border rounded-[24px] bg-white '>
-            <div className='flex items-center gap-2'>
-               <Image src={logo} alt='logo' width={40} /> sohag sheik
-            </div>
+      <div className='px-5 fixed top-0 py-3 left-0 right-0 z-50  bg-white bg-opacity-90 border-b border-b-[#a8a7a7f] backdrop-blur-sm'>
+         <div className='main-container flex items-center justify-between py-1 '>
+            {/* <div className='flex items-center gap-2'>
+               <p className='text-[24px] font-[300]'>  sohag Sheik</p>
+            </div> */}
 
-            <div className='hidden lg:flex items-center gap-4'>
-               <div className='flex items-center gap-4'>
+            <div className='hidden lg:flex items-center gap-6'>
+               <div className='flex items-center gap-6'>
+                  <Link href={"/"}>Home</Link>
                   <Link href={"/"}>About me</Link>
                   <Link href={"/"}>Portfolio</Link>
                   <Link href={"/"}>Experience</Link>
                   <Link href={"/"}>Blogs</Link>
                </div>
-               <Button className='rounded-[24px] px-5' size={"sm"}>Download Resume</Button>
+               {/* <Button className='rounded-[24px] px-5' size={"sm"}>Contact</Button> */}
             </div>
 
             <Button variant={"ghost"} onClick={() => setOpen(true)} className='lg:hidden'><Menu /></Button>
@@ -58,7 +59,7 @@ const Header = () => {
                         <Link href={"/"}>Experience</Link>
                         <Link href={"/"}>Blogs</Link>
                      </div>
-                     <Button className='rounded-[24px] px-5' size={"sm"}>Download Resume</Button>
+                     <Button className='rounded-[24px] px-5' size={"sm"}>Contact</Button>
                   </div>
 
                </div>
