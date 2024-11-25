@@ -1,3 +1,4 @@
+import { FloatingLabelInput } from "@/components/ui/floating-input";
 import { Navigation, Send, SendHorizontal } from "lucide-react";
 import React from "react";
 
@@ -31,12 +32,15 @@ const GetinTouch = () => {
 
          <div className="flex flex-col lg:flex-row">
             <form className="w-full space-y-7 lg:max-w-[60%]">
-               <input
+               <FloatingLabelInput
+                  labelClassName=""
+                  id="name"
+                  label="Full Name"
                   type="text"
-                  placeholder="Full Name"
-                  className="py-4 px-1 outline-none text-[20px] font-normal placeholder:font-normal placeholder:text-[20px] border-b w-full border-b-[#2F2F2F] placeholder:text-[#616161] text-[#3b3b3b]
-                  "
+                  placeholder=""
+                  className="py-4 px-1 outline-none text-[20px] font-normal placeholder:font-normal placeholder:text-[20px] border-b w-full border-b-[#2F2F2F] placeholder:text-[#616161] text-[#3b3b3b]"
                />
+
                <input
                   type="email"
                   placeholder="Email Address"

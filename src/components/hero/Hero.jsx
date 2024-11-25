@@ -6,10 +6,10 @@ const Hero = () => {
    return (
       <div className='  '>
          <div className='main-container relative min-h-[680px] flex-col lg:flex-row flex items-center gap-6 '>
-            <div className='w-full'>
-               <p>hey, I am</p>
+            <div className='w-full py-10 lg:py-0'>
+               <p>Hey, I am</p>
                <h2 className='text-[36px] font-[500] text-[#1D1D1D] leading-[41px]'>Sohag Sheik</h2>
-               <p className='text-[80px] font-[400] text-[#1D1D1D] leading-[120px]'>Front-End</p>
+               <p className=' text-[56px] lg:text-[80px] font-[400] text-[#1D1D1D] leading-[80px] lg:leading-[120px] mt-2 lg:mt-0'>Front-End</p>
                <p className='text-[54px] font-normal text-[#1D1D1D] leading-[60px]'>Engineer</p>
                <p className='text-[#545454] text-[20px]  mt-6 font-normal'>with expertise in various technologies, especially, JavaScript, Typescript, RectJs, NextJs, Node.js, ExpressJs.</p>
                <div className='mt-6'>
