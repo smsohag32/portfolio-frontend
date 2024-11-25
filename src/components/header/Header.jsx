@@ -25,9 +25,9 @@ const Header = () => {
    return (
       <div className='px-5 fixed top-0 py-3 left-0 right-0 z-50  bg-white bg-opacity-90 border-b border-b-[#a8a7a7f] backdrop-blur-sm'>
          <div className='main-container flex items-center justify-between py-1 '>
-            {/* <div className='flex items-center gap-2'>
-               <p className='text-[24px] font-[300]'>  sohag Sheik</p>
-            </div> */}
+            <div className='flex items-center gap-2'>
+               <p className='text-[24px] font-[300]'> Sohag Sheik</p>
+            </div>
 
             <div className='hidden lg:flex items-center gap-6'>
                <div className='flex items-center gap-6'>
