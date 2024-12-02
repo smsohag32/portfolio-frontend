@@ -1,5 +1,7 @@
-
 import tailwind from "@/assets/skillicon/tailwind.svg";
+import nextjs from "@/assets/skillicon/nextjs.svg";
+import tp from "@/assets/skillicon/tp.svg";
+import nodejs from "@/assets/skillicon/nodejs.svg";
 import react from "@/assets/skillicon/react.webp";
 import expressjs from "@/assets/skillicon/expressjs.webp";
 
@@ -10,21 +12,28 @@ const Skills = () => {
       <div>
          <div className="main-container py-16 ">
             <div className="mb-6 flex items-end gap-4">
-               <div className=""> <p className="text-[#545454] text-[64px] leading-[76.8px] font-normal">Tools</p>
-                  <h2 className="text-[64px] leading-[76.8px] font-normal ">
-                     & Skills
-                  </h2></div>
-               <span className="pb-5"><svg width="135" height="2" viewBox="0 0 135 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 1H135" stroke="black" />
-               </svg>
+               <div className="">
+                  {" "}
+                  <p className="text-[#545454] text-[64px] leading-[76.8px] font-normal">Tools</p>
+                  <h2 className="text-[64px] leading-[76.8px] font-normal ">& Skills</h2>
+               </div>
+               <span className="pb-5">
+                  <svg
+                     width="135"
+                     height="2"
+                     viewBox="0 0 135 2"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path
+                        d="M0 1H135"
+                        stroke="black"
+                     />
+                  </svg>
                </span>
             </div>
 
             <div className="grid grid-cols-2  overflow-hidden md:grid-cols-4 gap-9 lg:grid-cols-5">
-
-               <div
-                  data-aos="fade-right"
-                  className="flex flex-col w-full  bg-white py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+               <div className="flex flex-col w-full  bg-white py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         width={50}
@@ -42,9 +51,7 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">HTML</h1>
                </div>
-               <div
-                  data-aos="fade-right"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         width={40}
@@ -61,9 +68,17 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">CSS</h1>
                </div>
-               <div
-                  data-aos="fade-zoom"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+                  <div className="mt-auto mb-2">
+                     <Image
+                        src={tp}
+                        alt=""
+                        width={50}
+                     />
+                  </div>
+                  <h1 className="opacity-80 font-medium text-base mt-auto">Typescript</h1>
+               </div>
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <Image
                         src={tailwind}
@@ -73,26 +88,8 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">Tailwind CSS</h1>
                </div>
-               <div
-                  data-aos="fade-left"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
-                  <div className="mt-auto mb-2">
-                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="50"
 
-                        viewBox="0 0 32 32"
-                        id="bootstrap">
-                        <path
-                           fill="#444"
-                           d="M8.171 4.999a4.435 4.435 0 0 0-1.716.675 4.553 4.553 0 0 0-.95.901c-.26.343-.577 1.003-.702 1.456l-.106.377v15.727l.106.377c.124.453.441 1.113.702 1.456a4.305 4.305 0 0 0 2.003 1.426c.626.2.313.192 8.486.192 8.177 0 7.864.008 8.486-.196a4.263 4.263 0 0 0 2.003-1.422c.26-.347.581-1.007.705-1.456l.102-.377V8.408l-.106-.377c-.124-.452-.441-1.113-.701-1.456a4.552 4.552 0 0 0-.95-.901 4.978 4.978 0 0 0-1.305-.596l-.37-.102-7.732-.004c-4.251-.004-7.834.008-7.954.026zm10.538 4.16c1.192.196 2.006.588 2.538 1.222.226.268.49.8.6 1.196.068.26.079.407.083 1.056.004.683-.004.784-.083 1.052-.23.8-.732 1.414-1.543 1.89l-.279.162.2.064c.305.102.815.366 1.075.562.649.49 1.101 1.252 1.282 2.161.087.453.087 1.422-.004 1.837-.358 1.633-1.622 2.768-3.523 3.149-.728.147-.916.155-4.824.155h-3.82v-14.6l3.953.015c3.538.011 3.99.019 4.345.079zm-5.054 4.118v1.72l1.822-.015c1.709-.019 1.837-.023 2.112-.098.86-.234 1.233-.728 1.233-1.633 0-.694-.245-1.143-.777-1.407-.471-.234-.981-.283-2.983-.287h-1.407v1.72zm0 5.899v2.003l1.991-.015c2.237-.015 2.312-.023 2.863-.29.634-.309.916-.815.916-1.641 0-1.063-.422-1.652-1.395-1.946-.275-.087-.328-.087-2.327-.102l-2.048-.011v2.003z"></path>
-                     </svg>
-                  </div>
-                  <h1 className="opacity-80 font-medium text-base mt-auto">Bootstrap</h1>
-               </div>
-               <div
-                  data-aos="fade-left"
-                  className="flex flex-col border  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+               <div className="flex flex-col border  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -107,9 +104,8 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">JavaScript</h1>
                </div>
-               <div
-                  data-aos="fade-right"
-                  className="flex flex-col  py-5 border px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+
+               <div className="flex flex-col  py-5 border px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <Image
                         src={react}
@@ -120,9 +116,55 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">React JS</h1>
                </div>
-               <div
-                  data-aos="fade-right"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+                  <div className="mt-auto mb-2">
+                     <Image
+                        src={expressjs}
+                        alt=""
+                        width={50}
+                     />
+                  </div>
+                  <h1 className="opacity-80 font-medium text-base mt-auto">Express Js</h1>
+               </div>
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+                  <div className="mt-auto mb-2">
+                     <Image
+                        src={nextjs}
+                        alt=""
+                        width={50}
+                     />
+                  </div>
+                  <h1 className="opacity-80 font-medium text-base mt-auto">Next Js</h1>
+               </div>
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+                  <div className="mt-auto mb-2">
+                     <Image
+                        src={nodejs}
+                        alt=""
+                        width={50}
+                     />
+                  </div>
+                  <h1 className="opacity-80 font-medium text-base mt-auto">Node Js</h1>
+               </div>
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+                  <div className="mt-auto mb-2">
+                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="90"
+                        height="90"
+                        preserveAspectRatio="xMidYMid"
+                        viewBox="0 0 256 244"
+                        id="redux">
+                        <path
+                           fill="#764ABC"
+                           d="M177.381 169.733c9.447-.978 16.614-9.122 16.288-18.896-.325-9.773-8.47-17.592-18.243-17.592h-.651c-10.1.326-17.918 8.796-17.592 18.895.326 4.887 2.28 9.122 5.212 12.054-11.076 21.828-28.016 37.791-53.426 51.148-17.266 9.122-35.183 12.38-53.1 10.1-14.66-1.955-26.062-8.47-33.23-19.222-10.424-15.963-11.401-33.23-2.605-50.496 6.19-12.38 15.962-21.502 22.152-26.063-1.303-4.235-3.258-11.402-4.235-16.614-47.237 34.207-42.35 80.468-28.016 102.295 10.75 16.29 32.577 26.389 56.684 26.389 6.515 0 13.03-.652 19.546-2.28 41.699-8.145 73.299-32.905 91.216-69.718zm57.336-40.397c-24.759-28.995-61.245-44.958-102.944-44.958h-5.212c-2.932-5.864-9.122-9.774-15.963-9.774h-.652C99.848 74.93 92.03 83.4 92.355 93.5c.326 9.773 8.47 17.592 18.243 17.592h.651c7.167-.326 13.357-4.887 15.963-11.077h5.864c24.759 0 48.214 7.167 69.39 21.176 16.288 10.751 28.016 24.76 34.531 41.7 5.538 13.683 5.212 27.04-.652 38.443-9.121 17.266-24.432 26.714-44.63 26.714-13.031 0-25.41-3.91-31.926-6.842-3.583 3.258-10.099 8.47-14.66 11.729 14.009 6.515 28.343 10.099 42.025 10.099 31.274 0 54.404-17.267 63.2-34.533 9.447-18.896 8.795-51.474-15.637-79.165zM69.225 175.27c.326 9.774 8.47 17.592 18.243 17.592h.652c10.099-.325 17.917-8.796 17.591-18.895-.325-9.774-8.47-17.592-18.243-17.592h-.651c-.652 0-1.63 0-2.28.325-13.357-22.153-18.895-46.26-16.94-72.323 1.302-19.547 7.818-36.488 19.22-50.497 9.447-12.054 27.69-17.918 40.07-18.243 34.531-.652 49.19 42.351 50.168 59.618 4.235.977 11.402 3.258 16.289 4.887C189.434 27.366 156.857 0 125.584 0c-29.32 0-56.359 21.176-67.11 52.451-14.985 41.7-5.212 81.771 13.031 113.372-1.628 2.28-2.606 5.864-2.28 9.448z"></path>
+                     </svg>
+                  </div>
+                  <h1 className="opacity-80 font-medium text-base mt-auto">Redux</h1>
+               </div>
+
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -145,21 +187,8 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">Firebase</h1>
                </div>
-               <div
-                  data-aos="fade-zoom"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
-                  <div className="mt-auto mb-2">
-                     <Image
-                        src={expressjs}
-                        alt=""
-                        width={50}
-                     />
-                  </div>
-                  <h1 className="opacity-80 font-medium text-base mt-auto">Express Js</h1>
-               </div>
-               <div
-                  data-aos="fade-left"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -187,24 +216,6 @@ const Skills = () => {
                      </svg>
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">MongoDB</h1>
-               </div>
-               <div
-                  data-aos="fade-left"
-                  className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
-                  <div className="mt-auto mb-2">
-                     <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="90"
-                        height="90"
-                        preserveAspectRatio="xMidYMid"
-                        viewBox="0 0 256 244"
-                        id="redux">
-                        <path
-                           fill="#764ABC"
-                           d="M177.381 169.733c9.447-.978 16.614-9.122 16.288-18.896-.325-9.773-8.47-17.592-18.243-17.592h-.651c-10.1.326-17.918 8.796-17.592 18.895.326 4.887 2.28 9.122 5.212 12.054-11.076 21.828-28.016 37.791-53.426 51.148-17.266 9.122-35.183 12.38-53.1 10.1-14.66-1.955-26.062-8.47-33.23-19.222-10.424-15.963-11.401-33.23-2.605-50.496 6.19-12.38 15.962-21.502 22.152-26.063-1.303-4.235-3.258-11.402-4.235-16.614-47.237 34.207-42.35 80.468-28.016 102.295 10.75 16.29 32.577 26.389 56.684 26.389 6.515 0 13.03-.652 19.546-2.28 41.699-8.145 73.299-32.905 91.216-69.718zm57.336-40.397c-24.759-28.995-61.245-44.958-102.944-44.958h-5.212c-2.932-5.864-9.122-9.774-15.963-9.774h-.652C99.848 74.93 92.03 83.4 92.355 93.5c.326 9.773 8.47 17.592 18.243 17.592h.651c7.167-.326 13.357-4.887 15.963-11.077h5.864c24.759 0 48.214 7.167 69.39 21.176 16.288 10.751 28.016 24.76 34.531 41.7 5.538 13.683 5.212 27.04-.652 38.443-9.121 17.266-24.432 26.714-44.63 26.714-13.031 0-25.41-3.91-31.926-6.842-3.583 3.258-10.099 8.47-14.66 11.729 14.009 6.515 28.343 10.099 42.025 10.099 31.274 0 54.404-17.267 63.2-34.533 9.447-18.896 8.795-51.474-15.637-79.165zM69.225 175.27c.326 9.774 8.47 17.592 18.243 17.592h.652c10.099-.325 17.917-8.796 17.591-18.895-.325-9.774-8.47-17.592-18.243-17.592h-.651c-.652 0-1.63 0-2.28.325-13.357-22.153-18.895-46.26-16.94-72.323 1.302-19.547 7.818-36.488 19.22-50.497 9.447-12.054 27.69-17.918 40.07-18.243 34.531-.652 49.19 42.351 50.168 59.618 4.235.977 11.402 3.258 16.289 4.887C189.434 27.366 156.857 0 125.584 0c-29.32 0-56.359 21.176-67.11 52.451-14.985 41.7-5.212 81.771 13.031 113.372-1.628 2.28-2.606 5.864-2.28 9.448z"></path>
-                     </svg>
-                  </div>
-                  <h1 className="opacity-80 font-medium text-base mt-auto">Redux</h1>
                </div>
             </div>
          </div>
