@@ -1,4 +1,4 @@
-import { SendHorizontal, SquareArrowOutUpRight } from "lucide-react";
+import { SquareArrowOutUpRight } from "lucide-react";
 import React from "react";
 
 const ThoughtCard = () => {

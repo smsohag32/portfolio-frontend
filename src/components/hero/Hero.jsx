@@ -1,26 +1,50 @@
 import Image from 'next/image';
 import React from 'react';
 import profile from "@/assets/photo/sohag.png"
-import { Button } from '../ui/button';
+import line from "@/assets/bg/line.svg"
+
+import { Download, Github, Linkedin, Notebook } from 'lucide-react';
 const Hero = () => {
    return (
-      <div className='  '>
+      <div className=''>
          <div className='main-container relative min-h-[680px] flex-col lg:flex-row flex items-center gap-6 '>
-            <div className='w-full py-10 lg:py-0'>
+            <div className='w-full py-10 z-40 lg:py-0'>
                <p>Hey, I am</p>
                <h2 className='text-[36px] font-[500] text-[#1D1D1D] leading-[41px]'>Sohag Sheik</h2>
                <p className=' text-[56px] lg:text-[80px] font-[400] text-[#1D1D1D] leading-[80px] lg:leading-[120px] mt-2 lg:mt-0'>Front-End</p>
                <p className='text-[54px] font-normal text-[#1D1D1D] leading-[60px]'>Engineer</p>
                <p className='text-[#545454] text-[20px]  mt-6 font-normal'>with expertise in various technologies, especially, JavaScript, Typescript, RectJs, NextJs, Node.js, ExpressJs.</p>
-               <div className='mt-6'>
-                  <Button>
-                     Contact me
-                  </Button>
+               <div className='mt-6 flex items-center flex-col lg:flex-row w-full lg:gap-[48px] gap-[14px]'>
+                  <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start  border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
+                     <p className='text-[64px] text-[#1D1D1D] font-normal'>20+</p>
+                     <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-1'>Projects</p>
+                  </div>
+                  <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start   border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
+                     <p className='text-[64px] text-[#1D1D1D] font-normal'>1.5+</p>
+                     <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-2'>Years of Experience</p>
+                  </div>
+                  <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start   border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
+                     <p className='text-[64px] text-[#1D1D1D] font-normal'>3+</p>
+                     <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-1'>Clients</p>
+                  </div>
                </div>
             </div>
             <div className='w-full flex items-center justify-center lg:justify-end'>
-               <div className='bg-[#1D1D1D] max-w-[340px] lg:-mt-24 z-30 h-full px-10 py-10 lg:py-40 '>
+               <div className='bg-[#1d1d1d] rounded-[16px] max-w-[340px] lg:-mt-24 z-30 h-full px-10 py-10 lg:pt-40  pb-10'>
                   <Image src={profile} alt='Sohag Sheik' className='' />
+                  <div className='mt-[40px] flex items-center flex-col gap-4 justify-center'>
+                     <div className=' flex items-center gap-6 justify-center'>
+                        <button className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Github size={14} /></button>
+                        <button className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Linkedin size={14} /></button>
+                        <button className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Notebook size={14} /></button>
+                     </div>
+                     <button
+                        type="button"
+                        className="flex items-center mt-6 px-1 text-sm border-b text-[#ffffff] font-normal hover:font-medium transition-all duration-300 py-[10px]  gap-3">
+                        Download Resume
+                        <Download size={14} />
+                     </button>
+                  </div>
                </div>
             </div>
             <span className='bottom-0  lg:absolute left-1/2 transform -translate-x-1/2 z-40 '>
@@ -31,7 +55,7 @@ const Hero = () => {
 
             <span className='absolute top-1/2 right-1/2 z-40'>
                <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g opacity="0.5" clip-path="url(#clip0_9_488)">
+                  <g opacity="0.5" clipPath="url(#clip0_9_488)">
                      <path d="M0.526369 18.7486L6.08232 13.4898L11.6657 8.20578L14.7588 5.27812C14.8473 5.19376 14.8229 5.10643 14.7024 5.07535C14.5757 5.04279 14.3804 5.09459 14.2858 5.1834L8.76798 10.4052L3.18608 15.6907L0.0533276 18.6539C-0.035177 18.7383 -0.0107619 18.8256 0.109787 18.8567C0.236441 18.8892 0.431761 18.8374 0.526369 18.7486Z" fill="#545454" />
                      <path d="M17.2341 3.20894C17.643 2.88923 18.055 2.57249 18.4548 2.24242C18.4884 2.2143 18.5265 2.16398 18.5143 2.11662C18.5021 2.06925 18.4411 2.04409 18.3983 2.03669C18.2488 2.01005 18.0932 2.06037 17.9757 2.14622C17.5499 2.45852 17.1333 2.78267 16.7152 3.10533C16.6786 3.13345 16.6374 3.19118 16.6511 3.24002C16.6649 3.28886 16.7305 3.31847 16.7763 3.32587C16.9334 3.35399 17.1089 3.30366 17.2325 3.20746L17.2341 3.20894Z" fill="#545454" />
                      <path d="M8.83969 4.39894C11.8977 7.18451 14.8855 10.0426 17.8962 12.877C18.7354 13.6674 19.5762 14.4548 20.4216 15.2393C20.5711 15.3769 21.1266 15.1623 20.9694 15.0158C17.9419 12.2036 14.9633 9.34251 11.9404 6.52734C11.0935 5.73844 10.2436 4.95398 9.38903 4.17545C9.23796 4.0378 8.68252 4.25537 8.84122 4.39894H8.83969Z" fill="#545454" />
@@ -55,6 +79,7 @@ const Hero = () => {
                </svg>
 
             </span>
+            <span className=' absolute left-0 z-10'><Image src={line} width={500} alt='Sohag Sheik' /></span>
          </div>
       </div>
    );
