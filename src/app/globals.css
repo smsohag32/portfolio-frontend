@@ -97,6 +97,28 @@ body {
          transform: translate(50px, -50px);
       }
    }
+   .move-image-bottom {
+      -webkit-animation: move2 3s infinite alternate;
+      animation: move2 3s infinite alternate;
+   }
+
+   @-webkit-keyframes move2 {
+      0% {
+         transform: translate(0, 0);
+      }
+      100% {
+         transform: translate(-10px, 5px);
+      }
+   }
+
+   @keyframes move2 {
+      0% {
+         transform: translate(0, 0);
+      }
+      100% {
+         transform: translate(-10px, 4px);
+      }
+   }
 
    .ring-animation {
       position: absolute;

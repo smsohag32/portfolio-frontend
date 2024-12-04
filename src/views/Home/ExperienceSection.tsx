@@ -1,10 +1,12 @@
 import ExperienceCard from "@/components/cards/ExperienceCard";
 import { experiences } from "@/data/experience";
+import Image from "next/image";
 import React from "react";
+import line from "@/assets/bg/line.svg";
 
 const ExperienceSection = () => {
    return (
-      <div className="main-container mb-[84px]">
+      <div className="main-container relative mb-[84px]">
          <div className="flex font-flecha items-center mt-6 w-full justify-start">
             <div className="mb-6 flex items-end gap-4">
                <div className="">
@@ -40,6 +42,14 @@ const ExperienceSection = () => {
                />
             ))}
          </div>
+         <span className=" absolute top-0 left-0 z-10 ">
+            <Image
+               src={line}
+               width={500}
+               className=""
+               alt="Sohag Sheik"
+            />
+         </span>
       </div>
    );
 };

@@ -22,7 +22,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
             alt="Logo"
             width={80}
             height={80}
-            className="w-20"
+            className="w-20 grayscale"
          />
          <div className="mt-4">
             <p className="text-title text-[20px]">{experience?.company}</p>
