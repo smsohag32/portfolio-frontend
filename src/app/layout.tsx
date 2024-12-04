@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { Outfit } from "next/font/google";
+
 const geistFlecha = localFont({
    src: "./fonts/Flecha.woff",
    variable: "--font-geist-mono",
    weight: "100 900",
+});
+const outfit = Outfit({
+   weight: ["100", "200", "300", "400", "500", "600", "700"],
+   subsets: ["latin"],
+   variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +27,9 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
-         <body className={` ${geistFlecha.variable} antialiased`}>{children}</body>
+         <body className={`${geistFlecha.variable} ${outfit.variable} antialiased`}>
+            {children}
+         </body>
       </html>
    );
 }

@@ -1,9 +1,10 @@
+import { blogsList } from "@/data/blogs";
 import ThoughtCard from "./ThoughtCard";
 
 const Thoughts = () => {
    return (
       <div className="main-container">
-         <div className="mb-6 flex items-end gap-4">
+         <div className="mb-6 font-flecha flex items-end gap-4">
             <div className="">
                <h2 className="text-[64px] text-[#1D1D1D] leading-[76.8px] font-normal ">
                   Thoughts
@@ -25,10 +26,12 @@ const Thoughts = () => {
          </div>
 
          <div className="grid lg:grid-cols-2 mt-11 gap-[48px]">
-            <ThoughtCard />
-            <ThoughtCard />
-            <ThoughtCard />
-            <ThoughtCard />
+            {blogsList?.map((thought, index) => (
+               <ThoughtCard
+                  thought={thought}
+                  key={index}
+               />
+            ))}
          </div>
       </div>
    );

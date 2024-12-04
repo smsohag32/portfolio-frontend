@@ -25,9 +25,16 @@
          "@/hooks/*": ["./src/hooks/*"],
          "@/views/*": ["./src/views/*"],
          "@/components/ui/*": ["./src/components/ui/*"],
-         "@/lib/utils": ["./src/lib/utils"]
+         "@/lib/utils": ["./src/lib/utils"],
+         "@/data": ["./src/data"]
       }
    },
-   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/header/Header.jsx"],
+   "include": [
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      ".next/types/**/*.ts",
+      "src/components/header/Header.jsx"
+   ],
    "exclude": ["node_modules"]
 }

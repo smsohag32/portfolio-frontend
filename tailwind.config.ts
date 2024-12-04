@@ -50,11 +50,17 @@ const config: Config = {
                "4": "hsl(var(--chart-4))",
                "5": "hsl(var(--chart-5))",
             },
+            title: "#232323",
+            des: "#4D4D4D",
          },
          borderRadius: {
             lg: "var(--radius)",
             md: "calc(var(--radius) - 2px)",
             sm: "calc(var(--radius) - 4px)",
+         },
+         fontFamily: {
+            flecha: ["var(--font-geist-mono)", "sans-serif"],
+            outfit: ["var(--font-outfit)", "sans-serif"],
          },
       },
    },

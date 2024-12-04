@@ -7,7 +7,7 @@ import React from "react";
 const GetinTouch = () => {
    return (
       <div className="main-container flex items-center flex-col justify-center py-16">
-         <div className="flex items-center mt-6 w-full justify-center">
+         <div className="flex font-flecha items-center mt-6 w-full justify-center">
             <div className="mb-6 flex items-end gap-4">
                <div className="">
                   {" "}

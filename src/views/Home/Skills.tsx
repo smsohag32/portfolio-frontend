@@ -11,7 +11,7 @@ const Skills = () => {
    return (
       <div>
          <div className="main-container py-16 ">
-            <div className="mb-6 flex items-end gap-4">
+            <div className="mb-6 font-flecha flex items-end gap-4">
                <div className="">
                   {" "}
                   <p className="text-[#545454] text-[64px] leading-[76.8px] font-normal">Tools</p>
