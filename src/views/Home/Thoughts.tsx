@@ -25,7 +25,7 @@ const Thoughts = () => {
             </span>
          </div>
 
-         <div className="grid lg:grid-cols-2 mt-11 gap-[48px]">
+         <div className="grid lg:grid-cols-1 mt-11 gap-[48px]">
             {blogsList?.map((thought, index) => (
                <ThoughtCard
                   thought={thought}

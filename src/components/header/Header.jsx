@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo3.png";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -26,8 +26,8 @@ const Header = () => {
    return (
       <div className="lg:px-5 fixed top-0 z-50  left-0 right-0 !bg-white bg-opacity-90 border-b border-b-[#a8a7a7f] backdrop-blur-sm">
          <div className="main-container flex items-center justify-between py-1">
-            <div className="flex items-center gap-2">
-               <p className="text-[20px] font-[300] uppercase "> Sohag Sheik</p>
+            <div className="flex items-center gap-2 ">
+               <Image src={logo} width={150} className="w-44 -ms-1" alt="Sohag Sheik" height={70} />
             </div>
 
             {/* Desktop Navigation */}

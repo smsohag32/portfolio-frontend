@@ -1,8 +1,20 @@
-import ExOne from "@/assets/experience/ExOne";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
-// import p2m from "@/assets/experience/p2m.svg";
-const ExperienceCard = ({ experience }: { experience: any }) => {
+
+// Define an interface for the `experience` prop
+interface Experience {
+   id: number;
+   img: string | StaticImageData;
+   company: string; // Company name
+   title: string; // Job title
+   duration: string; // Duration of the experience
+}
+
+interface ExperienceCardProps {
+   experience: Experience; // The experience prop is an object of type Experience
+}
+
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
    return (
       <div>
          <Image

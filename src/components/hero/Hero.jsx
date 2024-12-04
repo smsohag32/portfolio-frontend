@@ -4,6 +4,7 @@ import profile from "@/assets/photo/sohag.png"
 import line from "@/assets/bg/line.svg"
 
 import { Download, Github, Linkedin, Notebook } from 'lucide-react';
+import Link from 'next/link';
 const Hero = () => {
    return (
       <div className=''>
@@ -34,9 +35,9 @@ const Hero = () => {
                   <Image src={profile} alt='Sohag Sheik' className='' />
                   <div className='mt-[40px] flex items-center flex-col gap-4 justify-center'>
                      <div className=' flex items-center gap-6 justify-center'>
-                        <button className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Github size={14} /></button>
-                        <button className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Linkedin size={14} /></button>
-                        <button className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Notebook size={14} /></button>
+                        <Link href={"https://github.com/smsohag32"} target='_blank' className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Github size={14} /></Link>
+                        <Link href={"https://www.linkedin.com/in/sohagsheik"} target='_blank' className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Linkedin size={14} /></Li>
+                        <Link href={"https://github.com/smsohag32"} target='_blank' className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full ">  <Notebook size={14} /></Li>
                      </div>
                      <button
                         type="button"

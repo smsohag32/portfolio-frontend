@@ -19,14 +19,4 @@ export const blogsList = [
       image: "https://img.freepik.com/free-psd/work-home-character-composition_23-2151773292.jpg?t=st=1733199110~exp=1733202710~hmac=c1d09679268eb9fa1ebf6367a154ac3af5b1eb7e59fee94bc20c2c74359147ca&w=900",
       link: "https://img.freepik.com/free-psd/work-home-character-composition_23-2151773292.jpg?t=st=1733199110~exp=1733202710~hmac=c1d09679268eb9fa1ebf6367a154ac3af5b1eb7e59fee94bc20c2c74359147ca&w=900",
    },
-   {
-      title: "Understanding the Architecture of React.js",
-      date: "2023-12-03",
-      author: "David Roberts",
-      summary:
-         "React.js has transformed the way developers approach frontend development by introducing a component-based architecture that promotes modularity and reusability. In this blog, we take an in-depth look at the core principles that underpin React's architecture, including the virtual DOM, state management, and unidirectional data flow. Learn how React enables developers to build scalable and maintainable applications with a clean separation of concerns. Whether you are new to React or looking to deepen your understanding, this post provides valuable insights into crafting efficient and high-performing user interfaces.",
-      categories: ["React.js", "frontend architecture", "JavaScript", "technology"],
-      image: "https://img.freepik.com/free-psd/work-home-character-composition_23-2151773292.jpg?t=st=1733199110~exp=1733202710~hmac=c1d09679268eb9fa1ebf6367a154ac3af5b1eb7e59fee94bc20c2c74359147ca&w=900",
-      link: "/blogs/react-js-architecture",
-   },
 ];
