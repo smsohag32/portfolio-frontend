@@ -27,7 +27,7 @@ const Header = () => {
       <div className="lg:px-5 fixed top-0 z-50  left-0 right-0 !bg-white bg-opacity-90 border-b border-b-[#a8a7a7f] backdrop-blur-sm">
          <div className="main-container flex items-center justify-between py-1">
             <div className="flex items-center gap-2 ">
-               <Image src={logo} width={150} className="w-44 -ms-1" alt="Sohag Sheik" height={70} />
+               <Link href={"/"} > <Image src={logo} width={150} className="w-28 lg:w-44 -ms-1" alt="Sohag Sheik" height={70} /></Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -59,9 +59,9 @@ const Header = () => {
             <Button
                variant={"ghost"}
                onClick={() => setOpen(true)}
-               className="lg:hidden"
+               className="lg:hidden py-1.5 px-3"
             >
-               <Menu />
+               <Menu className="text-2xl" size={20} />
             </Button>
          </div>
 
@@ -71,17 +71,18 @@ const Header = () => {
                <SheetHeader>
                   <SheetTitle>
                      <div className="flex items-center gap-2">
-                        <Image src={logo} alt="logo" width={40} /> sohag sheik
+                        <Link href={"/"} > <Image src={logo} width={150} className="w-28 lg:w-44 " alt="Sohag Sheik" height={70} /></Link>
                      </div>
                   </SheetTitle>
                </SheetHeader>
 
                <div className="mt-6">
-                  <div className="flex flex-col w-full items-center gap-4">
+                  <div className="flex flex-col w-full items-start ps-7 gap-4">
                      {["/", "/portfolio", "/experience", "/blogs", "/about"].map(
                         (path, index) => (
                            <Link
                               key={index}
+                              onClick={() => closeModal()}
                               href={path}
                               className={`relative ${isActive(path)
                                  ? "text-black font-semibold"
@@ -97,9 +98,7 @@ const Header = () => {
                            </Link>
                         )
                      )}
-                     <Button className="rounded-[24px] px-5" size={"sm"}>
-                        Contact
-                     </Button>
+
                   </div>
                </div>
             </SheetContent>

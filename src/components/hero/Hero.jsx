@@ -7,14 +7,15 @@ import { Download, Github, Linkedin, Notebook } from 'lucide-react';
 import Link from 'next/link';
 const Hero = () => {
    return (
-      <div className=''>
+      <div className=' overflow-hidden'>
          <div className='main-container relative min-h-[680px] flex-col lg:flex-row flex items-center gap-6 '>
             <div className='w-full py-10 font-flecha z-40 lg:py-0'>
                <p className='font-outfit'>Hey, I am</p>
-               <h2 className='text-[36px]  font-[500] text-[#1D1D1D] leading-[41px]'>Sohag Sheik</h2>
-               <p className=' text-[56px] lg:text-[80px] font-[400] text-[#1D1D1D] leading-[80px] lg:leading-[120px] mt-2 lg:mt-0'>Front-End</p>
-               <p className='text-[54px] font-normal text-[#1D1D1D] leading-[60px]'>Engineer</p>
-               <p className='text-[#545454] text-[20px]  font-outfit mt-6 font-normal'>with expertise in various technologies, especially, JavaScript, Typescript, RectJs, NextJs, Node.js, ExpressJs.</p>
+               <h2 className='text-[28px] lg:text-[36px]  font-[500] text-[#1D1D1D] leading-[41px]'>Sohag Sheik</h2>
+               <p className=' text-[48px] lg:text-[80px] font-[400] text-[#1D1D1D] leading-[80px] lg:leading-[120px] mt-2 lg:mt-0'>Front-End</p>
+               <p className='text-[38px] lg:text-[54px] font-normal text-[#1D1D1D] leading-[30px] lg:leading-[60px]'>Engineer</p>
+               <p className='text-[#545454] text-[18px] lg:text-[20px]  font-outfit mt-6 font-normal'>Specializing in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.
+                  Crafting seamless user experiences with cutting-edge web technologies.</p>
                <div className='mt-6 flex items-center flex-col lg:flex-row w-full lg:gap-[48px] gap-[14px]'>
                   <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start  border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
                      <p className='text-[64px] text-[#1D1D1D] font-normal'>20+</p>
@@ -56,7 +57,7 @@ const Hero = () => {
                </svg>
             </span>
 
-            <span className='absolute top-1/2 right-1/2 z-40 move-image'>
+            <span className='absolute top-20 lg:top-1/3 lg:right-1/2 right-1/3 z-40 move-image'>
                <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g opacity="0.5" clipPath="url(#clip0_9_488)">
                      <path d="M0.526369 18.7486L6.08232 13.4898L11.6657 8.20578L14.7588 5.27812C14.8473 5.19376 14.8229 5.10643 14.7024 5.07535C14.5757 5.04279 14.3804 5.09459 14.2858 5.1834L8.76798 10.4052L3.18608 15.6907L0.0533276 18.6539C-0.035177 18.7383 -0.0107619 18.8256 0.109787 18.8567C0.236441 18.8892 0.431761 18.8374 0.526369 18.7486Z" fill="#545454" />

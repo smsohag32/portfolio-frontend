@@ -13,14 +13,14 @@ const ThoughtCard: React.FC<{ thought: { title: string; summary: string } }> = (
    return (
       <div className="flex items-start  gap-6">
          <div className="w-full">
-            <p className="text-[44px] font-[500] text-[#1D1D1D] font-flecha  line-clamp-1">
+            <p className="text-[28px] lg:text-[44px] font-[500] text-[#1D1D1D] font-flecha  line-clamp-1">
                {thought?.title}
             </p>
             <p
-               className={`text-[20px] font-normal font-outfit text-[#545454] transition-max-height duration-500 overflow-hidden ${
+               className={`text-[18px] lg:text-[20px] font-normal font-outfit text-[#545454] transition-max-height duration-500 overflow-hidden ${
                   isExpanded
                      ? "max-h-[500px] duration-500"
-                     : "max-h-[180px] duration-500 line-clamp-6"
+                     : "max-h-[180px] duration-500 line-clamp-4"
                }`}>
                {thought?.summary}
             </p>

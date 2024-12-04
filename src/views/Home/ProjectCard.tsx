@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { ExternalLink, Github, View } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ interface Link {
 interface Project {
    id: number;
    name: string;
-   image: string[];
+   image: string[] | StaticImageData[];
    category: string;
    type: string;
    description: string;
@@ -53,9 +53,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
             </div>
          </div>
 
-         <div className="p-6">
-            <div className="flex items-center justify-between mb-4">
-               <h2 className="text-3xl font-bold">{project.name}</h2>
+         <div className="lg:p-6 py-6 lg:py-0">
+            <div className="flex items-center flex-col lg:flex-row gap-3 justify-between mb-4">
+               <h2 className="text-[24px] lg:text-[28px] font-bold">{project.name}</h2>
                <Badge
                   variant="outline"
                   className="text-sm font-medium">
@@ -89,8 +89,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
                ))}
             </div>
 
-            <div className="flex justify-between items-center">
-               <div className="space-x-2">
+            <div className="flex justify-between flex-col lg:flex-row gap-3 items-center">
+               <div className="space-x-2 space-y-2">
                   <Button
                      variant="outline"
                      size="sm"

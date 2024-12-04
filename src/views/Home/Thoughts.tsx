@@ -6,7 +6,7 @@ const Thoughts = () => {
       <div className="main-container">
          <div className="mb-6 font-flecha flex items-end gap-4">
             <div className="">
-               <h2 className="text-[64px] text-[#1D1D1D] leading-[76.8px] font-normal ">
+               <h2 className="lg:text-[64px] text-[35px] lg:leading-[76.8px] leading-[50px] font-medium ">
                   Thoughts
                </h2>
             </div>

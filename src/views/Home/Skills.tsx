@@ -13,9 +13,12 @@ const Skills = () => {
          <div className="main-container py-16 ">
             <div className="mb-6 font-flecha flex items-end gap-4">
                <div className="">
-                  {" "}
-                  <p className="text-[#545454] text-[64px] leading-[76.8px] font-normal">Tools</p>
-                  <h2 className="text-[64px] leading-[76.8px] font-normal ">& Skills</h2>
+                  <p className="text-[#545454] text-[35px] lg:text-[64px] leading-[50px] lg:leading-[76.8px] !font-[300] ">
+                     Tools
+                  </p>
+                  <h2 className="lg:text-[64px] text-[35px] lg:leading-[76.8px] leading-[50px] font-medium ">
+                     & Skills
+                  </h2>
                </div>
                <span className="pb-5">
                   <svg
@@ -68,16 +71,7 @@ const Skills = () => {
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">CSS</h1>
                </div>
-               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
-                  <div className="mt-auto mb-2">
-                     <Image
-                        src={tp}
-                        alt=""
-                        width={50}
-                     />
-                  </div>
-                  <h1 className="opacity-80 font-medium text-base mt-auto">Typescript</h1>
-               </div>
+
                <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <Image
@@ -87,6 +81,16 @@ const Skills = () => {
                      />
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">Tailwind CSS</h1>
+               </div>
+               <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+                  <div className="mt-auto mb-2">
+                     <Image
+                        src={tp}
+                        alt=""
+                        width={50}
+                     />
+                  </div>
+                  <h1 className="opacity-80 font-medium text-base mt-auto">Typescript</h1>
                </div>
 
                <div className="flex flex-col border  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
