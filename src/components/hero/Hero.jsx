@@ -1,8 +1,15 @@
+"use client"
 import Image from 'next/image';
 import React from 'react';
 import profile from "@/assets/photo/sohag.png"
 import line from "@/assets/bg/line.svg"
-
+import CountUp from 'react-countup';
+import { motion } from 'framer-motion';
+const stats = [
+   { id: 1, label: 'Projects', value: 20, suffix: '+' },
+   { id: 2, label: 'Years of Experience', value: 1.5, decimals: 1, suffix: '+' },
+   { id: 3, label: 'Clients', value: 3, suffix: '+' },
+];
 import { Download, Github, Linkedin, Notebook } from 'lucide-react';
 import Link from 'next/link';
 const Hero = () => {
@@ -17,18 +24,28 @@ const Hero = () => {
                <p className='text-[#545454] text-[18px] lg:text-[20px]  font-outfit mt-6 font-normal'>Specializing in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.
                   Crafting seamless user experiences with cutting-edge web technologies.</p>
                <div className='mt-6 flex items-center flex-col lg:flex-row w-full lg:gap-[48px] gap-[14px]'>
-                  <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start  border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
-                     <p className='text-[64px] text-[#1D1D1D] font-normal'>20+</p>
-                     <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-1 font-outfit'>Projects</p>
-                  </div>
-                  <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start   border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
-                     <p className='text-[64px] text-[#1D1D1D] font-normal'>1.5+</p>
-                     <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-2 font-outfit'>Years of Experience</p>
-                  </div>
-                  <div className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start   border w-full rounded-[8px] border-gray-200  px-6 items-center py-5'>
-                     <p className='text-[64px] text-[#1D1D1D] font-normal'>3+</p>
-                     <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-1 font-outfit'>Clients</p>
-                  </div>
+                  {stats.map((stat) => (
+                     <motion.div
+                        key={stat.id}
+                        className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start border w-full rounded-[8px] border-gray-200 px-6 items-center py-5'
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: stat.id * 0.5 }}
+                     >
+                        <p className='text-[64px] text-[#1D1D1D] font-normal'>
+                           <CountUp
+                              end={stat.value}
+                              duration={2}
+                              delay={stat.id * 0.5}
+                              decimals={stat.decimals || 0}
+                           />
+                           {stat.suffix}
+                        </p>
+                        <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-1 font-outfit'>
+                           {stat.label}
+                        </p>
+                     </motion.div>
+                  ))}
                </div>
             </div>
             <div className='w-full flex items-center justify-center lg:justify-end'>
