@@ -66,7 +66,7 @@ const GetinTouch = () => {
                      className="flex items-center text-base font-normal text-[#2F2F2F] border border-[#000000] rounded-full px-6 py-[10px] gap-3
       transition duration-300 ease-in-out
       hover:text-white hover:bg-[#2F2F2F] hover:shadow-lg hover:scale-105">
-                     Book a meeting on Calendly{" "}
+                     Book a meeting on Calendly
                      <span>
                         <svg
                            width="20"
