@@ -1,10 +1,11 @@
+"use client";
 import tailwind from "@/assets/skillicon/tailwind.svg";
 import nextjs from "@/assets/skillicon/nextjs.svg";
 import tp from "@/assets/skillicon/tp.svg";
 import nodejs from "@/assets/skillicon/nodejs.svg";
 import react from "@/assets/skillicon/react.webp";
 import expressjs from "@/assets/skillicon/expressjs.webp";
-
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const Skills = () => {
@@ -35,8 +36,19 @@ const Skills = () => {
                </span>
             </div>
 
-            <div className="grid grid-cols-2  overflow-hidden md:grid-cols-4 gap-9 lg:grid-cols-5">
-               <div className="flex flex-col w-full  bg-white py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+            <div className="grid grid-cols-2   md:grid-cols-4 gap-9 lg:grid-cols-5">
+               <motion.div
+                  whileHover={{
+                     y: -8,
+                     borderColor: "#f3f3f3",
+                  }}
+                  transition={{
+                     type: "spring",
+                     stiffness: 300,
+                     damping: 15, // Controls bounce
+                     duration: 0.2, // Duration for the transition
+                  }}
+                  className="flex flex-col w-full bg-white border border-transparent hover:border-gray-100 py-5 px-3 rounded-md  duration-300 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         width={50}
@@ -53,7 +65,8 @@ const Skills = () => {
                      </svg>
                   </div>
                   <h1 className="opacity-80 font-medium text-base mt-auto">HTML</h1>
-               </div>
+               </motion.div>
+
                <div className="flex flex-col  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
@@ -93,7 +106,7 @@ const Skills = () => {
                   <h1 className="opacity-80 font-medium text-base mt-auto">Typescript</h1>
                </div>
 
-               <div className="flex flex-col border  py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
+               <div className="flex flex-col border bg-[#ffffff] py-5 px-3 rounded-md  duration-500 transform cursor-pointer items-center">
                   <div className="mt-auto mb-2">
                      <svg
                         xmlns="http://www.w3.org/2000/svg"
