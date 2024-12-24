@@ -11,9 +11,6 @@ const GetinTouch = () => {
             <div className="mb-6 flex items-end gap-4">
                <div className="">
                   {" "}
-                  <p className="text-[#545454] text-center text-[28px] lg:text-[44px] leading-[50px] lg:leading-[76.8px] font-normal">
-                     Have an Idea...?
-                  </p>
                   <h2 className="lg:text-[64px] text-[35px] lg:leading-[76.8px] leading-[50px] font-normal ">
                      Let&apos;s Get in Touch
                   </h2>

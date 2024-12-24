@@ -33,7 +33,7 @@ const Header = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-6">
                <div className="flex items-center gap-6">
-                  {["/", "/portfolio", "/experience", "/blogs", "/about"].map(
+                  {["/", "/portfolio", "/experience", "/blogs", "/about", "/contact-me"].map(
                      (path, index) => (
                         <Link
                            key={index}
@@ -45,7 +45,7 @@ const Header = () => {
                         >
                            {path === "/"
                               ? "Home"
-                              : path.replace("/", "").replace(/^\w/, (c) => c.toUpperCase())}
+                              : path === "/contact-me" ? "Contact" : path.replace("/", "").replace(/^\w/, (c) => c.toUpperCase())}
                            {isActive(path) && (
                               <span className="absolute bottom-[-4px]  left-0  h-[3px] w-[28px] bg-black rounded"></span>
                            )}
@@ -78,7 +78,7 @@ const Header = () => {
 
                <div className="mt-6">
                   <div className="flex flex-col w-full items-start ps-7 gap-4">
-                     {["/", "/portfolio", "/experience", "/blogs", "/about"].map(
+                     {["/", "/portfolio", "/experience", "/blogs", "/about", "/contact-me"].map(
                         (path, index) => (
                            <Link
                               key={index}

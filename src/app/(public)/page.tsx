@@ -4,6 +4,7 @@ import GetinTouch from "@/views/Home/GetinTouch";
 import Thoughts from "@/views/Home/Thoughts";
 import ProjectSection from "@/views/Home/ProjectSection";
 import ExperienceSection from "@/views/Home/ExperienceSection";
+import ContactMe from "@/views/ContactMe/ContactMe";
 
 export default function Home() {
    return (
@@ -13,7 +14,8 @@ export default function Home() {
          <ProjectSection />
          <ExperienceSection />
          <Thoughts />
-         <GetinTouch />
+         {/* <GetinTouch /> */}
+         <ContactMe />
       </div>
    );
 }
