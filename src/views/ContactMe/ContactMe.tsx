@@ -1,17 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-   Github,
-   Linkedin,
-   Mail,
-   MessageSquare,
-   Phone,
-   Send,
-   Code,
-   ExternalLink,
-   Terminal,
-} from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Send, Code, ExternalLink, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -105,24 +95,47 @@ export default function ContactMe() {
                   <motion.div
                      variants={codeVariants}
                      className="max-w-2xl mx-auto">
-                     <div className="bg-black/5 dark:bg-white/5 rounded-lg p-4 font-mono text-sm">
-                        <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
-                        <span className="text-blue-600 dark:text-blue-400">frontend_developer</span>{" "}
-                        = {"{"}
-                        <br />
-                        &nbsp;&nbsp;
-                        <span className="text-green-600 dark:text-green-400">role:</span> "Frontend
-                        Engineer",
-                        <br />
-                        &nbsp;&nbsp;
-                        <span className="text-green-600 dark:text-green-400">status:</span> "Open to
-                        opportunities",
-                        <br />
-                        &nbsp;&nbsp;
-                        <span className="text-green-600 dark:text-green-400">location:</span> "Ready
-                        to connect"
-                        <br />
-                        {"};"}
+                     <div className="bg-gray-100 dark:bg-black/5 p-6  rounded-lg shadow-lg font-mono text-sm relative">
+                        <div className="flex items-center mb-4">
+                           <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                           <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                           <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <pre>
+                           <code>
+                              <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
+                              <span className="text-blue-600 dark:text-blue-400">
+                                 frontend_developer
+                              </span>{" "}
+                              = {"{"}
+                              <br />
+                              &nbsp;&nbsp;
+                              <span className="text-green-600 dark:text-green-400">role:</span>{" "}
+                              <span className="text-orange-600">&apos;Frontend Engineer&apos;</span>
+                              ,<br />
+                              &nbsp;&nbsp;
+                              <span className="text-green-600 dark:text-green-400">skills:</span> [
+                              <span className="text-orange-600">&apos;JavaScript&apos;</span>,{" "}
+                              <span className="text-orange-600">&apos;React&apos;</span>,{" "}
+                              <span className="text-orange-600">&apos;Next.js&apos;</span>],
+                              <br />
+                              &nbsp;&nbsp;
+                              <span className="text-green-600 dark:text-green-400">
+                                 status:
+                              </span>{" "}
+                              <span className="text-orange-600">
+                                 &apos;Open to opportunities&apos;
+                              </span>
+                              ,<br />
+                              &nbsp;&nbsp;
+                              <span className="text-green-600 dark:text-green-400">
+                                 location:
+                              </span>{" "}
+                              <span className="text-orange-600">&apos;Ready to connect&apos;</span>
+                              <br />
+                              {"};"}
+                           </code>
+                        </pre>
                      </div>
                   </motion.div>
                </motion.div>

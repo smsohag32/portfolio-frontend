@@ -1,6 +1,5 @@
 import Hero from "@/components/hero/Hero";
 import Skills from "./../../views/Home/Skills";
-import GetinTouch from "@/views/Home/GetinTouch";
 import Thoughts from "@/views/Home/Thoughts";
 import ProjectSection from "@/views/Home/ProjectSection";
 import ExperienceSection from "@/views/Home/ExperienceSection";

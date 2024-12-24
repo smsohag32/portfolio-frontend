@@ -3,52 +3,152 @@ import Image from 'next/image';
 import React from 'react';
 import profile from "@/assets/photo/sohag.png"
 import line from "@/assets/bg/line.svg"
+import { motion } from 'framer-motion'
+import { Code, Braces, Terminal, ChevronRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
 import CountUp from 'react-countup';
-import { motion } from 'framer-motion';
+
 const stats = [
    { id: 1, label: 'Projects', value: 20, suffix: '+' },
    { id: 2, label: 'Years of Experience', value: 1.5, decimals: 1, suffix: '+' },
-   { id: 3, label: 'Clients', value: 3, suffix: '+' },
 ];
 import { Download, Github, Linkedin, Notebook } from 'lucide-react';
 import Link from 'next/link';
 const Hero = () => {
+   const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+         opacity: 1,
+         transition: {
+            staggerChildren: 0.1,
+         },
+      },
+   }
+
+   const itemVariants = {
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+         y: 0,
+         opacity: 1,
+      },
+   }
+
    return (
       <div className=' overflow-hidden'>
          <div className='main-container relative min-h-[680px] flex-col lg:flex-row flex items-center gap-6 '>
             <div className='w-full py-10 font-flecha z-40 lg:py-0'>
-               <p className='font-outfit'>Hey, I am</p>
-               <h2 className='text-[28px] lg:text-[36px]  font-[500] text-[#1D1D1D] leading-[41px]'>Sohag Sheik</h2>
-               <p className=' text-[48px] lg:text-[80px] font-[400] text-[#1D1D1D] leading-[80px] lg:leading-[120px] mt-2 lg:mt-0'>Front-End</p>
-               <p className='text-[38px] lg:text-[54px] font-normal text-[#1D1D1D] leading-[30px] lg:leading-[60px]'>Engineer</p>
-               <p className='text-[#545454] text-[18px] lg:text-[20px]  font-outfit mt-6 font-normal'>Specializing in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.
-                  Crafting seamless user experiences with cutting-edge web technologies.</p>
-               <div className='mt-6 flex items-center flex-col lg:flex-row w-full lg:gap-[48px] gap-[14px]'>
-                  {stats.map((stat) => (
+               <section className="">
+                  <div className="">
                      <motion.div
-                        key={stat.id}
-                        className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start border w-full rounded-[8px] border-gray-200 px-6 items-center py-5'
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: stat.id * 0.5 }}
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="flex flex-col items-center justify-between"
                      >
-                        <p className='text-[64px] text-[#1D1D1D] font-normal'>
-                           <CountUp
-                              end={stat.value}
-                              duration={2}
-                              delay={stat.id * 0.5}
-                              decimals={stat.decimals || 0}
-                           />
-                           {stat.suffix}
-                        </p>
-                        <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[20px] lg:ps-1 font-outfit'>
-                           {stat.label}
-                        </p>
+                        <div className=" mb-10 w-full lg:mb-0">
+                           <div className='flex flex-col lg:flex-row items-start w-full'>
+                              <div className='w-full'>
+                                 <motion.p variants={itemVariants} className="font-outfit text-gray-600 mb-2">
+                                    Hey, I am
+                                 </motion.p>
+                                 <motion.h1 variants={itemVariants} className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+                                    Sohag Sheik
+                                 </motion.h1>
+                                 <motion.div variants={itemVariants} className="flex items-center mb-4">
+                                    <Terminal className="w-8 h-8 mr-2 text-gray-700" />
+                                    <span className="text-3xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900">
+                                       Front-End
+                                    </span>
+                                 </motion.div>
+                                 <motion.p variants={itemVariants} className="text-2xl lg:text-4xl font-semibold text-gray-800 mb-6">
+                                    Engineer
+                                 </motion.p>
+
+                              </div>
+
+                              <motion.div
+                                 variants={itemVariants}
+                                 className="w-full relative pb-6"
+                              >
+                                 <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+                                    <div className="flex items-center mb-4">
+                                       <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                                       <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <pre className="text-sm font-mono">
+                                       <code>
+                                          <span className="text-blue-600">const</span>{' '}
+                                          <span className="text-green-600">sohag</span> = {'{'}<br />
+                                          &nbsp;&nbsp;role: <span className="text-orange-600">&apos;Frontend Engineer&apos;</span>,<br />
+                                          &nbsp;&nbsp;skills: [<span className="text-orange-600">&apos;JavaScript&apos;</span>, <span className="text-orange-600">&apos;React&apos;</span>, <span className="text-orange-600">&apos;Next.js&apos;</span>],<br />
+                                          &nbsp;&nbsp;passion: <span className="text-orange-600">&apos;Creating amazing UIs&apos;</span>,<br />
+                                          &nbsp;&nbsp;code: () =&gt; {'{'}<br />
+                                          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600">console</span>.log(<span className="text-orange-600">&apos;Hello, World!&apos;</span>)<br />
+                                          &nbsp;&nbsp;{'}'}<br />
+                                          {'};'}
+                                       </code>
+
+                                    </pre>
+                                 </div>
+                                 <motion.div
+                                    className="absolute -top-4 -left-4 text-gray-200"
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                 >
+                                    <Braces className="w-12 h-12" />
+                                 </motion.div>
+                                 <motion.div
+                                    className="absolute -bottom-4 -right-4 text-gray-200"
+                                    animate={{ rotate: -360 }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                 >
+                                    <Code className="w-12 h-12" />
+                                 </motion.div>
+                              </motion.div>
+                           </div>
+
+                           <motion.p variants={itemVariants} className="text-gray-600 text-lg mb-2 mt-6 lg:mt-0 max-w-2xl font-outfit">
+                              Specializing in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.
+                              Crafting seamless user experiences with cutting-edge web technologies.
+                           </motion.p>
+                           <div className='  grid gap-4 mt-4 lg:mt-0 lg:grid-cols-4 mb-8'>
+                              {stats.map((stat) => (
+                                 <motion.div
+                                    key={stat.id}
+                                    className='flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start border w-full rounded-[8px] border-gray-200 px-6 items-center py-5'
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: stat.id * 0.5 }}
+                                 >
+                                    <p className='text-[28px] font-flecha text-[#1D1D1D] font-normal'>
+                                       <CountUp
+                                          end={stat.value}
+                                          duration={2}
+                                          delay={stat.id * 0.5}
+                                          decimals={stat.decimals || 0}
+                                       />
+                                       {stat.suffix}
+                                    </p>
+                                    <p className='lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[16px] font-outfit'>
+                                       {stat.label}
+                                    </p>
+                                 </motion.div>
+                              ))}
+                           </div>
+                           <motion.div variants={itemVariants} className='flex items-center justify-center lg:justify-start'>
+                              <Button className="bg-black text-white hover:bg-gray-800">
+                                 View Projects <ChevronRight className="ml-2 h-4 w-4" />
+                              </Button>
+                           </motion.div>
+                        </div>
                      </motion.div>
-                  ))}
-               </div>
+                  </div>
+               </section>
+
             </div>
-            <div className='w-full flex items-center justify-center lg:justify-end'>
+            <div className=' flex items-center justify-center lg:justify-end'>
                <div className='bg-[#1d1d1d] rounded-[16px] max-w-[340px] relative lg:-mt-24 z-30 h-full px-10 py-10 lg:pt-40  pb-10'>
                   <Image src={profile} alt='Sohag Sheik' className='' />
                   <div className='mt-[40px] flex items-center flex-col gap-4 justify-center'>

@@ -9,7 +9,7 @@ const ProjectSection = () => {
             <div className=" flex items-end  gap-4">
                <div className="">
                   {" "}
-                  <p className="text-[#545454] text-[35px] lg:text-[64px] leading-[50px] lg:leading-[76.8px] !font-[300] ">
+                  <p className="text-[#545454] text-[28px] lg:text-[44px] leading-[50px] lg:leading-[76.8px] !font-[300] ">
                      Recent
                   </p>
                   <h2 className="lg:text-[64px] text-[35px] lg:leading-[76.8px] leading-[50px] font-medium ">
@@ -32,7 +32,7 @@ const ProjectSection = () => {
             </div>
          </div>
 
-         <div className="pt-4 grid grid-cols-1 lg:grid-cols-1 gap-[48px]">
+         <div className="pt-4 grid grid-cols-1 lg:grid-cols-2 gap-[48px]">
             {projects?.map((project) => (
                <ProjectCard
                   key={project?.id}

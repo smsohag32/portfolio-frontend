@@ -1,9 +1,27 @@
 "use client";
-import { SquareArrowOutUpRight } from "lucide-react";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-const ThoughtCard: React.FC<{ thought: { title: string; summary: string } }> = ({ thought }) => {
+interface Thought {
+   title: string;
+   summary: string;
+   date: string;
+   author: string;
+   categories: string[];
+   image: string;
+   link: string;
+}
+
+interface ThoughtCardProps {
+   thought: Thought;
+   index: number;
+}
+
+const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
    const [isExpanded, setIsExpanded] = useState(false);
 
    const handleToggle = () => {
@@ -11,32 +29,68 @@ const ThoughtCard: React.FC<{ thought: { title: string; summary: string } }> = (
    };
 
    return (
-      <div className="flex items-start  gap-6">
-         <div className="w-full">
-            <p className="text-[28px] lg:text-[44px] font-[500] text-[#1D1D1D] font-flecha  line-clamp-1">
-               {thought?.title}
-            </p>
-            <p
-               className={`text-[18px] lg:text-[20px] font-normal font-outfit text-[#545454] transition-max-height duration-500 overflow-hidden ${
-                  isExpanded
-                     ? "max-h-[500px] duration-500"
-                     : "max-h-[180px] duration-500 line-clamp-4"
-               }`}>
-               {thought?.summary}
-            </p>
-            <div className="mt-6">
-               <button
-                  onClick={handleToggle}
-                  type="button"
-                  className="flex items-center text-sm text-[#ffffff] font-normal bg-[#2f2f2ff3] border border-[#000000] rounded-full px-5 py-[8px] gap-3">
-                  {isExpanded ? "See Less" : "Read Details"}
-                  <span className="bg-white text-[#2F2F2F] ps-2 py-2 pe-1.5 rounded-full">
-                     <SquareArrowOutUpRight size={14} />
-                  </span>
-               </button>
+      <motion.div
+         initial={{ opacity: 0, y: 20 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.5, delay: index * 0.1 }}
+         className="bg-gray-50 p-6 rounded-lg  transition-shadow duration-300">
+         <div className="flex flex-col md:flex-row h-full gap-6">
+            <div className="md:w-1/3 h-full">
+               <Image
+                  src={thought.image}
+                  alt={thought.title}
+                  width={280}
+                  height={280}
+                  className="w-full h-full object-cover rounded-md"
+               />
+            </div>
+            <div className="md:w-2/3">
+               <h3 className="text-[28px] font-bold text-title font-flecha mb-2">
+                  {thought.title}
+               </h3>
+               <p className="text-sm text-gray-600 mb-4">
+                  {thought.date} | {thought.author}
+               </p>
+               <motion.p
+                  className={` text-des font-medium text-base mb-4 ${
+                     isExpanded ? "" : "line-clamp-3"
+                  }`}
+                  animate={{ height: isExpanded ? "auto" : "4.5em" }}
+                  transition={{ duration: 0.3 }}>
+                  {thought.summary}
+               </motion.p>
+               <div className="flex flex-wrap gap-2 mb-4">
+                  {thought.categories.map((category, idx) => (
+                     <span
+                        key={idx}
+                        className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-sm">
+                        {category}
+                     </span>
+                  ))}
+               </div>
+               <div className="flex items-center gap-4">
+                  <Button
+                     onClick={handleToggle}
+                     variant="outline"
+                     className="text-black border-black hover:bg-black hover:text-white transition-colors duration-300">
+                     {isExpanded ? "See Less" : "Read More"}
+                  </Button>
+                  <Button
+                     asChild
+                     variant="ghost"
+                     className="text-black hover:bg-gray-200 transition-colors duration-300">
+                     <a
+                        href={thought.link}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        View Full Article
+                        <ArrowUpRight className="ml-2 h-4 w-4" />
+                     </a>
+                  </Button>
+               </div>
             </div>
          </div>
-      </div>
+      </motion.div>
    );
 };
 

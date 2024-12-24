@@ -14,7 +14,7 @@ const Skills = () => {
          <div className="main-container py-16 ">
             <div className="mb-6 font-flecha flex items-end gap-4">
                <div className="">
-                  <p className="text-[#545454] text-[35px] lg:text-[64px] leading-[50px] lg:leading-[76.8px] !font-[300] ">
+                  <p className="text-[#545454] text-[28px] lg:text-[44px] leading-[50px] lg:leading-[76.8px] !font-[300] ">
                      Tools
                   </p>
                   <h2 className="lg:text-[64px] text-[35px] lg:leading-[76.8px] leading-[50px] font-medium ">
