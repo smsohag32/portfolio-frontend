@@ -63,8 +63,10 @@ const Footer = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.5, delay: 0.4 }}
                className="mt-8 border-t border-gray-200 pt-8  flex flex-col md:flex-row justify-between items-center">
-               <p className="text-gray-600 mb-4 md:mb-0">
-                  © {new Date().getFullYear()} Mohammad Sohag Sheik. All rights reserved.
+               <p className="text-gray-600 text-center lg:text-start mb-4 md:mb-0">
+                  © {new Date().getFullYear()} Mohammad Sohag Sheik.
+                  <br className="lg:hidden" />
+                  All rights reserved.
                </p>
                <div className="flex space-x-4">
                   <Button

@@ -101,7 +101,7 @@ export default function ContactMe() {
                            <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
                         </div>
-                        <pre>
+                        <pre className="text-[11px] lg:text-sm font-mono">
                            <code>
                               <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
                               <span className="text-blue-600 dark:text-blue-400">
@@ -189,7 +189,7 @@ export default function ContactMe() {
                         <CardContent className="p-6">
                            <h2 className="text-xl font-semibold mb-6">Connect via API Endpoints</h2>
                            <div className="space-y-4">
-                              {contactLinks.map((link, index) => (
+                              {contactLinks.map((link) => (
                                  <motion.a
                                     key={link.label}
                                     href={link.href}
