@@ -220,7 +220,7 @@ const Hero = () => {
                   </div>
                </section>
             </div>
-            <div className="flex items-center justify-center -mt-10 w-full lg:w-auto">
+            <div className="flex items-center justify-center z-10 -mt-10 w-full lg:w-auto">
                <motion.div
                   className="bg-black rounded-3xl lg:rounded-none lg:!rounded-b-3xl w-full lg:max-w-md relative z-30 p-8 shadow-2xl"
                   initial={{ scale: 0.9, opacity: 0 }}

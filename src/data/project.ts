@@ -1,10 +1,11 @@
 import sports from "@/assets/projects/sports.webp";
 import hc from "@/assets/projects/hc.webp";
+
 export const projects = [
    {
       id: 4,
       name: "Health Care",
-      image: [hc],
+      image: ["", hc],
       category: "ReactJs, Full-Stack, JavaScript",
       type: "Hospital Management Web Application",
       description:
@@ -49,7 +50,7 @@ export const projects = [
       ],
    },
    {
-      id: 4,
+      id: 5,
       name: "Sports Haven",
       image: [sports],
       category: "ReactJs, Full-Stack, Javascript",

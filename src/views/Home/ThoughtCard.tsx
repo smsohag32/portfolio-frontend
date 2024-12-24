@@ -45,7 +45,7 @@ const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
                />
             </div>
             <div className="md:w-2/3">
-               <h3 className="text-[28px] font-bold text-title font-flecha mb-2">
+               <h3 className="text-[28px] font-normal text-title font-outfit mb-2">
                   {thought.title}
                </h3>
                <p className="text-sm text-gray-600 mb-4">

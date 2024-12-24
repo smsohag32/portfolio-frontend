@@ -4,8 +4,8 @@ import { projects } from "@/data/project";
 
 const ProjectSection = () => {
    return (
-      <div className="main-container mb-[84px]">
-         <div className="mb-6 font-flecha">
+      <div className="main-container mb-[84px] overflow-hidden">
+         <div className=" font-flecha">
             <div className=" flex items-end  gap-4">
                <div className="">
                   {" "}
@@ -32,7 +32,7 @@ const ProjectSection = () => {
             </div>
          </div>
 
-         <div className="pt-4 grid grid-cols-1 lg:grid-cols-2 gap-[48px]">
+         <div className="pt-4 grid grid-cols-1 w-full h-auto items-start lg:grid-cols-2 gap-10">
             {projects?.map((project) => (
                <ProjectCard
                   key={project?.id}

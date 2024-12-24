@@ -1,5 +1,7 @@
+import Portfolio from "@/views/Portfolio/Portfolio";
+
 const page = () => {
-   return <div></div>;
+   return <Portfolio />;
 };
 
 export default page;
