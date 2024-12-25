@@ -103,7 +103,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                      rotateX={8}
                      rotateZ={-3}>
                      <motion.div className="flex items-center justify-center lg:justify-start">
-                        <Link href={`/portfolio/${project.id}`}>
+                        <Link href={`/portfolio/${project?._id}`}>
                            <Button className="bg-black text-white hover:bg-gray-800">
                               View Details <ChevronRight className="ml-2 h-4 w-4" />
                            </Button>

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import { Outfit } from "next/font/google";
+import { ReduxProvider } from "@/redux-store/ReduxProvider";
 
 const geistFlecha = localFont({
    src: "./fonts/Flecha.woff",
@@ -28,7 +29,7 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body className={`${geistFlecha.variable} ${outfit.variable} antialiased`}>
-            {children}
+            <ReduxProvider>{children}</ReduxProvider>
          </body>
       </html>
    );
