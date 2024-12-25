@@ -22,6 +22,7 @@ interface LinkType {
 }
 
 interface Project {
+   _id: any;
    id: number;
    name: string;
    image: (string | StaticImageData)[];

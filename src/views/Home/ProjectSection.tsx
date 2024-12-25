@@ -1,8 +1,13 @@
+"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import ProjectCard from "./ProjectCard";
-import { projects } from "@/data/project";
+import { useGetProjectsQuery } from "@/redux-store/features/project-api";
+import ProjectCardSkeleton from "@/components/skeleton/ProjectSkeleton";
 
 const ProjectSection = () => {
+   const { data: projects, isLoading } = useGetProjectsQuery("");
+
    return (
       <div className="main-container mb-[84px] overflow-hidden">
          <div className=" font-flecha">
@@ -33,12 +38,15 @@ const ProjectSection = () => {
          </div>
 
          <div className="pt-4 grid grid-cols-1 w-full h-auto items-start lg:grid-cols-2 gap-10">
-            {projects?.map((project) => (
-               <ProjectCard
-                  key={project?.id}
-                  project={project}
-               />
-            ))}
+            {isLoading
+               ? [1, 2].map((i) => <ProjectCardSkeleton key={i} />)
+               : projects &&
+                 projects?.projects?.slice(0, 6).map((project: any) => (
+                    <ProjectCard
+                       key={project?.id}
+                       project={project}
+                    />
+                 ))}
          </div>
       </div>
    );

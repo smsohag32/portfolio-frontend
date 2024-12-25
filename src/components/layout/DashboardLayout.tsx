@@ -22,7 +22,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
          </div>
          <div
             className={` w-full duration-500  transition-all transform  ${
-               toggle ? "lg:pl-0 pl-[300px]" : "lg:pl-[300px] pl:0"
+               toggle ? "lg:pl-0 pl-[270px]" : "lg:pl-[270px] pl:0"
             }`}>
             <div className="w-full px-6 sticky top-0 left-0 right-0">
                <TopBar />

@@ -30,8 +30,8 @@ export const projects = [
          },
       ],
       link: {
-         server: "https://github.com/smsohag32/sports-haven-backend",
-         client: "https://github.com/smsohag32/sports-haven-frontend",
+         server: "https://github.com/smsohag32/health-care-server",
+         client: "https://github.com/smsohag32/health-care-frontend",
          live: "https://healthcare-8a91b.web.app/",
       },
       technologies: [

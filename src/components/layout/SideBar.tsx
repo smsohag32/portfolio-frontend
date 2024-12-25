@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
    Sidebar,
@@ -31,6 +31,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Bell, ChevronDown, LogOut, Settings, User, ChartArea } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux-store";
+import { logoutUser } from "@/redux-store/slice/authSlice";
 
 interface NavItem {
    title: string;
@@ -113,6 +116,15 @@ export function DashboardSidebar() {
 
 function ProfileMenu() {
    const { user } = useAuth();
+   const dispatch = useDispatch<AppDispatch>();
+   const router = useRouter();
+   const handleLogOut = () => {
+      try {
+         dispatch(logoutUser());
+         router.push("/")
+      } catch {}
+   };
+
    return (
       <DropdownMenu>
          <DropdownMenuTrigger asChild>
@@ -150,7 +162,9 @@ function ProfileMenu() {
                <span>Settings</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem
+               onClick={handleLogOut}
+               className="cursor-pointer">
                <LogOut className="mr-2 h-4 w-4" />
                <span>Log out</span>
             </DropdownMenuItem>

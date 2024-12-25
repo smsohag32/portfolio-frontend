@@ -15,15 +15,22 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Github, Globe, Server } from "lucide-react";
-import { projects } from "@/data/project";
+import { useGetProjectByIdQuery } from "@/redux-store/features/project-api";
+import ProjectCardSkeleton from "@/components/skeleton/ProjectSkeleton";
 
 export default function ProjectDetails() {
    const { id } = useParams();
-   const project = projects.find((p) => p.id.toString() == id);
+   const { data: projectRes, isLoading } = useGetProjectByIdQuery(id);
 
-   if (!project) {
-      return <div>Project not found</div>;
+   if (isLoading) {
+      return (
+         <div className="pt-16 main-container">
+            <ProjectCardSkeleton />
+         </div>
+      );
    }
+
+   const project = projectRes?.project;
 
    return (
       <div className="main-container pt-24 pb-10">
@@ -62,7 +69,7 @@ export default function ProjectDetails() {
                         <div>
                            <h3 className="text-2xl font-semibold mb-3">Technologies:</h3>
                            <div className="flex flex-wrap gap-2">
-                              {project.technologies.map((tech, index) => (
+                              {project?.technologies.map((tech, index) => (
                                  <Badge
                                     key={index}
                                     variant="outline"
