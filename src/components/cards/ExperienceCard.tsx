@@ -1,38 +1,74 @@
-import Image, { StaticImageData } from "next/image";
-import React from "react";
+"use client";
 
-// Define an interface for the `experience` prop
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CalendarDays, Building2 } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+
 interface Experience {
    id: number;
+   title: string;
+   company: string;
+   duration: string;
    img: string | StaticImageData;
-   company: string; // Company name
-   title: string; // Job title
-   duration: string; // Duration of the experience
+   description: string;
+   skills: string[];
 }
 
 interface ExperienceCardProps {
-   experience: Experience; // The experience prop is an object of type Experience
+   experience: Experience;
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
+export default function ExperienceCard({ experience }: ExperienceCardProps) {
+   const isDarkMode = false;
    return (
-      <div>
-         <Image
-            src={experience?.img}
-            alt="Logo"
-            width={80}
-            height={80}
-            className="w-20 grayscale"
-         />
-         <div className="mt-4">
-            <p className="text-title text-[20px]">{experience?.company}</p>
-            <div className="text-des text-base">
-               <p>{experience?.title}</p>
-               <p className="mt-5">{experience?.duration}</p>
-            </div>
-         </div>
-      </div>
+      <motion.div
+         initial={{ opacity: 0, y: 20 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.5 }}
+         whileHover={{ scale: 1.02 }}>
+         <Card
+            className={`overflow-hidden ${
+               isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+            } border-none border shadow-lg`}>
+            <CardContent className="p-6">
+               <div className="flex items-center mb-4">
+                  <div className="relative w-16 h-16 mr-4">
+                     <Image
+                        src={experience.img}
+                        alt={experience.company}
+                        layout="fill"
+                        objectFit="contain"
+                        className={`rounded-full ${isDarkMode ? "filter invert" : ""}`}
+                     />
+                  </div>
+                  <div>
+                     <h3 className="text-xl font-semibold">{experience.title}</h3>
+                     <div className="flex items-center text-sm opacity-70 mt-1">
+                        <Building2 className="w-4 h-4 mr-1" />
+                        <span>{experience.company}</span>
+                     </div>
+                  </div>
+               </div>
+               <div className="flex items-center text-sm mb-4">
+                  <CalendarDays className="w-4 h-4 mr-2" />
+                  <span>{experience.duration}</span>
+               </div>
+               <p className="text-sm opacity-80 mb-4">{experience.description}</p>
+               <div className="flex flex-wrap gap-2">
+                  {experience.skills.map((skill, index) => (
+                     <Badge
+                        key={index}
+                        variant="outline"
+                        className={isDarkMode ? "border-gray-600" : "border-gray-300"}>
+                        {skill}
+                     </Badge>
+                  ))}
+               </div>
+            </CardContent>
+         </Card>
+      </motion.div>
    );
-};
-
-export default ExperienceCard;
+}

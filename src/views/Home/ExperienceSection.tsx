@@ -1,57 +1,57 @@
-import ExperienceCard from "@/components/cards/ExperienceCard";
-import { experiences } from "@/data/experience";
-import Image from "next/image";
-import React from "react";
-import line from "@/assets/bg/line.svg";
+"use client";
 
-const ExperienceSection = () => {
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Code, Terminal, Laptop, Braces } from "lucide-react";
+import { experiences } from "@/data/experience";
+import ExperienceCard from "@/components/cards/ExperienceCard";
+
+export default function ExperienceSection() {
+   const ref = useRef(null);
+   const isInView = useInView(ref, { once: true });
+
+   const codeIcons = [Code, Terminal, Laptop, Braces];
+
    return (
-      <div className="main-container relative mb-[84px]">
-         <div className="flex font-flecha items-center mt-6 w-full justify-start">
-            <div className="mb-6 flex items-end gap-4">
-               <div className="">
-                  {" "}
-                  <p className="text-[#545454] text-start text-[28px] lg:text-[44px] leading-[50px] lg:leading-[60.8px] font-normal">
-                     Work
-                  </p>
-                  <h2 className="lg:text-[64px] text-[35px] lg:leading-[70.8px] leading-[50px] font-normal ">
-                     Experience
-                  </h2>
-                  <span className="pb-5 flex items-start justify-start mt-4">
-                     <svg
-                        width="135"
-                        height="2"
-                        viewBox="0 0 135 2"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M0 1H135"
-                           stroke="#545454"
-                        />
-                     </svg>
-                  </span>
+      <section
+         ref={ref}
+         className="pb-12">
+         <div className="main-container relative">
+            <motion.div
+               initial={{ opacity: 0, y: 50 }}
+               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+               transition={{ duration: 0.5, delay: 0.2 }}
+               className="text-center mb-14 relative">
+               <h2 className="text-[32px] lg:text-[52px] font-normal text-gray-800 dark:text-white">
+                  &lt;Work_Experience /&gt;
+               </h2>
+               <p className="text-xl font-flecha text-des font-normal opacity-90 mt-2  dark:text-gray-300">
+                  My professional journey in code
+               </p>
+               <div className="absolute  lg:top-10 left-0 w-full h-full flex justify-between items-center pointer-events-none">
+                  {codeIcons.map((Icon, index) => (
+                     <Icon
+                        key={index}
+                        className="text-gray-400 dark:text-gray-700 opacity-50"
+                        size={24}
+                     />
+                  ))}
                </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 h-full md:grid-cols-2 gap-8">
+               {experiences.map((experience, index) => (
+                  <motion.div
+                     key={experience.id}
+                     initial={{ opacity: 0, y: 50 }}
+                     className="h-full"
+                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}>
+                     <ExperienceCard experience={experience} />
+                  </motion.div>
+               ))}
             </div>
          </div>
-
-         <div className="pt-4 grid grid-cols-1 lg:grid-cols-2 gap-[48px]">
-            {experiences.map((experience) => (
-               <ExperienceCard
-                  key={experience.id}
-                  experience={experience}
-               />
-            ))}
-         </div>
-         <span className=" absolute top-0 left-0 z-10 ">
-            <Image
-               src={line}
-               width={500}
-               className=""
-               alt="Sohag Sheik"
-            />
-         </span>
-      </div>
+      </section>
    );
-};
-
-export default ExperienceSection;
+}
