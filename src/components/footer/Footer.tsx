@@ -30,11 +30,11 @@ const Footer = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="mb-6 md:mb-0">
+                  className="mb-6 flex flex-col items-center lg:items-start md:mb-0">
                   <h2 className="text-2xl font-bold text-gray-800 flex items-center">
                      <Code className="mr-2" /> Mohammad Sohag Sheik
                   </h2>
-                  <p className="mt-2 text-gray-600">Frontend Engineer</p>
+                  <p className="mt-2 text-start lg:text-center text-gray-600">Frontend Engineer</p>
                </motion.div>
 
                <motion.div

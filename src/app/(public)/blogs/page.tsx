@@ -1,7 +1,7 @@
-import React from "react";
+import Blogs from "@/views/Blogs/Blogs";
 
-const Blogs = () => {
-   return <div></div>;
+const page = () => {
+   return <Blogs />;
 };
 
-export default Blogs;
+export default page;

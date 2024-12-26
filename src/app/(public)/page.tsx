@@ -9,9 +9,9 @@ export default function Home() {
    return (
       <div className="pt-20 lg:pt-0">
          <Hero />
+         <ExperienceSection />
          <Skills />
          <ProjectSection />
-         <ExperienceSection />
          <Thoughts />
          {/* <GetinTouch /> */}
          <ContactMe />

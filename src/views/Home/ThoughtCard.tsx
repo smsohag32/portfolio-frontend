@@ -33,7 +33,7 @@ const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
          initial={{ opacity: 0, y: 20 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.5, delay: index * 0.1 }}
-         className="bg-gray-50 p-6 rounded-lg  transition-shadow duration-300">
+         className="bg-gray-50 p-6 rounded-lg items-start h-full  transition-shadow duration-300">
          <div className="flex flex-col md:flex-row h-full gap-6">
             <div className="md:w-1/3 h-full">
                <Image
@@ -52,14 +52,12 @@ const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
                   {thought.date} | {thought.author}
                </p>
                <motion.p
-                  className={` text-des font-medium text-base mb-4 ${
-                     isExpanded ? "" : "line-clamp-3"
-                  }`}
-                  animate={{ height: isExpanded ? "auto" : "4.5em" }}
+                  className={` text-des font-medium text-base mb-4`}
+                  animate={{ height: isExpanded ? "auto" : "" }}
                   transition={{ duration: 0.3 }}>
                   {thought.summary}
                </motion.p>
-               <div className="flex flex-wrap gap-2 mb-4">
+               <div className="flex flex-wrap gap-2 pt-1 mb-4">
                   {thought.categories.map((category, idx) => (
                      <span
                         key={idx}
@@ -70,15 +68,9 @@ const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
                </div>
                <div className="flex items-center gap-4">
                   <Button
-                     onClick={handleToggle}
-                     variant="outline"
-                     className="text-black border-black hover:bg-black hover:text-white transition-colors duration-300">
-                     {isExpanded ? "See Less" : "Read More"}
-                  </Button>
-                  <Button
                      asChild
                      variant="ghost"
-                     className="text-black hover:bg-gray-200 transition-colors duration-300">
+                     className="text-title border border-slate-200 hover:bg-gray-200 transition-colors duration-300">
                      <a
                         href={thought.link}
                         target="_blank"

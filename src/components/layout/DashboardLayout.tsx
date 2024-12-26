@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import React from "react";
 
 import { Toaster } from "../ui/sonner";
@@ -10,8 +10,7 @@ interface DashboardLayoutProps {
    children: ReactNode;
 }
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-   const [toggle, setToggle] = useState(false);
-
+   const toggle = false;
    return (
       <div className="w-full relative overflow-hidden ">
          <div

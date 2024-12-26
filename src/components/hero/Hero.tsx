@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import CountUp from "react-countup";
 import { useState, useEffect } from "react";
 import { contactsData } from "@/data/contacts";
+import { useRouter } from "next/navigation";
 
 const stats = [
    { id: 1, label: "Projects", value: 20, suffix: "+" },
@@ -43,7 +44,7 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
 const Hero = () => {
    const [isHovered, setIsHovered] = useState(false);
    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
+   const router = useRouter();
    useEffect(() => {
       const handleMouseMove = (e: MouseEvent) => {
          setMousePosition({ x: e.clientX, y: e.clientY });
@@ -211,7 +212,9 @@ const Hero = () => {
                            <motion.div
                               variants={itemVariants}
                               className="flex items-center justify-center lg:justify-start">
-                              <Button className="bg-black text-white hover:bg-gray-800">
+                              <Button
+                                 onClick={() => router.push("/portfolio")}
+                                 className="bg-black text-white hover:bg-gray-800">
                                  View Projects <ChevronRight className="ml-2 h-4 w-4" />
                               </Button>
                            </motion.div>
@@ -309,10 +312,10 @@ const Hero = () => {
                   )}
                </motion.div>
             </div>
-            <span className="lg:-bottom-10  bottom-0 flex items-center justify-center w-full lg:w-auto  lg:absolute left-1/2 opacity-30 transform move-image-bottom -translate-x-1/2 z-40 ">
+            <span className="lg:-bottom-0  bottom-0 flex items-center justify-center w-full lg:w-auto  lg:absolute left-1/2 opacity-30 transform move-image-bottom -translate-x-1/2 z-40 ">
                <svg
-                  width="126"
-                  height="121"
+                  width="80"
+                  height="78"
                   viewBox="0 0 126 121"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg">

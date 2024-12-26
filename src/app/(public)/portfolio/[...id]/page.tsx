@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useParams } from "next/navigation";
@@ -69,7 +70,7 @@ export default function ProjectDetails() {
                         <div>
                            <h3 className="text-2xl font-semibold mb-3">Technologies:</h3>
                            <div className="flex flex-wrap gap-2">
-                              {project?.technologies.map((tech, index) => (
+                              {project?.technologies.map((tech: any, index: number) => (
                                  <Badge
                                     key={index}
                                     variant="outline"
@@ -84,7 +85,7 @@ export default function ProjectDetails() {
                         <div>
                            <h3 className="text-2xl font-semibold mb-3">Features:</h3>
                            <ul className="space-y-3">
-                              {project.features.map((feature, index) => (
+                              {project.features.map((feature: any, index: number) => (
                                  <li
                                     key={index}
                                     className="flex items-start">
