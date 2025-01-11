@@ -1,11 +1,11 @@
-import ExperienceSection from "@/views/Home/ExperienceSection";
+import Experience from "@/views/Experience/Experience";
 
-const Experience = () => {
+const ExperiencePage = () => {
    return (
       <div className="pt-10 pb-16">
-         <ExperienceSection />
+         <Experience />
       </div>
    );
 };
 
-export default Experience;
+export default ExperiencePage;

@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,12 +21,6 @@ interface ThoughtCardProps {
 }
 
 const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
-   const [isExpanded, setIsExpanded] = useState(false);
-
-   const handleToggle = () => {
-      setIsExpanded((prev) => !prev);
-   };
-
    return (
       <motion.div
          initial={{ opacity: 0, y: 20 }}
@@ -53,7 +46,6 @@ const ThoughtCard: React.FC<ThoughtCardProps> = ({ thought, index }) => {
                </p>
                <motion.p
                   className={` text-des font-medium text-base mb-4`}
-                  animate={{ height: isExpanded ? "auto" : "" }}
                   transition={{ duration: 0.3 }}>
                   {thought.summary}
                </motion.p>

@@ -1,55 +1,240 @@
-const About = () => {
-   return (
-      <div>
-         <div className="default-container my-16 overflow-hidden flex flex-col md:flex-row gap-9">
-            <div className=" w-full flex flex-col gap-2">
-               <p className="text-[16px]  leading-7">
-                  My name is Sohag Sheik, and I am from Gopalgonj, Dhaka, Bangladesh. I am a
-                  passionate and dedicated full-stack developer with expertise in various
-                  technologies, especially ReactJS, Express.js, MongoDB, Node.js, Firebase, and
-                  JavaScript. I have acquired a comprehensive understanding of these technologies
-                  through my completion of the web development course. <br />
-                  <br />I have completed various projects, including building many dynamic
-                  full-stack web applications. These projects have not only honed my technical
-                  skills but also underscored the importance of problem-solving, creativity. <br />
-                  <br />I thrive in environments where innovation and continuous learning are
-                  encouraged, and I am always eager to explore new technologies and frameworks. My
-                  commitment to staying at the forefront of industry trends drives me to actively
-                  follow industry blogs, read the latest technology documentation, and participate
-                  in professional communities. This proactive approach ensures that I remain
-                  well-informed about emerging technologies and best practices, enabling me to
-                  deliver cutting-edge solutions to complex challenges.
-               </p>
-            </div>
-            <div className="w-full  flex items-center overflow-x-hidden justify-center">
-               <div
-                  data-aos="fade-left"
-                  className="p-2 ring-4 flex shadow-lg items-center justify-center ring-violet-800 rounded-full overflow-x-hidden">
-                  <div></div>
-               </div>
-            </div>
-         </div>
-         <div className="default-container  text-[16px] font-[500]">
-            <p>
-               {" "}
-               In addition to my technical expertise, I bring a strong sense of dedication and a
-               proactive attitude to every project I undertake. I believe that the key to success in
-               any field lies in a combination of passion, persistence, and a willingness to embrace
-               new ideas. <br />
-               <br />
-               Outside of my professional pursuits, I have a zest for adventure and enjoy exploring
-               new places and experiences. This adventurous spirit translates into my work, where I
-               am always ready to tackle new challenges and push the boundaries of what is possible.{" "}
-               <br />
-               <br />
-               With a solid foundation in web development and a continuous hunger for knowledge, I
-               am poised to contribute effectively to any team and drive impactful projects. I look
-               forward to the opportunities and challenges that lie ahead, and I am excited to be a
-               part of the ever-evolving tech landscape.
-            </p>
-         </div>
-      </div>
-   );
+"use client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import { Code, Briefcase, GraduationCap, Download, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import myPhoto from "@/assets/photo/sohag2.jpg";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+const fadeInUp = {
+   initial: { opacity: 0, y: 20 },
+   animate: { opacity: 1, y: 0 },
+   transition: { duration: 0.5 },
 };
 
-export default About;
+const staggerChildren = {
+   animate: {
+      transition: {
+         staggerChildren: 0.1,
+      },
+   },
+};
+
+export default function AboutPage() {
+   const router = useRouter();
+   return (
+      <div className="bg-[#fafafa]">
+         <motion.div
+            className="main-container pt-20 pb-10"
+            initial="initial"
+            animate="animate"
+            variants={staggerChildren}>
+            <motion.div
+               className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+               variants={fadeInUp}>
+               <Card className="col-span-1 md:col-span-1">
+                  <CardContent className="flex flex-col items-center pt-6">
+                     <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20 }}>
+                        <div className="w-32 h-32 rounded-full overflow-hidden">
+                           <Image
+                              src={myPhoto}
+                              className=" object-cover"
+                              alt="Sohag Sheik"
+                           />
+                        </div>
+                     </motion.div>
+                     <motion.h1
+                        className="text-2xl font-bold mt-4"
+                        variants={fadeInUp}>
+                        Sohag Sheik
+                     </motion.h1>
+                     <motion.p
+                        className="text-muted-foreground"
+                        variants={fadeInUp}>
+                        Frontend Engineer
+                     </motion.p>
+                     <motion.div
+                        className="flex flex-wrap justify-center gap-2 mt-4"
+                        variants={staggerChildren}>
+                        {[
+                           "JavaScript",
+                           "TypeScript",
+                           "React",
+                           "Next.js",
+                           "Node.js",
+                           "Express.js",
+                        ].map((skill) => (
+                           <motion.div
+                              key={skill}
+                              variants={fadeInUp}>
+                              <Badge variant="secondary">{skill}</Badge>
+                           </motion.div>
+                        ))}
+                     </motion.div>
+                     <motion.div variants={fadeInUp}>
+                        <Button
+                           className="mt-6"
+                           variant="outline">
+                           <Download className="mr-2 h-4 w-4" /> Download Resume
+                        </Button>
+                     </motion.div>
+                  </CardContent>
+               </Card>
+
+               <Card className="col-span-1 md:col-span-2">
+                  <CardHeader>
+                     <CardTitle className="flex items-center gap-2">
+                        <Code className="w-6 h-6" />
+                        About Me
+                     </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                     {[
+                        "Hello! I'm Sohag Sheik, a passionate Frontend Engineer specializing in creating amazing user interfaces. With 1.5+ years of experience, I've honed my skills in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.",
+                        "My journey in web development has been driven by a relentless pursuit of crafting seamless user experiences with cutting-edge web technologies. I thrive on turning complex problems into simple, beautiful, and intuitive designs.",
+                        "When I'm not coding, you can find me exploring new web technologies, contributing to open-source projects, or sharing my knowledge with the developer community.",
+                     ].map((paragraph, index) => (
+                        <motion.p
+                           key={index}
+                           variants={fadeInUp}>
+                           {paragraph}
+                        </motion.p>
+                     ))}
+                  </CardContent>
+               </Card>
+            </motion.div>
+
+            <motion.div
+               className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+               variants={fadeInUp}>
+               <Card>
+                  <CardHeader>
+                     <CardTitle className="flex items-center gap-2">
+                        <Briefcase className="w-6 h-6" />
+                        Work Experience
+                     </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                     {[
+                        {
+                           title: "Jr. Software Engineer",
+                           company: "Project 2morrow Software Ltd.",
+                           period: "Nov 2023 - Present",
+                           responsibilities: [
+                              "Developed modern web applications using React",
+                              "Optimized for cross-browser compatibility and responsive design",
+                              "Collaborated with cross-functional teams to deliver high-quality software solutions",
+                           ],
+                        },
+                        {
+                           title: "Network Engineer",
+                           company: "Net Cafe Internet",
+                           period: "Dec 2022 - Aug 2023",
+                           responsibilities: [
+                              "Monitored and maintained network infrastructure",
+                              "Ensured uninterrupted internet connectivity",
+                              "Troubleshooted hardware and software issues efficiently",
+                           ],
+                        },
+                     ].map((job, index) => (
+                        <motion.div
+                           key={index}
+                           variants={fadeInUp}>
+                           <h3 className="font-semibold">{job.title}</h3>
+                           <p className="text-sm text-muted-foreground">
+                              {job.company} | {job.period}
+                           </p>
+                           <ul className="list-disc list-inside mt-2 space-y-1">
+                              {job.responsibilities.map((resp, i) => (
+                                 <li key={i}>{resp}</li>
+                              ))}
+                           </ul>
+                        </motion.div>
+                     ))}
+                  </CardContent>
+               </Card>
+
+               <Card>
+                  <CardHeader>
+                     <CardTitle className="flex items-center gap-2">
+                        <GraduationCap className="w-6 h-6" />
+                        Skills & Expertise
+                     </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                     {[
+                        { skill: "JavaScript", level: 90 },
+                        { skill: "React", level: 95 },
+                        { skill: "CSS3, Tailwind CSS", level: 95 },
+                        { skill: "Redux", level: 80 },
+                        { skill: "Next.js", level: 80 },
+                        { skill: "Node.js", level: 75 },
+                        { skill: "Express.js", level: 70 },
+                        { skill: "Typescript", level: 60 },
+                     ].map((item, index) => (
+                        <motion.div
+                           key={index}
+                           variants={fadeInUp}>
+                           <div className="flex justify-between mb-1">
+                              <span className="text-sm font-medium">{item.skill}</span>
+                              <span className="text-sm font-medium text-muted-foreground">
+                                 {item.level}%
+                              </span>
+                           </div>
+                           <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${item.level}%` }}
+                              transition={{ duration: 0.8, delay: index * 0.1 }}>
+                              <Progress
+                                 value={item.level}
+                                 className="h-2"
+                              />
+                           </motion.div>
+                        </motion.div>
+                     ))}
+                  </CardContent>
+               </Card>
+            </motion.div>
+
+            <motion.div variants={fadeInUp}>
+               <Card>
+                  <CardHeader>
+                     <CardTitle className="flex items-center gap-2">
+                        <ExternalLink className="w-6 h-6" />
+                        Projects & Achievements
+                     </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                     <motion.div
+                        className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center"
+                        variants={staggerChildren}>
+                        <motion.div variants={fadeInUp}>
+                           <h3 className="text-3xl font-bold">20+</h3>
+                           <p className="text-muted-foreground">Projects Completed</p>
+                        </motion.div>
+                        <motion.div variants={fadeInUp}>
+                           <h3 className="text-3xl font-bold">1.5+</h3>
+                           <p className="text-muted-foreground">Years of Experience</p>
+                        </motion.div>
+                        <motion.div variants={fadeInUp}>
+                           <Button
+                              onClick={() => router.push("/portfolio")}
+                              variant="outline">
+                              View Projects
+                           </Button>
+                        </motion.div>
+                     </motion.div>
+                  </CardContent>
+               </Card>
+            </motion.div>
+         </motion.div>
+      </div>
+   );
+}

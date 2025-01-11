@@ -8,7 +8,7 @@ import { Code, Pencil } from "lucide-react";
 const Blogs = () => {
    return (
       <div>
-         <section className="pt-20 pb-14 bg-gradient-to-b from-[#f7f7f7]">
+         <section className="pt-20 pb-14 bg-gradient-to-b from-[#fafafa]">
             <div className="main-container">
                <motion.div
                   initial={{ opacity: 0, y: 20 }}
