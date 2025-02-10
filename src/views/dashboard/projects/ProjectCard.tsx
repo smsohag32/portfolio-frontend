@@ -43,6 +43,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
    isDeleting,
 }) => {
    const [deleteProjectImage, { isLoading }] = useDeleteProjectImageMutation();
+
+
+   
    const handleRemoveImage = async (projectId: string, imageUrl: string) => {
       // Logic to remove image
       try {

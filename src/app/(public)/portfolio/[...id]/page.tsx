@@ -103,35 +103,43 @@ export default function ProjectDetails() {
                </CardContent>
                <CardFooter className="flex flex-col sm:flex-row justify-between items-center p-8 bg-muted">
                   <div className="flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0">
+                     {project.link.client && (
+                        <Link
+                           href={project.link.client}
+                           target="_blank"
+                           rel="noopener noreferrer">
+                           <Button
+                              variant={"secondary"}
+                              className="w-full sm:w-auto">
+                              <Github className="mr-2 h-4 w-4" /> Client Repo
+                           </Button>
+                        </Link>
+                     )}
+
+                     {project.link.server && (
+                        <Link
+                           href={project.link.server}
+                           target="_blank"
+                           rel="noopener noreferrer">
+                           <Button
+                              variant="outline"
+                              className="w-full sm:w-auto">
+                              <Server className="mr-2 h-4 w-4" /> Server Repo
+                           </Button>
+                        </Link>
+                     )}
+                  </div>
+
+                  {project.link.live && (
                      <Link
-                        href={project.link.client}
+                        href={project.link.live}
                         target="_blank"
                         rel="noopener noreferrer">
                         <Button className="w-full sm:w-auto">
-                           <Github className="mr-2 h-4 w-4" /> Client Repo
+                           <Globe className="mr-2 h-4 w-4" /> Live Demo
                         </Button>
                      </Link>
-                     <Link
-                        href={project.link.server}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <Button
-                           variant="outline"
-                           className="w-full sm:w-auto">
-                           <Server className="mr-2 h-4 w-4" /> Server Repo
-                        </Button>
-                     </Link>
-                  </div>
-                  <Link
-                     href={project.link.live}
-                     target="_blank"
-                     rel="noopener noreferrer">
-                     <Button
-                        variant="secondary"
-                        className="w-full sm:w-auto">
-                        <Globe className="mr-2 h-4 w-4" /> Live Demo
-                     </Button>
-                  </Link>
+                  )}
                </CardFooter>
             </Card>
          </motion.div>

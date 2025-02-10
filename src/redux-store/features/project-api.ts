@@ -50,9 +50,8 @@ const projectApi = apiSlice.injectEndpoints({
       }),
       deleteProjectImage: builder.mutation({
          query: ({ projectId, imageUrl }) => ({
-            url: `/project/${projectId}/image`,
+            url: `/project/${projectId}/image?imageUrl=${encodeURIComponent(imageUrl)}`,
             method: "DELETE",
-            body: { imageUrl },
          }),
          invalidatesTags: ["project"],
       }),

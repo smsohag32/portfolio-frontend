@@ -101,9 +101,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
                      </Tooltip>
                   </div>
                   <CardItem
-                     translateZ="80"
-                     rotateX={8}
-                     rotateZ={-3}>
+                     translateZ="10"
+                     rotateX={2}
+                     rotateZ={-0}>
                      <motion.div className="flex items-center justify-center lg:justify-start">
                         <Link href={`/portfolio/${project?._id}`}>
                            <Button className="bg-black text-white hover:bg-gray-800">
