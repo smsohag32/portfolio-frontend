@@ -15,6 +15,7 @@ const navItems = [
    { path: "/", label: "Home" },
    { path: "/portfolio", label: "Portfolio" },
    { path: "/experience", label: "Experience" },
+   { path: "/playground", label: "Playground" },
    { path: "/blogs", label: "Blogs" },
    { path: "/about", label: "About" },
    { path: "/contact-me", label: "Contact" },
