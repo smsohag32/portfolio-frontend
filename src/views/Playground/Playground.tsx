@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Sandpack } from "@codesandbox/sandpack-react";
 
 const Playground = () => {
-   const [code, setCode] = useState(`console.log("Welcome to the JavaScript Playground!");
+   const [code] = useState(`console.log("Welcome to the JavaScript Playground!");
 
 function greet(name) {
   return \`Hello, \${name}!\`;

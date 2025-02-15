@@ -1,23 +1,25 @@
-import netcafe from "@/assets/experience/netcafe.png";
 import p2m from "@/assets/experience/p2m.png";
+import netcafe from "@/assets/experience/netcafe.png";
 
 export const experiences = [
    {
       id: 1,
-      title: "Jr. Software Engineer",
+      title: "Junior Software Engineer (Front-End)",
       company: "Project 2morrow Software Ltd.",
-      duration: "Nov 2023 - Present",
+      duration: "Jan 2024 - Present",
       img: p2m,
       description:
-         "Contributed to the development of modern web applications using React, optimizing for cross-browser compatibility and responsive design. Collaborated with cross-functional teams to deliver high-quality software solutions.",
+         "As a Frontend Engineer, I build responsive, user-focused interfaces for fintech and large-scale applications, ensuring scalability and performance. I've contributed to impactful projects like 'Bulk Pro,' used by a prominent bank, and 'Let's Meet,' a meeting management automation solution. My work reflects a commitment to delivering reliable and intuitive solutions.",
       skills: [
          "React",
-         "Web Development",
-         "Cross-browser Compatibility",
+         "Next.js",
+         "TypeScript",
          "Responsive Design",
-         "Team Collaboration",
-         "Modern Web Applications",
+         "Performance Optimization",
+         "Fintech",
+         "Large-scale Applications",
       ],
+      current: true,
    },
    {
       id: 2,
@@ -26,14 +28,13 @@ export const experiences = [
       duration: "Dec 2022 - Aug 2023",
       img: netcafe,
       description:
-         "Monitored and maintained network infrastructure, ensuring uninterrupted internet connectivity and troubleshooting hardware and software issues efficiently.",
+         "Monitored and maintained network infrastructure, ensuring uninterrupted internet connectivity. Efficiently troubleshot hardware and software issues, contributing to seamless operations and improved user experience.",
       skills: [
          "Network Infrastructure",
          "Network Monitoring",
          "Troubleshooting",
          "Hardware Maintenance",
          "Software Maintenance",
-         "Internet Connectivity",
       ],
    },
 ];

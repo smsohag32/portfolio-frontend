@@ -3,8 +3,9 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Code, Terminal, Laptop, Braces } from "lucide-react";
-import { experiences } from "@/data/experience";
-import ExperienceCard from "@/components/cards/ExperienceCard";
+// import { experiences } from "@/data/experience";
+// import ExperienceCard from "@/components/cards/ExperienceCard";
+import ExperienceTimeline from "../Experience/ExperienceTimeline";
 
 export default function ExperienceSection() {
    const ref = useRef(null);
@@ -39,18 +40,7 @@ export default function ExperienceSection() {
                </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 h-full md:grid-cols-2 gap-8">
-               {experiences.map((experience, index) => (
-                  <motion.div
-                     key={experience.id}
-                     initial={{ opacity: 0, y: 50 }}
-                     className="h-full"
-                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}>
-                     <ExperienceCard experience={experience} />
-                  </motion.div>
-               ))}
-            </div>
+            <ExperienceTimeline />
          </div>
       </section>
    );
