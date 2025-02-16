@@ -74,7 +74,7 @@ const SkillBadge = ({ skill, index }: { skill: string; index: number }) => (
 );
 
 const CategoryCard = ({ category }: { category: (typeof skillCategories)[0] }) => (
-   <Card className="overflow-hidden bg-gradient-to-br from-background to-secondary/5 border-primary/10 transition-all duration-300">
+   <Card className="overflow-hidden bg-gradient-to-br from-background to-secondary/5 border-primary/5 transition-all duration-300">
       <CardContent className="p-6">
          <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ export default function SkillsSection() {
                </p>
             </motion.div>
 
-            <div className="space-y-8">
+            <div className="space-y-4">
                {skillCategories.map((category) => (
                   <CategoryCard
                      key={category.name}

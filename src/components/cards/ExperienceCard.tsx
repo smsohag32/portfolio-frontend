@@ -31,7 +31,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
          <Card className="overflow-hidden bg-white dark:bg-gray-800 border-primary/10 border shadow-sm transition-shadow duration-300">
             <CardContent className="p-6">
                <div className="flex items-center mb-4">
-                  <div className="relative w-16 h-16 mr-4">
+                  <div className="relative w-20 mr-4">
                      <Image
                         src={experience.img || "/placeholder.svg"}
                         alt={experience.company}
