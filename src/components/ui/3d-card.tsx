@@ -40,6 +40,11 @@ export const CardContainer = ({
    return (
       <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="1000"
+            data-aos-mirror="false"
+            data-aos-once="false"
             className={cn(
                "py-10 px-0 w-full  flex items-center justify-center",
                containerClassName

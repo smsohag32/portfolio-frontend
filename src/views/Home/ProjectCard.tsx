@@ -43,7 +43,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <CardBody className="bg-gray-50 relative h-full w-full group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]  rounded-xl p-6 border">
                <CardItem
                   translateZ="30"
-                  className="">
+                  className="h-full">
                   <div className="flex items-center mb-6">
                      <motion.div
                         className="w-3 h-3 rounded-full bg-red-500 mr-2"
@@ -88,17 +88,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
                   )}
                </CardItem>
 
-               <div className="flex justify-between items-center mt-12">
+               <div className="flex justify-between items-center  mt-12">
                   <div className="flex gap-4">
-                     <Tooltip>
-                        <TooltipTrigger asChild>
-                           <LinkButton
-                              href={project.link.live}
-                              icon={<Globe className="w-5 h-5" />}
-                           />
-                        </TooltipTrigger>
-                        <TooltipContent>Live Demo</TooltipContent>
-                     </Tooltip>
+                     <LinkButton
+                        href={project.link.live}
+                        icon={<Globe className="w-5 h-5" />}
+                     />
                   </div>
                   <CardItem
                      translateZ="10"
@@ -106,8 +101,8 @@ const ProjectCard = ({ project }: { project: Project }) => {
                      rotateZ={-0}>
                      <motion.div className="flex items-center justify-center lg:justify-start">
                         <Link href={`/portfolio/${project?._id}`}>
-                           <Button className="bg-black text-white hover:bg-gray-800">
-                              View Details <ChevronRight className="ml-2 h-4 w-4" />
+                           <Button className="bg-black rounded-full px-4 text-white hover:bg-gray-800">
+                              View Details <ChevronRight className=" h-4 w-4" />
                            </Button>
                         </Link>
                      </motion.div>
@@ -122,15 +117,13 @@ const ProjectCard = ({ project }: { project: Project }) => {
 // Reusable Link Button Component
 function LinkButton({ href, icon }: { href: string; icon: React.ReactNode }) {
    return (
-      <motion.a
+      <a
          href={href}
          target="_blank"
          rel="noopener noreferrer"
-         className="bg-white dark:bg-black text-black dark:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300"
-         whileHover={{ scale: 1.1 }}
-         whileTap={{ scale: 0.9 }}>
-         {icon}
-      </motion.a>
+         className="bg-white w-full !Z-50 border border-slate-200 cursor-pointer dark:bg-black text-black flex items-center gap-2 dark:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300">
+         {icon} <span>Preview</span>
+      </a>
    );
 }
 

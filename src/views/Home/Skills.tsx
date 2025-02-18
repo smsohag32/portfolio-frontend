@@ -3,91 +3,114 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Globe, Server, PenTool, Code } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 
 const skillCategories = [
    {
       name: "Frontend",
       icon: <Globe className="w-6 h-6" />,
       skills: [
-         "HTML5",
-         "CSS3",
-         "Tailwind CSS",
-         "JavaScript",
-         "TypeScript",
-         "React.js",
-         "Next.js",
-         "Redux",
-         "RTK Query",
-         "Context API",
-         "Shadcn UI",
-         "Material UI",
-         "Ant Design",
-         "Bootstrap",
-         "Recharts",
-         "AOS",
-         "Swiper.js",
-         "React Hook Forms",
+         { name: "HTML5", level: 95 },
+         { name: "CSS3", level: 90 },
+         { name: "Tailwind CSS", level: 85 },
+         { name: "JavaScript", level: 90 },
+         { name: "TypeScript", level: 85 },
+         { name: "React.js", level: 90 },
+         { name: "Next.js", level: 85 },
+         { name: "Redux", level: 80 },
+         { name: "RTK Query", level: 75 },
+         { name: "Context API", level: 85 },
+         { name: "Shadcn UI", level: 80 },
+         { name: "Material UI", level: 75 },
+         { name: "Ant Design", level: 70 },
+         { name: "Bootstrap", level: 85 },
+         { name: "Recharts", level: 75 },
+         { name: "AOS", level: 70 },
+         { name: "Swiper.js", level: 80 },
+         { name: "React Hook Forms", level: 85 },
       ],
    },
    {
       name: "Backend & APIs",
       icon: <Server className="w-6 h-6" />,
       skills: [
-         "Node.js",
-         "Express.js",
-         "NoSQL",
-         "MySQL",
-         "MongoDB",
-         "REST APIs",
-         "JWT",
-         "WebSocket",
-         "Socket.io",
-         "Kafka",
+         { name: "Node.js", level: 85 },
+         { name: "Express.js", level: 80 },
+         { name: "NoSQL", level: 75 },
+         { name: "MySQL", level: 70 },
+         { name: "MongoDB", level: 80 },
+         { name: "REST APIs", level: 90 },
+         { name: "JWT", level: 85 },
+         { name: "WebSocket", level: 75 },
+         { name: "Socket.io", level: 70 },
+         { name: "Kafka", level: 65 },
       ],
    },
    {
       name: "Tools & Hosting",
       icon: <PenTool className="w-6 h-6" />,
       skills: [
-         "VS Code",
-         "Git",
-         "Figma",
-         "Jira",
-         "Docker",
-         "AWS",
-         "Share Hosting",
-         "Chrome DevTools",
-         "Redux DevTools",
+         { name: "VS Code", level: 95 },
+         { name: "Git", level: 90 },
+         { name: "Figma", level: 75 },
+         { name: "Jira", level: 80 },
+         { name: "Docker", level: 70 },
+         { name: "AWS", level: 65 },
+         { name: "Share Hosting", level: 85 },
+         { name: "Chrome DevTools", level: 90 },
+         { name: "Redux DevTools", level: 85 },
       ],
    },
 ];
 
-const SkillBadge = ({ skill, index }: { skill: string; index: number }) => (
+const SkillProgress = ({
+   skill,
+   index,
+}: {
+   skill: { name: string; level: number };
+   index: number;
+}) => (
    <motion.div
+      key={index}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.05, boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)" }}
-      className="bg-gradient-to-r from-primary/10 to-secondary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:from-primary/20 hover:to-secondary/20">
-      {skill}
+      className="mb-4 border p-4 rounded-[8px]">
+      <div className="flex justify-between mb-1">
+         <span className="text-base text-title  font-medium">{skill.name}</span>
+         <span className="text-sm font-medium text-muted-foreground">{skill.level}%</span>
+      </div>
+      <motion.div
+         initial={{ width: 0 }}
+         animate={{ width: `${skill.level}%` }}
+         transition={{ duration: 0.8, delay: index * 0.1 }}>
+         <Progress
+            value={skill.level}
+            className="h-2 "
+         />
+      </motion.div>
    </motion.div>
 );
 
 const CategoryCard = ({ category }: { category: (typeof skillCategories)[0] }) => (
-   <Card className="overflow-hidden bg-gradient-to-br from-background to-secondary/5 border-primary/5 transition-all duration-300">
-      <CardContent className="p-6">
+   <Card
+      data-aos="fade-up"
+      data-aos-duration="2000"
+      className="overflow-hidden bg-gradient-to-br from-background to-secondary/5 shadow-none  border-none transition-all duration-300">
+      <CardContent className="">
          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}>
             <div className="flex items-center gap-3 mb-6">
                {category.icon}
-               <h3 className="text-2xl font-medium text-title ">{category.name}</h3>
+               <h3 className="text-2xl font-medium text-title">{category.name}</h3>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-1 gap-x-8 ">
                {category.skills.map((skill, index) => (
-                  <SkillBadge
-                     key={skill}
+                  <SkillProgress
+                     key={skill.name}
                      skill={skill}
                      index={index}
                   />
@@ -95,6 +118,7 @@ const CategoryCard = ({ category }: { category: (typeof skillCategories)[0] }) =
             </div>
          </motion.div>
       </CardContent>
+      <Separator />
    </Card>
 );
 
@@ -107,8 +131,8 @@ export default function SkillsSection() {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.5 }}
                className="text-center mb-12">
-               <Code className="w-16 h-16 mx-auto mb-2 text-des " />
-               <h2 className="text-4xl font-semibold font-flecha tracking-tight text-title  dark:text-white sm:text-5xl mb-2">
+               <Code className="w-16 h-16 mx-auto mb-2 text-des" />
+               <h2 className="text-4xl font-semibold font-flecha tracking-tight text-title dark:text-white sm:text-5xl mb-2">
                   Skills & Expertise
                </h2>
                <p className="text-xl text-muted-foreground">
@@ -116,7 +140,7 @@ export default function SkillsSection() {
                </p>
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
                {skillCategories.map((category) => (
                   <CategoryCard
                      key={category.name}

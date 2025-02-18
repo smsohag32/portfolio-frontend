@@ -37,7 +37,7 @@ const ProjectSection = () => {
             </div>
          </div>
 
-         <div className="pt-4 grid grid-cols-1 w-full h-auto items-start lg:grid-cols-2 gap-10">
+         <div className="pt-4 grid grid-cols-1 w-full items-start h-full lg:grid-cols-2 gap-10">
             {isLoading
                ? [1, 2].map((i) => <ProjectCardSkeleton key={i} />)
                : projects &&

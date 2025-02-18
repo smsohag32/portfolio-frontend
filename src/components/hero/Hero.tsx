@@ -117,7 +117,11 @@ const Hero = () => {
                               <motion.div
                                  variants={itemVariants}
                                  className="w-full relative pb-6">
-                                 <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+                                 <div
+                                    data-aos="fade-up"
+                                    data-aos-anchor-placement="top-bottom"
+                                    data-aos-duration="2000"
+                                    className="bg-gray-100 p-6 rounded-lg shadow-lg">
                                     <div className="flex items-center mb-4">
                                        <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
                                        <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
@@ -223,7 +227,11 @@ const Hero = () => {
                   </div>
                </section>
             </div>
-            <div className="flex items-center justify-center z-10 -mt-10 w-full lg:w-auto">
+            <div
+               data-aos="fade-up"
+               data-aos-anchor-placement="top-bottom"
+               data-aos-duration="2000"
+               className="flex items-center justify-center z-10 -mt-10 w-full lg:w-auto">
                <motion.div
                   className="bg-black rounded-3xl lg:rounded-none lg:!rounded-b-3xl w-full lg:max-w-md relative z-30 p-8 shadow-2xl"
                   initial={{ scale: 0.9, opacity: 0 }}
