@@ -4,7 +4,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { Globe, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";

@@ -6,7 +6,7 @@ import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeli
 import "react-vertical-timeline-component/style.min.css";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Calendar } from "lucide-react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { experiences } from "@/data/experience";
 
@@ -16,9 +16,9 @@ interface Experience {
    title: string;
    duration: string;
    description: string;
-   img: string;
+   img: StaticImageData;
    skills: string[];
-   current: boolean;
+   current?: boolean;
 }
 
 const TimelineElement: React.FC<{ experience: Experience }> = ({ experience }) => {

@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
+import { FormEvent } from "react";
 
 const contactLinks = [
    {
@@ -69,6 +71,10 @@ const codeVariants = {
 };
 
 export default function ContactMe() {
+   const handleMessage = (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      toast.success("Message sent successfully.");
+   };
    return (
       <div className="min-h-screen pt-20 pb-10 bg-[#fafafa] dark:bg-gray-900">
          <div className="main-container">
@@ -148,7 +154,9 @@ export default function ContactMe() {
                               <Terminal className="h-5 w-5" />
                               <span>Initialize Connection</span>
                            </h2>
-                           <form className="space-y-4">
+                           <form
+                              onSubmit={handleMessage}
+                              className="space-y-4">
                               <div className="space-y-2">
                                  <Input
                                     placeholder="Your Name"
