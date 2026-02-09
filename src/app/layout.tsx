@@ -18,7 +18,10 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
    title: "Sohag Sheik - Full Stack Engineer",
-   description: "",
+   description: "Full Stack Engineer specializing in React, Next.js, Node.js, and modern web technologies.",
+   icons: {
+      icon: "/favicon.svg",
+   },
 };
 
 export default function RootLayout({

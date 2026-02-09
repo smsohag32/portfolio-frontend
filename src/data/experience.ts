@@ -4,12 +4,12 @@ import netcafe from "@/assets/experience/netcafe.png";
 export const experiences = [
    {
       id: 1,
-      title: "Junior Software Engineer (Front-End)",
+      title: "Junior Software Engineer (Full-Stack)",
       company: "Project 2morrow Software Ltd.",
       duration: "Jan 2024 - Present",
       img: p2m,
       description:
-         "As a Frontend Engineer, I build responsive, user-focused interfaces for fintech and large-scale applications, ensuring scalability and performance. I've contributed to impactful projects like 'Bulk Pro,' used by a prominent bank, and 'Let's Meet,' a meeting management automation solution. My work reflects a commitment to delivering reliable and intuitive solutions.",
+         "As a Full Stack Engineer, I build responsive, user-focused interfaces for fintech and large-scale applications, ensuring scalability and performance. I've contributed to impactful projects like 'Bulk Pro,' used by a prominent bank, and 'Let's Meet,' a meeting management automation solution. My work reflects a commitment to delivering reliable and intuitive solutions.",
       skills: [
          "React",
          "Next.js",

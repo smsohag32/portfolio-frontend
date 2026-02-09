@@ -8,27 +8,24 @@ import { Separator } from "@/components/ui/separator";
 
 const skillCategories = [
    {
-      name: "Frontend",
+      name: "Frontend Development",
       icon: <Globe className="w-6 h-6" />,
       skills: [
          { name: "HTML5", level: 95 },
          { name: "CSS3", level: 90 },
-         { name: "Tailwind CSS", level: 85 },
+         { name: "Tailwind CSS", level: 95 },
          { name: "JavaScript", level: 90 },
          { name: "TypeScript", level: 85 },
          { name: "React.js", level: 90 },
          { name: "Next.js", level: 85 },
-         { name: "Redux", level: 80 },
-         { name: "RTK Query", level: 75 },
+         { name: "Redux / RTK Query", level: 85 },
+         { name: "TanStack Query", level: 80 },
          { name: "Context API", level: 85 },
-         { name: "Shadcn UI", level: 80 },
-         { name: "Material UI", level: 75 },
-         { name: "Ant Design", level: 70 },
-         { name: "Bootstrap", level: 85 },
+         { name: "Shadcn UI", level: 90 },
+         { name: "Material UI", level: 80 },
          { name: "Recharts", level: 75 },
-         { name: "AOS", level: 70 },
          { name: "Swiper.js", level: 80 },
-         { name: "React Hook Forms", level: 85 },
+         { name: "React Hook Form", level: 85 },
       ],
    },
    {
@@ -37,14 +34,12 @@ const skillCategories = [
       skills: [
          { name: "Node.js", level: 85 },
          { name: "Express.js", level: 80 },
-         { name: "NoSQL", level: 75 },
-         { name: "MySQL", level: 70 },
-         { name: "MongoDB", level: 80 },
+         { name: "NoSQL / MongoDB", level: 85 },
+         { name: "MySQL / PostgreSQL", level: 80 },
+         { name: "Mongoose", level: 80 },
          { name: "REST APIs", level: 90 },
          { name: "JWT", level: 85 },
-         { name: "WebSocket", level: 75 },
-         { name: "Socket.io", level: 70 },
-         { name: "Kafka", level: 65 },
+         { name: "WebSocket / Socket.io", level: 75 },
       ],
    },
    {
@@ -52,12 +47,12 @@ const skillCategories = [
       icon: <PenTool className="w-6 h-6" />,
       skills: [
          { name: "VS Code", level: 95 },
-         { name: "Git", level: 90 },
+         { name: "Git / GitHub", level: 90 },
          { name: "Figma", level: 75 },
          { name: "Jira", level: 80 },
          { name: "Docker", level: 70 },
          { name: "AWS", level: 65 },
-         { name: "Share Hosting", level: 85 },
+         { name: "Shared Hosting", level: 85 },
          { name: "Chrome DevTools", level: 90 },
          { name: "Redux DevTools", level: 85 },
       ],
@@ -132,11 +127,12 @@ export default function SkillsSection() {
                transition={{ duration: 0.5 }}
                className="text-center mb-12">
                <Code className="w-16 h-16 mx-auto mb-2 text-des" />
-               <h2 className="text-4xl font-semibold font-flecha tracking-tight text-title dark:text-white sm:text-5xl mb-2">
+               <h2 className="text-4xl font-semibold font-flecha tracking-tight text-title dark:text-white sm:text-5xl mb-4">
                   Skills & Expertise
                </h2>
-               <p className="text-xl text-muted-foreground">
-                  Mastering a diverse array of cutting-edge technologies
+               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  A comprehensive toolkit spanning frontend, backend, and DevOps,
+                  dedicated to building scalable and user-centric web solutions.
                </p>
             </motion.div>
 

@@ -44,381 +44,242 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
 const Hero = () => {
    const [isHovered, setIsHovered] = useState(false);
    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+   const [mounted, setMounted] = useState(false);
    const router = useRouter();
+
    useEffect(() => {
+      setMounted(true);
       const handleMouseMove = (e: MouseEvent) => {
          setMousePosition({ x: e.clientX, y: e.clientY });
       };
-
       window.addEventListener("mousemove", handleMouseMove);
-
-      return () => {
-         window.removeEventListener("mousemove", handleMouseMove);
-      };
+      return () => window.removeEventListener("mousemove", handleMouseMove);
    }, []);
 
    const containerVariants = {
       hidden: { opacity: 0 },
       visible: {
          opacity: 1,
-         transition: {
-            staggerChildren: 0.1,
-         },
+         transition: { staggerChildren: 0.15, delayChildren: 0.2 },
       },
    };
 
    const itemVariants = {
-      hidden: { y: 20, opacity: 0 },
+      hidden: { y: 30, opacity: 0 },
       visible: {
          y: 0,
          opacity: 1,
+         transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
       },
    };
 
+   if (!mounted) return null;
+
    return (
-      <div className=" lg:bg-gradient-to-b lg:from-[#f8f8f8] overflow-hidden lg:overflow-visible">
-         <div className="main-container h-full relative min-h-[680px] flex-col lg:flex-row flex items-start  lg:pt-24 gap-6 ">
-            <div className="w-full py-10 font-flecha z-40 lg:py-0">
-               <section className="">
-                  <div className="">
-                     <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="flex flex-col items-center justify-between">
-                        <div className=" mb-10 w-full lg:mb-0">
-                           <div className="flex flex-col lg:flex-row items-start w-full">
-                              <div className="w-full">
-                                 <motion.p
-                                    variants={itemVariants}
-                                    className="font-outfit text-gray-600 mb-2">
-                                    Hey, I am
-                                 </motion.p>
-                                 <motion.h1
-                                    variants={itemVariants}
-                                    className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-                                    Sohag Sheik
-                                 </motion.h1>
-                                 <motion.div
-                                    variants={itemVariants}
-                                    className="flex items-center mb-4">
-                                    <Terminal className="w-8 h-8 mr-2 text-gray-700" />
-                                    <span className="text-3xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-gray-900">
-                                       Front-End
-                                    </span>
-                                 </motion.div>
-                                 <motion.p
-                                    variants={itemVariants}
-                                    className="text-2xl lg:text-4xl font-semibold text-gray-800 mb-6">
-                                    Engineer
-                                 </motion.p>
-                              </div>
+      <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden lg:bg-gradient-to-b lg:from-slate-50 lg:to-white">
+         {/* Background Elements */}
+         <div className="absolute inset-0 z-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+         </div>
 
-                              <motion.div
-                                 variants={itemVariants}
-                                 className="w-full relative pb-6">
-                                 <div
-                                    data-aos="fade-up"
-                                    data-aos-anchor-placement="top-bottom"
-                                    data-aos-duration="2000"
-                                    className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                                    <div className="flex items-center mb-4">
-                                       <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                                       <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                    </div>
-                                    <pre className="text-[11px] lg:text-sm font-mono">
-                                       <code>
-                                          <span className="text-blue-600">const</span>{" "}
-                                          <span className="text-green-600">sohag</span> = {"{"}
-                                          <br />
-                                          &nbsp;&nbsp;role:{" "}
-                                          <span className="text-orange-600">
-                                             &apos;Frontend Engineer&apos;
-                                          </span>
-                                          ,<br />
-                                          &nbsp;&nbsp;skills: [
-                                          <span className="text-orange-600">
-                                             &apos;JavaScript&apos;
-                                          </span>
-                                          ,{" "}
-                                          <span className="text-orange-600">&apos;React&apos;</span>
-                                          ,{" "}
-                                          <span className="text-orange-600">
-                                             &apos;Next.js&apos;
-                                          </span>
-                                          ],
-                                          <br />
-                                          &nbsp;&nbsp;passion:{" "}
-                                          <span className="text-orange-600">
-                                             &apos;Creating amazing UIs&apos;
-                                          </span>
-                                          ,<br />
-                                          &nbsp;&nbsp;code: () =&gt; {"{"}
-                                          <br />
-                                          &nbsp;&nbsp;&nbsp;&nbsp;
-                                          <span className="text-purple-600">console</span>.log(
-                                          <span className="text-orange-600">
-                                             &apos;Hello, World!&apos;
-                                          </span>
-                                          )<br />
-                                          &nbsp;&nbsp;{"}"}
-                                          <br />
-                                          {"};"}
-                                       </code>
-                                    </pre>
-                                 </div>
-                                 <motion.div
-                                    className="absolute -top-4 -left-4 text-gray-200"
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
-                                    <Braces className="w-12 h-12" />
-                                 </motion.div>
-                                 <motion.div
-                                    className="absolute -bottom-4 -right-4 text-gray-200"
-                                    animate={{ rotate: -360 }}
-                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
-                                    <Code className="w-12 h-12" />
-                                 </motion.div>
-                              </motion.div>
-                           </div>
-
-                           <motion.p
-                              variants={itemVariants}
-                              className="text-gray-600 text-lg mb-2 mt-6 lg:mt-0 max-w-2xl font-outfit">
-                              Specializing in JavaScript, TypeScript, React.js, Next.js, Node.js,
-                              and Express.js. Crafting seamless user experiences with cutting-edge
-                              web technologies.
-                           </motion.p>
-                           <div className="  grid gap-4 mt-4 lg:mt-0 lg:grid-cols-4 mb-8">
-                              {stats.map((stat) => (
-                                 <motion.div
-                                    key={stat.id}
-                                    className="flex flex-col lg:px-0 lg:py-0 lg:border-none lg:items-start border w-full rounded-[8px] border-gray-200 px-6 items-center py-5"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: stat.id * 0.5 }}>
-                                    <p className="text-[28px] font-flecha text-[#1D1D1D] font-normal">
-                                       <CountUp
-                                          end={stat.value}
-                                          duration={2}
-                                          delay={stat.id * 0.5}
-                                          decimals={stat.decimals || 0}
-                                       />
-                                       {stat.suffix}
-                                    </p>
-                                    <p className="lg:whitespace-nowrap text-[#1D1D1D] font-normal text-[16px] font-outfit">
-                                       {stat.label}
-                                    </p>
-                                 </motion.div>
-                              ))}
-                           </div>
-                           <motion.div
-                              variants={itemVariants}
-                              className="flex items-center justify-center lg:justify-start">
-                              <Button
-                                 onClick={() => router.push("/portfolio")}
-                                 className="bg-black text-white hover:bg-gray-800">
-                                 View Projects <ChevronRight className="ml-2 h-4 w-4" />
-                              </Button>
-                           </motion.div>
-                        </div>
-                     </motion.div>
-                  </div>
-               </section>
-            </div>
-            <div
-               data-aos="fade-up"
-               data-aos-anchor-placement="top-bottom"
-               data-aos-duration="2000"
-               className="flex items-center justify-center z-10 -mt-10 w-full lg:w-auto">
-               <motion.div
-                  className="bg-black rounded-3xl lg:rounded-none lg:!rounded-b-3xl w-full lg:max-w-md relative z-30 p-8 shadow-2xl"
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}>
-                  <div className="flex items-center mb-6">
-                     <motion.div
-                        className="w-3 h-3 rounded-full bg-red-500 mr-2"
-                        whileHover={{ scale: 1.2 }}
-                     />
-                     <motion.div
-                        className="w-3 h-3 rounded-full bg-yellow-500 mr-2"
-                        whileHover={{ scale: 1.2 }}
-                     />
-                     <motion.div
-                        className="w-3 h-3 rounded-full bg-green-500"
-                        whileHover={{ scale: 1.2 }}
-                     />
-                  </div>
-                  <motion.div
-                     className="relative w-48 h-48 mx-auto mb-6 overflow-hidden rounded-full"
-                     whileHover={{ scale: 1.05 }}>
-                     <Image
-                        src={profile}
-                        alt="Sohag Sheik"
-                        layout="fill"
-                        objectFit="cover"
-                        className="transition-all duration-300 filter grayscale hover:grayscale-0"
-                     />
-                  </motion.div>
-                  <motion.h2
-                     className="text-2xl font-bold text-white text-center mb-3"
-                     initial={{ y: 20, opacity: 0 }}
-                     animate={{ y: 0, opacity: 1 }}
-                     transition={{ delay: 0.2 }}>
+         <div className="main-container relative z-10 w-full flex flex-col lg:flex-row items-center gap-12 py-12 lg:py-24">
+            {/* Left Content */}
+            <motion.div
+               variants={containerVariants}
+               initial="hidden"
+               animate="visible"
+               className="w-full lg:w-3/5 space-y-8"
+            >
+               <motion.div variants={itemVariants} className="space-y-4">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 font-medium text-sm border border-blue-100 uppercase tracking-wider">
+                     Available for work
+                  </span>
+                  <p className="font-outfit text-slate-500 font-medium tracking-tight">
+                     Hey, I am
+                  </p>
+                  <h1 className="text-5xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1]">
                      Sohag Sheik
-                  </motion.h2>
-                  <motion.p
-                     className="text-gray-400 text-center mb-6"
-                     initial={{ y: 20, opacity: 0 }}
-                     animate={{ y: 0, opacity: 1 }}
-                     transition={{ delay: 0.3 }}>
-                     Frontend Engineer
-                  </motion.p>
-                  <motion.div
-                     className="flex justify-center space-x-4 mb-6"
-                     initial={{ y: 20, opacity: 0 }}
-                     animate={{ y: 0, opacity: 1 }}
-                     transition={{ delay: 0.4 }}>
-                     <SocialLink
-                        href={contactsData?.github}
-                        icon={<Github size={18} />}
-                     />
-                     <SocialLink
-                        href={contactsData?.linkedin}
-                        icon={<Linkedin size={18} />}
-                     />
-                     <SocialLink
-                        href="https://sohagsheik.vercel.app/"
-                        icon={<Briefcase size={18} />}
-                     />
-                     <SocialLink
-                        href="mailto:sohagsheik32@gmail.com"
-                        icon={<Mail size={18} />}
-                     />
-                  </motion.div>
-                  <motion.button
-                     className="w-full py-2 px-4 bg-white text-black rounded-full font-medium transition-all duration-300 hover:bg-gray-200 flex items-center justify-center"
-                     whileHover={{ scale: 1.05 }}
-                     whileTap={{ scale: 0.95 }}>
-                     Download Resume
-                     <Download
-                        size={18}
-                        className="ml-2"
-                     />
-                  </motion.button>
-                  {isHovered && (
-                     <motion.div
-                        className="absolute inset-0 pointer-events-none"
-                        animate={{
-                           background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.06), transparent 40%)`,
-                        }}
-                     />
-                  )}
+                  </h1>
+                  <div className="flex items-center gap-3">
+                     <div className="p-2 bg-slate-900 rounded-lg">
+                        <Terminal className="w-6 h-6 text-white" />
+                     </div>
+                     <h2 className="text-3xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-slate-500">
+                        Full Stack Engineer
+                     </h2>
+                  </div>
                </motion.div>
-            </div>
-            <span className="lg:-bottom-0  bottom-0 flex items-center justify-center w-full lg:w-auto  lg:absolute left-1/2 opacity-30 transform move-image-bottom -translate-x-1/2 z-40 ">
-               <svg
-                  width="80"
-                  height="78"
-                  viewBox="0 0 126 121"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                     d="M2.6651 119.303C5.82047 118.428 8.97133 117.556 12.1267 116.68C13.0811 116.417 13.1138 115.165 12.4342 114.498C11.1143 113.201 9.79097 111.899 8.47555 110.598C15.5114 102.091 25.4547 96.6627 36.0577 93.4611C47.3431 90.0548 61.1324 90.4512 70.0557 81.9939C71.9511 80.1973 73.8864 77.467 75.3619 74.3493C81.9592 76.1333 89.324 75.439 94.7879 72.9424C102.04 69.6294 106.947 62.6483 107.787 54.5756C114.675 51.5348 120.235 44.5277 122.89 37.9211C127.732 25.858 125.309 11.3997 116.787 0.645574C116.192 -0.101608 115.063 0.648816 115.644 1.43411C121.855 9.76272 124.796 20.3115 123.051 30.2019C121.467 39.1981 115.992 48.0233 107.918 51.9541C107.911 50.693 107.802 49.4089 107.594 48.1147C106.253 39.9715 97.4309 27.5691 88.986 34.3803C81.2805 40.5881 86.4461 52.0036 95.0778 55.1384C98.6223 56.4253 102.082 56.4046 105.304 55.4828C104.225 61.9374 100.274 67.5035 94.4692 70.4009C89.3152 72.9714 82.4862 73.7203 76.3121 72.1261C78.7929 65.5749 78.9645 57.9776 72.8359 53.7345C69.2106 51.2233 64.8085 51.9376 62.6871 55.5728C60.3121 59.6491 61.554 64.7898 64.8842 68.3172C67.1817 70.7521 70.0433 72.5029 73.1578 73.6478C70.1702 79.6281 64.448 83.8779 57.9761 85.905C52.7824 87.532 47.3107 88.2075 41.9741 89.3579C36.6678 90.4945 31.4741 92.0928 26.54 94.2599C18.896 97.6206 11.9235 102.359 6.60389 108.762C5.91758 108.084 5.22341 107.406 4.5371 106.728C4.03057 106.042 3.5454 105.349 3.06701 104.636C2.71299 104.104 2.09969 104.023 1.63305 104.223C0.954542 104.173 0.351054 104.849 0.347413 105.585C0.33007 109.998 0.32396 114.417 0.278532 118.828C0.264582 120.261 2.15861 120.379 2.66061 119.306L2.6651 119.303ZM92.2158 51.1729C88.5874 48.5128 86.395 44.0063 87.9848 39.8029C89.6899 35.3043 94.4413 33.4501 98.6948 36.5348C102.375 39.2023 104.577 43.8675 105.304 48.2131C105.571 49.8046 105.655 51.3794 105.585 52.9237C101.229 54.3894 96.3076 54.1677 92.2158 51.1729ZM67.8947 67.9733C64.2097 64.9712 61.7064 58.4643 66.1278 55.3421C68.1494 53.9114 70.8442 54.8138 72.6374 56.5466C74.748 58.5855 75.3781 61.6168 75.3561 64.3575C75.3378 66.9014 74.8862 69.2697 74.1012 71.4437C71.8602 70.631 69.7479 69.485 67.8914 67.9685L67.8947 67.9733Z"
-                     fill="black"
-                  />
-               </svg>
-            </span>
 
-            <span className="absolute top-20 lg:top-3/4  lg:right-1/2 right-1/3 z-40 move-image">
-               <svg
-                  width="21"
-                  height="24"
-                  viewBox="0 0 21 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <g
-                     opacity="0.5"
-                     clipPath="url(#clip0_9_488)">
-                     <path
-                        d="M0.526369 18.7486L6.08232 13.4898L11.6657 8.20578L14.7588 5.27812C14.8473 5.19376 14.8229 5.10643 14.7024 5.07535C14.5757 5.04279 14.3804 5.09459 14.2858 5.1834L8.76798 10.4052L3.18608 15.6907L0.0533276 18.6539C-0.035177 18.7383 -0.0107619 18.8256 0.109787 18.8567C0.236441 18.8892 0.431761 18.8374 0.526369 18.7486Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M17.2341 3.20894C17.643 2.88923 18.055 2.57249 18.4548 2.24242C18.4884 2.2143 18.5265 2.16398 18.5143 2.11662C18.5021 2.06925 18.4411 2.04409 18.3983 2.03669C18.2488 2.01005 18.0932 2.06037 17.9757 2.14622C17.5499 2.45852 17.1333 2.78267 16.7152 3.10533C16.6786 3.13345 16.6374 3.19118 16.6511 3.24002C16.6649 3.28886 16.7305 3.31847 16.7763 3.32587C16.9334 3.35399 17.1089 3.30366 17.2325 3.20746L17.2341 3.20894Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M8.83969 4.39894C11.8977 7.18451 14.8855 10.0426 17.8962 12.877C18.7354 13.6674 19.5762 14.4548 20.4216 15.2393C20.5711 15.3769 21.1266 15.1623 20.9694 15.0158C17.9419 12.2036 14.9633 9.34251 11.9404 6.52734C11.0935 5.73844 10.2436 4.95398 9.38903 4.17545C9.23796 4.0378 8.68252 4.25537 8.84122 4.39894H8.83969Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M4.2955 0.335967C6.3723 2.28675 8.45979 4.22866 10.5519 6.16612C12.6531 8.11099 14.7604 10.0499 16.8708 11.9844C18.0519 13.0679 19.2345 14.1513 20.4155 15.2333C20.5651 15.3709 21.1205 15.1548 20.9634 15.0098C18.8621 13.0871 16.7624 11.163 14.6673 9.23439C12.56 7.29545 10.4572 5.35206 8.36213 3.40276C7.18716 2.30895 6.01371 1.21219 4.84331 0.11395C4.6953 -0.0251805 4.13833 0.189436 4.2955 0.337447V0.335967Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M4.25133 0.287126C4.70912 0.714878 5.1669 1.14411 5.62773 1.5689C5.72234 1.65623 5.91156 1.62219 6.01837 1.57482C6.08399 1.54522 6.27321 1.43717 6.17555 1.34541C5.71776 0.911733 5.25388 0.483981 4.79304 0.0532685C4.69843 -0.034058 4.50922 0.00146461 4.4024 0.0473481C4.33679 0.0754702 4.14757 0.184998 4.24523 0.276765C4.70759 0.705997 5.16995 1.13375 5.62773 1.5689L6.17555 1.34541C5.71319 0.920614 5.25693 0.491381 4.79915 0.0636293C4.70454 -0.0251774 4.51532 0.0118254 4.40851 0.0577088C4.34289 0.0858309 4.15367 0.195359 4.25133 0.287126Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M20.0721 14.1469C18.0762 12.3249 16.091 10.491 14.1088 8.6542C12.1266 6.81738 10.1474 4.97908 8.16217 3.14375C7.05892 2.12543 5.95413 1.10711 4.8463 0.0917569C4.69676 -0.0458935 4.14132 0.170203 4.29849 0.315254C6.27916 2.12839 8.24915 3.95337 10.2176 5.77834C12.1998 7.61516 14.179 9.45494 16.1657 11.2873C17.2827 12.3175 18.4012 13.3462 19.5243 14.3704C19.6754 14.508 20.2293 14.2905 20.0721 14.1469Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M4.05132 0.603829C5.31937 3.6129 6.52944 6.64564 7.72578 9.68283C8.92212 12.72 10.1047 15.7616 11.3209 18.7914C12.0076 20.5039 12.7049 22.212 13.4206 23.9126C13.5045 24.111 14.0859 23.9393 14.0096 23.7587C12.7385 20.7393 11.5254 17.6962 10.326 14.6486C9.12965 11.6114 7.94704 8.56979 6.73087 5.54C6.04725 3.83787 5.35294 2.14018 4.64033 0.449898C4.5564 0.251563 3.97502 0.423256 4.05132 0.603829Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M0.341714 18.9884C2.9938 18.4718 5.65199 17.9804 8.3117 17.4935C10.9592 17.008 13.6082 16.527 16.2527 16.0282C17.7497 15.747 19.2451 15.4583 20.7405 15.1638C20.8275 15.146 21.0274 15.0587 20.9953 14.9447C20.9618 14.8234 20.742 14.8619 20.6611 14.8781C18.0182 15.4021 15.3692 15.8965 12.7186 16.3849C10.0681 16.8733 7.42208 17.3514 4.7761 17.8443C3.27152 18.124 1.76694 18.4097 0.263891 18.7013C0.176913 18.7175 -0.0229856 18.8064 0.00905912 18.9203C0.0426298 19.0417 0.262365 19.0032 0.34324 18.9869L0.341714 18.9884Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M18.3312 1.9745C17.7498 4.81336 17.1669 7.65221 16.5687 10.4881C15.969 13.3358 15.3541 16.1806 14.7101 19.0195C14.3469 20.6195 13.9761 22.218 13.5931 23.8135C13.5428 24.0237 14.1364 23.9379 14.1821 23.7425C14.8596 20.9214 15.5021 18.0914 16.1201 15.257C16.7411 12.4137 17.3408 9.56599 17.9298 6.71678C18.2625 5.11234 18.5906 3.50642 18.9202 1.90198C18.9644 1.68588 18.3708 1.77765 18.3312 1.97302V1.9745Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M16.8373 3.56412L18.6898 2.01C18.7829 1.93155 18.7508 1.83239 18.6333 1.80722C18.496 1.77762 18.322 1.82795 18.2167 1.91527L16.3642 3.46939C16.2712 3.54783 16.3032 3.647 16.4207 3.67216C16.558 3.70177 16.732 3.65144 16.8373 3.56412Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M14.6078 5.49271C16.0193 4.30566 17.4445 3.1349 18.885 1.98041C18.9842 1.90048 18.9414 1.80576 18.8285 1.77763C18.6927 1.74359 18.5172 1.80132 18.4119 1.88568C16.973 3.04017 15.5462 4.21094 14.1347 5.39799C14.0386 5.47939 14.0767 5.57116 14.1912 5.60076C14.3239 5.6348 14.5055 5.57856 14.6078 5.49271Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M14.9541 4.97763L16.5899 3.71806C16.6861 3.64405 16.6495 3.536 16.5335 3.51528C16.3885 3.49012 16.2298 3.536 16.1169 3.62333L14.4811 4.8829C14.385 4.95691 14.4216 5.06496 14.5376 5.08568C14.6825 5.11084 14.8412 5.06496 14.9541 4.97763Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M15.209 4.8414C16.0208 4.16499 16.8372 3.49302 17.6429 2.8092C17.7329 2.73224 17.7024 2.63751 17.588 2.61235C17.4537 2.58423 17.2874 2.63307 17.1836 2.71744C16.3626 3.38793 15.5508 4.06878 14.736 4.74667C14.6414 4.82512 14.675 4.92428 14.7925 4.94945C14.9298 4.97905 15.1037 4.92872 15.2106 4.8414H15.209Z"
-                        fill="#545454"
-                     />
-                     <path
-                        d="M14.2004 5.82128C14.7712 5.32989 15.3525 4.85329 15.9415 4.3841C16.0362 4.30861 15.9995 4.20944 15.8866 4.18576C15.7478 4.15616 15.586 4.20796 15.4777 4.29233C14.8795 4.7556 14.2966 5.23516 13.7228 5.72656C13.6297 5.80648 13.6603 5.90565 13.7793 5.93081C13.9151 5.96042 14.0952 5.91157 14.1989 5.82128H14.2004Z"
-                        fill="#545454"
-                     />
-                  </g>
-                  <defs>
-                     <clipPath id="clip0_9_488">
-                        <rect
-                           width="21"
-                           height="24"
-                           fill="white"
-                        />
-                     </clipPath>
-                  </defs>
-               </svg>
-            </span>
-            <span className=" absolute left-0 z-10 ">
-               <Image
-                  src={line}
-                  width={500}
-                  alt="Sohag Sheik"
-               />
-            </span>
+               <motion.p
+                  variants={itemVariants}
+                  className="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl font-outfit"
+               >
+                  I build high-performance, accessible, and beautiful web experiences.
+                  Specializing in React, Next.js, and modern web ecosystems to turn
+                  ambitious designs into reality.
+               </motion.p>
+
+               <motion.div variants={itemVariants} className="grid grid-cols-2 gap-8 pt-4">
+                  {stats.map((stat) => (
+                     <div key={stat.id} className="space-y-1">
+                        <div className="text-3xl font-bold text-slate-900">
+                           <CountUp
+                              end={stat.value}
+                              duration={2.5}
+                              decimals={stat.decimals || 0}
+                              suffix={stat.suffix}
+                           />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500 uppercase tracking-wide">
+                           {stat.label}
+                        </p>
+                     </div>
+                  ))}
+               </motion.div>
+
+               <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-4">
+                  <Button
+                     onClick={() => router.push("/portfolio")}
+                     className="h-12 px-8 bg-slate-900 text-white hover:bg-slate-800 rounded-full transition-all flex items-center gap-2 group shadow-lg shadow-slate-200"
+                  >
+                     View Projects
+                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                  <Button
+                     variant="outline"
+                     onClick={() => window.open(contactsData?.linkedin, "_blank")}
+                     className="h-12 px-8 rounded-full border-slate-200 hover:bg-slate-50 transition-all flex items-center gap-2"
+                  >
+                     Get in touch
+                  </Button>
+               </motion.div>
+            </motion.div>
+
+            {/* Right Content - Visuals */}
+            <motion.div
+               variants={itemVariants}
+               initial="hidden"
+               animate="visible"
+               className="w-full lg:w-2/5 relative"
+            >
+               <div className="relative z-20">
+                  {/* Glassmorphism Code Card */}
+                  <motion.div
+                     whileHover={{ y: -5 }}
+                     onMouseEnter={() => setIsHovered(true)}
+                     onMouseLeave={() => setIsHovered(false)}
+                     className="relative bg-white/40 backdrop-blur-3xl border border-white/30 p-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group min-h-[400px] flex flex-col justify-center"
+                  >
+                     <div className="flex gap-2 mb-8">
+                        <div className="w-3 h-3 rounded-full bg-red-400" />
+                        <div className="w-3 h-3 rounded-full bg-amber-400" />
+                        <div className="w-3 h-3 rounded-full bg-emerald-400" />
+                     </div>
+
+                     <pre className="font-mono text-[13px] lg:text-sm leading-relaxed">
+                        <code className="space-y-2">
+                           <div className="flex items-start gap-2">
+                              <span className="text-blue-500 italic">const</span>
+                              <span className="text-emerald-600 font-semibold">sohag</span>
+                              <span className="text-slate-400">=</span>
+                              <span className="text-slate-400">{"{"}</span>
+                           </div>
+                           <div className="pl-6 group-hover:pl-8 transition-all">
+                              <span className="text-slate-500">frontend:</span>
+                              <span className="text-slate-400">[</span>
+                              <span className="text-amber-600">&apos;React&apos;</span>,
+                              <span className="text-amber-600">&apos;Next.js&apos;</span>,
+                              <span className="text-amber-600">&apos;Tailwind&apos;</span>
+                              <span className="text-slate-400">]</span>,
+                           </div>
+                           <div className="pl-6 group-hover:pl-8 transition-all">
+                              <span className="text-slate-500">backend:</span>
+                              <span className="text-slate-400">[</span>
+                              <span className="text-amber-600">&apos;Node.js&apos;</span>,
+                              <span className="text-amber-600">&apos;Express&apos;</span>,
+                              <span className="text-amber-600">&apos;Mongoose&apos;</span>
+                              <span className="text-slate-400">]</span>,
+                           </div>
+                           <div className="pl-6 group-hover:pl-8 transition-all">
+                              <span className="text-slate-500">database:</span>
+                              <span className="text-slate-400">[</span>
+                              <span className="text-amber-600">&apos;MongoDB&apos;</span>,
+                              <span className="text-amber-600">&apos;MySQL&apos;</span>,
+                              <span className="text-amber-600">&apos;Postgres&apos;</span>
+                              <span className="text-slate-400">]</span>,
+                           </div>
+                           <div className="pl-6 group-hover:pl-8 transition-all">
+                              <span className="text-slate-500">tools:</span>
+                              <span className="text-slate-400">[</span>
+                              <span className="text-amber-600">&apos;Docker&apos;</span>,
+                              <span className="text-amber-600">&apos;AWS&apos;</span>,
+                              <span className="text-amber-600">&apos;Git&apos;</span>
+                              <span className="text-slate-400">]</span>,
+                           </div>
+                           <div className="pl-6 group-hover:pl-8 transition-all">
+                              <span className="text-slate-500">creative:</span>
+                              <span className="text-violet-600 font-semibold">true</span>
+                           </div>
+                           <div className="pl-0 text-slate-400">{"}"};</div>
+                        </code>
+                     </pre>
+
+                     {/* Professional Profile Hover Overlay */}
+                     <motion.div
+                        className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
+                     >
+                        <motion.div
+                           className="relative w-48 h-48 lg:w-56 lg:h-56 mb-6 px-2"
+                           initial={{ scale: 0.9, opacity: 0 }}
+                           animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                           <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-blue-500/20 rounded-full blur-2xl animate-pulse" />
+                           <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.3)]">
+                              <Image
+                                 src={profile}
+                                 alt="Sohag"
+                                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                              />
+                           </div>
+                        </motion.div>
+
+                        <motion.div
+                           initial={{ y: 20, opacity: 0 }}
+                           animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                           transition={{ duration: 0.5, delay: 0.1 }}
+                        >
+                           <h3 className="text-white font-bold text-3xl mb-1 tracking-tight">Sohag Sheik</h3>
+                           <p className="text-emerald-400 font-semibold text-sm mb-8 uppercase tracking-[0.3em]">Full Stack Engineer</p>
+
+                           <div className="flex gap-5 justify-center">
+                              <SocialLink href={contactsData?.github} icon={<Github size={22} />} />
+                              <SocialLink href={contactsData?.linkedin} icon={<Linkedin size={22} />} />
+                              <SocialLink href="mailto:sohagsheik32@gmail.com" icon={<Mail size={22} />} />
+                           </div>
+                        </motion.div>
+
+                        <motion.div
+                           className="absolute bottom-8 left-8 right-8 border-t border-white/10 pt-4"
+                           initial={{ opacity: 0 }}
+                           animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
+                           transition={{ duration: 0.5, delay: 0.3 }}
+                        >
+                           <p className="text-slate-300 text-xs font-medium italic opacity-80 uppercase tracking-widest">&quot;Crafting Digital Excellence&quot;</p>
+                        </motion.div>
+                     </motion.div>
+                  </motion.div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-400/20 blur-3xl rounded-full z-0" />
+                  <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400/20 blur-3xl rounded-full z-0" />
+               </div>
+            </motion.div>
+         </div>
+
+         {/* Bottom Line Pattern */}
+         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] pointer-events-none opacity-40">
+            <Image src={line} alt="" className="w-full h-auto" />
          </div>
       </div>
    );

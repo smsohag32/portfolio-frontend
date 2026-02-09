@@ -57,7 +57,7 @@ export default function AboutPage() {
                      <motion.p
                         className="text-muted-foreground"
                         variants={fadeInUp}>
-                        Frontend Engineer
+                        Full Stack Engineer
                      </motion.p>
                      <motion.div
                         className="flex flex-wrap justify-center gap-2 mt-4"
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                      {[
-                        "Hello! I'm Sohag Sheik, a passionate Frontend Engineer specializing in creating amazing user interfaces. With 1.5+ years of experience, I've honed my skills in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.",
+                        "Hello! I'm Sohag Sheik, a passionate Full Stack Engineer specializing in creating amazing user interfaces and robust backend systems. With 1.5+ years of experience, I've honed my skills in JavaScript, TypeScript, React.js, Next.js, Node.js, and Express.js.",
                         "My journey in web development has been driven by a relentless pursuit of crafting seamless user experiences with cutting-edge web technologies. I thrive on turning complex problems into simple, beautiful, and intuitive designs.",
                         "When I'm not coding, you can find me exploring new web technologies, contributing to open-source projects, or sharing my knowledge with the developer community.",
                      ].map((paragraph, index) => (

@@ -25,7 +25,7 @@ const itemVariants = {
    visible: {
       y: 0,
       opacity: 1,
-},
+   },
 };
 
 export default function Portfolio() {
@@ -68,7 +68,7 @@ export default function Portfolio() {
                <div className="flex items-center justify-center mb-8">
                   <Code className="mr-2 h-6 w-6 text-primary" />
                   <span className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                     Frontend Engineer
+                     Full Stack Engineer
                   </span>
                </div>
             </motion.div>
@@ -112,23 +112,23 @@ export default function Portfolio() {
                   variants={containerVariants}>
                   {isLoading
                      ? [1, 2, 3, 4, 5, 6].map((i) => (
-                          <motion.div
-                             key={i}
-                             variants={itemVariants}>
-                             <ProjectCardSkeleton />
-                          </motion.div>
-                       ))
+                        <motion.div
+                           key={i}
+                           variants={itemVariants}>
+                           <ProjectCardSkeleton />
+                        </motion.div>
+                     ))
                      : filteredProjects?.map((project: any) => (
-                          <motion.div
-                             key={project?.id}
-                             variants={itemVariants}
-                             layout
-                             initial={{ opacity: 0 }}
-                             animate={{ opacity: 1 }}
-                             exit={{ opacity: 0 }}>
-                             <ProjectCard project={project} />
-                          </motion.div>
-                       ))}
+                        <motion.div
+                           key={project?.id}
+                           variants={itemVariants}
+                           layout
+                           initial={{ opacity: 0 }}
+                           animate={{ opacity: 1 }}
+                           exit={{ opacity: 0 }}>
+                           <ProjectCard project={project} />
+                        </motion.div>
+                     ))}
                </motion.div>
             </AnimatePresence>
 

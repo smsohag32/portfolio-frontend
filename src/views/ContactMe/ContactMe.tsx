@@ -111,13 +111,13 @@ export default function ContactMe() {
                            <code>
                               <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
                               <span className="text-blue-600 dark:text-blue-400">
-                                 frontend_developer
+                                 fullstack_engineer
                               </span>{" "}
                               = {"{"}
                               <br />
                               &nbsp;&nbsp;
                               <span className="text-green-600 dark:text-green-400">role:</span>{" "}
-                              <span className="text-orange-600">&apos;Frontend Engineer&apos;</span>
+                              <span className="text-orange-600">&apos;Full Stack Engineer&apos;</span>
                               ,<br />
                               &nbsp;&nbsp;
                               <span className="text-green-600 dark:text-green-400">skills:</span> [

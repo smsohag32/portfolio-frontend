@@ -34,7 +34,7 @@ const Footer = () => {
                   <h2 className="text-2xl font-bold text-gray-800 flex items-center">
                      <Code className="mr-2" /> Mohammad Sohag Sheik
                   </h2>
-                  <p className="mt-2 text-start lg:text-center text-gray-600">Frontend Engineer</p>
+                  <p className="mt-2 text-start lg:text-center text-gray-600">Full Stack Engineer</p>
                </motion.div>
 
                <motion.div
