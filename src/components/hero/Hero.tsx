@@ -5,14 +5,10 @@ import profile from "@/assets/photo/sohag.png";
 import line from "@/assets/bg/line.svg";
 import { motion } from "framer-motion";
 import {
-   Code,
-   Braces,
    Terminal,
    ChevronRight,
    Github,
    Linkedin,
-   Briefcase,
-   Download,
    Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -43,17 +39,11 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
 
 const Hero = () => {
    const [isHovered, setIsHovered] = useState(false);
-   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
    const [mounted, setMounted] = useState(false);
    const router = useRouter();
 
    useEffect(() => {
       setMounted(true);
-      const handleMouseMove = (e: MouseEvent) => {
-         setMousePosition({ x: e.clientX, y: e.clientY });
-      };
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
    }, []);
 
    const containerVariants = {
