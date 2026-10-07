@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import profile from "@/assets/photo/sohag.png";
+import profile from "@/assets/photo/sohag3.jpg";
 import line from "@/assets/bg/line.svg";
 import { motion } from "framer-motion";
 import {

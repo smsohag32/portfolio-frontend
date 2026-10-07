@@ -14,7 +14,7 @@ import {
    Award,
    Terminal,
 } from "lucide-react";
-import myPhoto from "@/assets/photo/sohag2.jpg";
+import myPhoto from "@/assets/photo/sohag3.jpg";
 import SectionHeading from "@/components/ui/section-heading";
 import { experiences } from "@/data/experience";
 
