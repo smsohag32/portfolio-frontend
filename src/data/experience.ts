@@ -1,23 +1,44 @@
 import p2m from "@/assets/experience/p2m.png";
 import netcafe from "@/assets/experience/netcafe.png";
+import type { StaticImageData } from "next/image";
 
-export const experiences = [
+export interface ExperienceItem {
+   id: number;
+   title: string;
+   company: string;
+   duration: string;
+   location?: string;
+   img: StaticImageData;
+   highlights: string[];
+   skills: string[];
+   current?: boolean;
+}
+
+export const experiences: ExperienceItem[] = [
    {
       id: 1,
-      title: "Junior Software Engineer (Full-Stack)",
+      title: "Associate Software Engineer (Front-End)",
       company: "Project 2morrow Software Ltd.",
       duration: "Jan 2024 - Present",
+      location: "Dhaka, Bangladesh",
       img: p2m,
-      description:
-         "As a Full Stack Engineer, I build responsive, user-focused interfaces for fintech and large-scale applications, ensuring scalability and performance. I've contributed to impactful projects like 'Bulk Pro,' used by a prominent bank, and 'Let's Meet,' a meeting management automation solution. My work reflects a commitment to delivering reliable and intuitive solutions.",
+      highlights: [
+         "Engineered a high-density loan recovery analytics dashboard (Loan Back) with real-time KPI metrics and automated PTP tracking workflows.",
+         "Developed a multi-step batch processing UI (Bulk Pro) to automate operations for thousands of accounts simultaneously with real-time trackers.",
+         "Architected a drag-and-drop agenda management module and embedded document viewer for paperless meetings (Board Flow).",
+         "Built an executive-grade MIS dashboard (C PANEL) featuring dynamic reporting widgets and OCR document upload panels.",
+         "Developed an enterprise Fraud Risk Management platform (TAP FRAUD) for real-time banking fraud detection with interactive Recharts dashboards.",
+      ],
       skills: [
-         "React",
+         "React.js",
          "Next.js",
          "TypeScript",
-         "Responsive Design",
-         "Performance Optimization",
-         "Fintech",
-         "Large-scale Applications",
+         "Redux Toolkit",
+         "RTK Query",
+         "Recharts",
+         "Tailwind CSS",
+         "REST APIs",
+         "WebSockets",
       ],
       current: true,
    },
@@ -26,15 +47,20 @@ export const experiences = [
       title: "Network Engineer",
       company: "Net Cafe Internet",
       duration: "Dec 2022 - Aug 2023",
+      location: "Dhaka, Bangladesh",
       img: netcafe,
-      description:
-         "Monitored and maintained network infrastructure, ensuring uninterrupted internet connectivity. Efficiently troubleshot hardware and software issues, contributing to seamless operations and improved user experience.",
+      highlights: [
+         "Monitored and maintained network infrastructure, ensuring 99.9% uptime and uninterrupted connectivity.",
+         "Efficiently troubleshot hardware and software issues, reducing system downtime and improving customer satisfaction.",
+         "Managed routing, switching, and bandwidth distribution for optimal network performance.",
+      ],
       skills: [
          "Network Infrastructure",
          "Network Monitoring",
          "Troubleshooting",
          "Hardware Maintenance",
-         "Software Maintenance",
+         "System Support",
       ],
+      current: false,
    },
 ];

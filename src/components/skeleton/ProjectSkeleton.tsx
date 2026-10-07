@@ -1,29 +1,29 @@
 "use client";
 
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
+/** Loading placeholder that mirrors the layout of ProjectCard */
 const ProjectCardSkeleton = () => {
    return (
-      <Card className="w-full h-full group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]">
-         <CardContent className="p-6">
-            <div className="flex items-center mb-6 space-x-2">
-               <Skeleton className="w-3 h-3 rounded-full" />
-               <Skeleton className="w-3 h-3 rounded-full" />
-               <Skeleton className="w-3 h-3 rounded-full" />
+      <div className="flex h-full w-full flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white dark:border-slate-800 dark:bg-slate-900">
+         <Skeleton className="aspect-[16/10] w-full rounded-none" />
+         <div className="flex flex-1 flex-col p-6">
+            <Skeleton className="mb-3 h-3 w-24" />
+            <Skeleton className="mb-3 h-6 w-3/4" />
+            <Skeleton className="mb-2 h-4 w-full" />
+            <Skeleton className="mb-5 h-4 w-2/3" />
+            <div className="mb-6 flex gap-2">
+               <Skeleton className="h-6 w-16 rounded-lg" />
+               <Skeleton className="h-6 w-20 rounded-lg" />
+               <Skeleton className="h-6 w-14 rounded-lg" />
             </div>
-            <Skeleton className="h-8 w-3/4 mb-4" />
-            <Skeleton className="h-4 w-full mb-2" />
-            <Skeleton className="h-4 w-full mb-2" />
-            <Skeleton className="h-4 w-3/4 mb-4" />
-            <Skeleton className="h-60 w-full rounded-xl mb-12" />
-            <div className="flex justify-between items-center">
-               <Skeleton className="w-10 h-10 rounded-full" />
-               <Skeleton className="w-32 h-10 rounded" />
+            <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-5 dark:border-slate-800">
+               <Skeleton className="h-9 w-20 rounded-full" />
+               <Skeleton className="h-9 w-32 rounded-full" />
             </div>
-         </CardContent>
-      </Card>
+         </div>
+      </div>
    );
 };
 

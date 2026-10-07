@@ -1,56 +1,84 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Sandpack } from "@codesandbox/sandpack-react";
+import { TerminalSquare } from "lucide-react";
+import SectionHeading from "@/components/ui/section-heading";
 
-const Playground = () => {
-   const [code] = useState(`console.log("Welcome to the JavaScript Playground!");
+const defaultCode = `// Welcome to the Live JavaScript Playground!
+console.log("🚀 Initializing JavaScript Environment...");
 
-function greet(name) {
-  return \`Hello, \${name}!\`;
+const engineer = {
+  name: "Mohammad Sohag Sheik",
+  role: "Full Stack Engineer",
+  experienceYears: 3,
+  skills: ["React", "Next.js", "TypeScript", "Node.js", "Express.js"],
+  isOpenToOpportunities: true
+};
+
+function getSummary(profile) {
+  return \`\${profile.name} (\${profile.role}) - \${profile.experienceYears}+ Years Exp.\`;
 }
 
-console.log(greet("Coder"));
+console.log(getSummary(engineer));
+console.log("Skills:", engineer.skills.join(" • "));
+`;
 
-// Try modifying this code and check the console!
-// Here are some ideas:
-// 1. Create an array and use array methods
-// 2. Write a simple loop
-// 3. Define an object and access its properties`);
+const Playground = () => {
+   const [code] = useState(defaultCode);
 
    return (
-      <div className="min-h-screen pt-20 pb-10 bg-[#fafafa] dark:bg-gray-900">
-         <div className="main-container">
-            <h1 className="text-4xl md:text-4xl text-center font-medium text-des mb-6">
-               {"< JavaScript Playground />"}
-            </h1>
+      <section className="relative min-h-screen overflow-hidden bg-slate-50/50 pb-24 pt-28 dark:bg-slate-950/50">
+         {/* Ambient Glow */}
+         <div className="pointer-events-none absolute left-1/2 top-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-blue-500/5 blur-[140px]" />
 
-            <Card className="w-full overflow-hidden shadow-sm">
-               <CardContent className="p-0">
-                  <Sandpack
-                     template="vanilla"
-                     theme="light"
-                     files={{
-                        "/index.js": code,
-                     }}
-                     options={{
-                        showLineNumbers: true,
-                        showTabs: true,
-                        editorHeight: 500,
-                        autorun: true,
-                        showConsoleButton: false,
+         <div className="main-container relative">
+            <SectionHeading
+               as="h1"
+               badge="Live Editor"
+               icon={TerminalSquare}
+               title="JavaScript"
+               highlight="Playground"
+               description="Write, run, and test JavaScript snippets directly in your browser with real-time console execution."
+            />
 
-                        showConsole: true,
-                     }}
-                     customSetup={{
-                        entry: "/index.js",
-                     }}
-                  />
-               </CardContent>
-            </Card>
+            <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-xl shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900">
+               {/* Terminal Window Header Bar */}
+               <div className="flex items-center justify-between border-b border-slate-200/80 bg-slate-100/70 px-6 py-3 dark:border-slate-800 dark:bg-slate-950/70">
+                  <div className="flex items-center gap-2">
+                     <span className="h-3 w-3 rounded-full bg-rose-500/80" />
+                     <span className="h-3 w-3 rounded-full bg-amber-500/80" />
+                     <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
+                     <span className="ml-3 font-mono text-xs text-slate-500 dark:text-slate-400">
+                        playground.js
+                     </span>
+                  </div>
+                  <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                     Interactive Sandpack Console
+                  </span>
+               </div>
+
+               <Sandpack
+                  template="vanilla"
+                  theme="auto"
+                  files={{
+                     "/index.js": code,
+                  }}
+                  options={{
+                     showLineNumbers: true,
+                     showTabs: true,
+                     editorHeight: 520,
+                     autorun: true,
+                     showConsoleButton: false,
+                     showConsole: true,
+                  }}
+                  customSetup={{
+                     entry: "/index.js",
+                  }}
+               />
+            </div>
          </div>
-      </div>
+      </section>
    );
 };
 

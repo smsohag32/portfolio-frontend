@@ -3,13 +3,9 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Globe, ChevronRight } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Globe, Github, ImageOff } from "lucide-react";
 
 interface Feature {
    title: string;
@@ -36,93 +32,139 @@ interface Project {
    technologies: string[];
 }
 
-const ProjectCard = ({ project }: { project: Project }) => {
-   return (
-      <TooltipProvider>
-         <CardContainer className="inter-var w-full h-full">
-            <CardBody className="bg-gray-50 relative h-full w-full group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]  rounded-xl p-6 border">
-               <CardItem
-                  translateZ="30"
-                  className="h-full">
-                  <div className="flex items-center mb-6">
-                     <motion.div
-                        className="w-3 h-3 rounded-full bg-red-500 mr-2"
-                        whileHover={{ scale: 1.2 }}
-                     />
-                     <motion.div
-                        className="w-3 h-3 rounded-full bg-yellow-500 mr-2"
-                        whileHover={{ scale: 1.2 }}
-                     />
-                     <motion.div
-                        className="w-3 h-3 rounded-full bg-green-500"
-                        whileHover={{ scale: 1.2 }}
-                     />
-                  </div>
-               </CardItem>
-               <CardItem
-                  translateZ="10"
-                  className="text-2xl font-bold text-neutral-600 dark:text-white">
-                  {project.name}
-               </CardItem>
-               <CardItem
-                  as="p"
-                  translateZ="10"
-                  className="text-neutral-500 line-clamp-3 text-sm max-w-sm mt-2 dark:text-neutral-300">
-                  {project.description}
-               </CardItem>
-               <CardItem
-                  translateZ="70"
-                  rotateX={20}
-                  rotateZ={-10}
-                  className="w-full mt-4">
-                  {project.image[0] ? (
-                     <Image
-                        src={project.image[0]}
-                        alt={project.name}
-                        width={400}
-                        height={280}
-                        className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                     />
-                  ) : (
-                     <div className="h-60 w-full object-cover rounded-xl bg-stone-100 group-hover/card:shadow-xl"></div>
-                  )}
-               </CardItem>
+const MAX_TECH = 4;
 
-               <div className="flex justify-between items-center  mt-12">
-                  <div className="flex gap-4">
-                     <LinkButton
-                        href={project.link.live}
-                        icon={<Globe className="w-5 h-5" />}
-                     />
-                  </div>
-                  <CardItem
-                     translateZ="10"
-                     rotateX={2}
-                     rotateZ={-0}>
-                     <motion.div className="flex items-center justify-center lg:justify-start">
-                        <Link href={`/portfolio/${project?._id}`}>
-                           <Button className="bg-black rounded-full px-4 text-white hover:bg-gray-800">
-                              View Details <ChevronRight className=" h-4 w-4" />
-                           </Button>
-                        </Link>
-                     </motion.div>
-                  </CardItem>
+const ProjectCard = ({ project }: { project: Project }) => {
+   const technologies = project?.technologies ?? [];
+   const visibleTech = technologies.slice(0, MAX_TECH);
+   const extraTech = technologies.length - visibleTech.length;
+   const detailsHref = `/portfolio/${project?._id}`;
+
+   return (
+      <motion.article
+         initial={{ opacity: 0, y: 30 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         viewport={{ once: true, margin: "-60px" }}
+         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+         className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30">
+         {/* Media */}
+         <Link
+            href={detailsHref}
+            aria-label={`View details of ${project?.name}`}
+            className="relative block aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-800">
+            {project?.image?.[0] ? (
+               <Image
+                  src={project.image[0]}
+                  alt={project.name}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+               />
+            ) : (
+               <div className="flex h-full w-full items-center justify-center text-slate-400">
+                  <ImageOff className="h-10 w-10" />
                </div>
-            </CardBody>
-         </CardContainer>
-      </TooltipProvider>
+            )}
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-90" />
+
+            {/* Category pill */}
+            {project?.category && (
+               <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-white/85 px-3 py-1 text-xs font-semibold capitalize text-slate-800 shadow-sm backdrop-blur-md">
+                  {project.category}
+               </span>
+            )}
+
+            {/* Hover CTA */}
+            <span className="absolute bottom-4 right-4 flex h-11 w-11 translate-y-3 items-center justify-center rounded-full bg-white text-slate-900 opacity-0 shadow-lg transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+               <ArrowUpRight className="h-5 w-5" />
+            </span>
+         </Link>
+
+         {/* Body */}
+         <div className="flex flex-1 flex-col p-6">
+            {project?.type && (
+               <span className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-400">
+                  {project.type}
+               </span>
+            )}
+
+            <h3 className="text-xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+               <Link href={detailsHref}>{project?.name}</Link>
+            </h3>
+
+            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+               {project?.description}
+            </p>
+
+            {visibleTech.length > 0 && (
+               <ul className="mt-5 flex flex-wrap gap-2">
+                  {visibleTech.map((tech) => (
+                     <li
+                        key={tech}
+                        className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                        {tech}
+                     </li>
+                  ))}
+                  {extraTech > 0 && (
+                     <li className="rounded-lg border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300">
+                        +{extraTech}
+                     </li>
+                  )}
+               </ul>
+            )}
+
+            {/* Footer actions */}
+            <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-5 dark:border-slate-800">
+               <div className="flex items-center gap-2">
+                  {project?.link?.live && (
+                     <IconLink
+                        href={project.link.live}
+                        label="Live preview">
+                        <Globe className="h-4 w-4" />
+                        <span>Live</span>
+                     </IconLink>
+                  )}
+                  {project?.link?.client && (
+                     <IconLink
+                        href={project.link.client}
+                        label="Source code">
+                        <Github className="h-4 w-4" />
+                        <span>Code</span>
+                     </IconLink>
+                  )}
+               </div>
+
+               <Link
+                  href={detailsHref}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:gap-2.5 hover:bg-blue-600 dark:bg-white dark:text-slate-900 dark:hover:bg-blue-400">
+                  Case Study
+                  <ArrowUpRight className="h-4 w-4" />
+               </Link>
+            </div>
+         </div>
+      </motion.article>
    );
 };
 
-// Reusable Link Button Component
-function LinkButton({ href, icon }: { href: string; icon: React.ReactNode }) {
+function IconLink({
+   href,
+   label,
+   children,
+}: {
+   href: string;
+   label: string;
+   children: React.ReactNode;
+}) {
    return (
       <a
          href={href}
          target="_blank"
          rel="noopener noreferrer"
-         className="bg-white w-full !Z-50 border border-slate-200 cursor-pointer dark:bg-black text-black flex items-center gap-2 dark:text-white p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300">
-         {icon} <span>Preview</span>
+         aria-label={label}
+         className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition-colors duration-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white dark:border-slate-700 dark:text-slate-300 dark:hover:border-white dark:hover:bg-white dark:hover:text-slate-900">
+         {children}
       </a>
    );
 }

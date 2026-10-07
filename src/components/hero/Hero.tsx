@@ -10,6 +10,7 @@ import {
    Github,
    Linkedin,
    Mail,
+   Code,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -19,8 +20,8 @@ import { contactsData } from "@/data/contacts";
 import { useRouter } from "next/navigation";
 
 const stats = [
-   { id: 1, label: "Projects", value: 20, suffix: "+" },
-   { id: 2, label: "Years of Experience", value: 1.5, decimals: 1, suffix: "+" },
+   { id: 1, label: "Projects", value: 30, suffix: "+" },
+   { id: 2, label: "Years of Experience", value: 3, decimals: 0, suffix: "+" },
 ];
 
 function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
@@ -38,7 +39,6 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
 }
 
 const Hero = () => {
-   const [isHovered, setIsHovered] = useState(false);
    const [mounted, setMounted] = useState(false);
    const router = useRouter();
 
@@ -150,119 +150,65 @@ const Hero = () => {
                variants={itemVariants}
                initial="hidden"
                animate="visible"
-               className="w-full lg:w-2/5 relative"
+               className="w-full lg:w-2/5 relative flex justify-center mt-12 lg:mt-0"
             >
-               <div className="relative z-20">
-                  {/* Glassmorphism Code Card */}
+               <div className="relative z-20 w-full max-w-[340px] lg:max-w-sm">
+                  {/* Main Profile Card */}
                   <motion.div
-                     whileHover={{ y: -5 }}
-                     onMouseEnter={() => setIsHovered(true)}
-                     onMouseLeave={() => setIsHovered(false)}
-                     className="relative bg-white/40 backdrop-blur-3xl border border-white/30 p-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden group min-h-[400px] flex flex-col justify-center"
+                     whileHover={{ y: -8 }}
+                     className="relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/60 dark:border-slate-800 p-3 rounded-[2.5rem] shadow-2xl overflow-hidden group"
                   >
-                     <div className="flex gap-2 mb-8">
-                        <div className="w-3 h-3 rounded-full bg-red-400" />
-                        <div className="w-3 h-3 rounded-full bg-amber-400" />
-                        <div className="w-3 h-3 rounded-full bg-emerald-400" />
+                     <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-slate-100 dark:bg-slate-800/50">
+                        <Image
+                           src={profile}
+                           alt="Sohag"
+                           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                           priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                        
+                        <div className="absolute bottom-6 left-0 right-0 flex justify-center translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                           <div className="flex gap-4">
+                              <SocialLink href={contactsData?.github} icon={<Github size={20} />} />
+                              <SocialLink href={contactsData?.linkedin} icon={<Linkedin size={20} />} />
+                              <SocialLink href="mailto:sohagsheik32@gmail.com" icon={<Mail size={20} />} />
+                           </div>
+                        </div>
                      </div>
+                  </motion.div>
 
-                     <pre className="font-mono text-[13px] lg:text-sm leading-relaxed">
-                        <code className="space-y-2">
-                           <div className="flex items-start gap-2">
-                              <span className="text-blue-500 italic">const</span>
-                              <span className="text-emerald-600 font-semibold">sohag</span>
-                              <span className="text-slate-400">=</span>
-                              <span className="text-slate-400">{"{"}</span>
-                           </div>
-                           <div className="pl-6 group-hover:pl-8 transition-all">
-                              <span className="text-slate-500">frontend:</span>
-                              <span className="text-slate-400">[</span>
-                              <span className="text-amber-600">&apos;React&apos;</span>,
-                              <span className="text-amber-600">&apos;Next.js&apos;</span>,
-                              <span className="text-amber-600">&apos;Tailwind&apos;</span>
-                              <span className="text-slate-400">]</span>,
-                           </div>
-                           <div className="pl-6 group-hover:pl-8 transition-all">
-                              <span className="text-slate-500">backend:</span>
-                              <span className="text-slate-400">[</span>
-                              <span className="text-amber-600">&apos;Node.js&apos;</span>,
-                              <span className="text-amber-600">&apos;Express&apos;</span>,
-                              <span className="text-amber-600">&apos;Mongoose&apos;</span>
-                              <span className="text-slate-400">]</span>,
-                           </div>
-                           <div className="pl-6 group-hover:pl-8 transition-all">
-                              <span className="text-slate-500">database:</span>
-                              <span className="text-slate-400">[</span>
-                              <span className="text-amber-600">&apos;MongoDB&apos;</span>,
-                              <span className="text-amber-600">&apos;MySQL&apos;</span>,
-                              <span className="text-amber-600">&apos;Postgres&apos;</span>
-                              <span className="text-slate-400">]</span>,
-                           </div>
-                           <div className="pl-6 group-hover:pl-8 transition-all">
-                              <span className="text-slate-500">tools:</span>
-                              <span className="text-slate-400">[</span>
-                              <span className="text-amber-600">&apos;Docker&apos;</span>,
-                              <span className="text-amber-600">&apos;AWS&apos;</span>,
-                              <span className="text-amber-600">&apos;Git&apos;</span>
-                              <span className="text-slate-400">]</span>,
-                           </div>
-                           <div className="pl-6 group-hover:pl-8 transition-all">
-                              <span className="text-slate-500">creative:</span>
-                              <span className="text-violet-600 font-semibold">true</span>
-                           </div>
-                           <div className="pl-0 text-slate-400">{"}"};</div>
-                        </code>
-                     </pre>
+                  {/* Floating Badges */}
+                  <motion.div 
+                     animate={{ y: [0, -12, 0] }}
+                     transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                     className="absolute -left-8 lg:-left-16 top-1/4 bg-white/90 dark:bg-slate-800/90 p-3.5 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 flex items-center gap-3 backdrop-blur-md"
+                  >
+                     <div className="p-2.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-xl">
+                        <Code size={20} />
+                     </div>
+                     <div>
+                        <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">Full Stack</p>
+                        <p className="text-xs font-medium text-slate-500">Developer</p>
+                     </div>
+                  </motion.div>
 
-                     {/* Professional Profile Hover Overlay */}
-                     <motion.div
-                        className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"
-                     >
-                        <motion.div
-                           className="relative w-48 h-48 lg:w-56 lg:h-56 mb-6 px-2"
-                           initial={{ scale: 0.9, opacity: 0 }}
-                           animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
-                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        >
-                           <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-blue-500/20 rounded-full blur-2xl animate-pulse" />
-                           <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.3)]">
-                              <Image
-                                 src={profile}
-                                 alt="Sohag"
-                                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                              />
-                           </div>
-                        </motion.div>
-
-                        <motion.div
-                           initial={{ y: 20, opacity: 0 }}
-                           animate={isHovered ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                           transition={{ duration: 0.5, delay: 0.1 }}
-                        >
-                           <h3 className="text-white font-bold text-3xl mb-1 tracking-tight">Sohag Sheik</h3>
-                           <p className="text-emerald-400 font-semibold text-sm mb-8 uppercase tracking-[0.3em]">Full Stack Engineer</p>
-
-                           <div className="flex gap-5 justify-center">
-                              <SocialLink href={contactsData?.github} icon={<Github size={22} />} />
-                              <SocialLink href={contactsData?.linkedin} icon={<Linkedin size={22} />} />
-                              <SocialLink href="mailto:sohagsheik32@gmail.com" icon={<Mail size={22} />} />
-                           </div>
-                        </motion.div>
-
-                        <motion.div
-                           className="absolute bottom-8 left-8 right-8 border-t border-white/10 pt-4"
-                           initial={{ opacity: 0 }}
-                           animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
-                           transition={{ duration: 0.5, delay: 0.3 }}
-                        >
-                           <p className="text-slate-300 text-xs font-medium italic opacity-80 uppercase tracking-widest">&quot;Crafting Digital Excellence&quot;</p>
-                        </motion.div>
-                     </motion.div>
+                  <motion.div 
+                     animate={{ y: [0, 12, 0] }}
+                     transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+                     className="absolute -right-6 lg:-right-12 bottom-1/4 bg-white/90 dark:bg-slate-800/90 p-3.5 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 flex items-center gap-3 backdrop-blur-md"
+                  >
+                     <div className="p-2.5 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-xl">
+                        <Terminal size={20} />
+                     </div>
+                     <div>
+                        <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">3+ Years</p>
+                        <p className="text-xs font-medium text-slate-500">Experience</p>
+                     </div>
                   </motion.div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-400/20 blur-3xl rounded-full z-0" />
-                  <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-400/20 blur-3xl rounded-full z-0" />
+                  <div className="absolute -top-12 -right-12 w-48 h-48 bg-blue-400/20 blur-[60px] rounded-full -z-10 pointer-events-none" />
+                  <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-emerald-400/20 blur-[60px] rounded-full -z-10 pointer-events-none" />
                </div>
             </motion.div>
          </div>

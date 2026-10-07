@@ -1,35 +1,21 @@
 "use client";
 import { FloatingLabelInput } from "@/components/ui/floating-input";
 import { FloatingTextarea } from "@/components/ui/floating-textarea";
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, Mail } from "lucide-react";
 import React from "react";
+import SectionHeading from "@/components/ui/section-heading";
 
 const GetinTouch = () => {
    return (
       <div className="main-container flex items-center flex-col justify-center py-16">
-         <div className="flex font-flecha items-center mt-6 w-full justify-center">
-            <div className="mb-6 flex items-end gap-4">
-               <div className="">
-                  {" "}
-                  <h2 className="lg:text-[64px] text-[35px] lg:leading-[76.8px] leading-[50px] font-normal ">
-                     Let&apos;s Get in Touch
-                  </h2>
-                  <span className="pb-5 flex items-center justify-center mt-4">
-                     <svg
-                        width="135"
-                        height="2"
-                        viewBox="0 0 135 2"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                           d="M0 1H135"
-                           stroke="#545454"
-                        />
-                     </svg>
-                  </span>
-               </div>
-            </div>
-         </div>
+         <SectionHeading
+            className="mb-0"
+            badge="Contact"
+            icon={Mail}
+            title="Let's Work"
+            highlight="Together"
+            description="Have a project in mind or an opportunity to discuss? Drop a message or book a quick call — I usually reply within 24 hours."
+         />
 
          <div className=" mt-[48px] w-full lg:max-w-[70%]">
             <form className="w-full space-y-7 lg:col-span-2">
