@@ -3,8 +3,6 @@ import Header from "@/components/header/Header";
 import type { Metadata } from "next";
 import "aos/dist/aos.css";
 import AOSProvider from "@/Providers/AosProviders";
-import SmoothCursor from "@/components/ui/SmoothCursor";
-
 export const metadata: Metadata = {
    title: "Sohag Sheik - Full Stack Engineer",
    description: "",
@@ -16,8 +14,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <div className="relative">
-         <SmoothCursor />
+      <div>
          <AOSProvider>
             <Header />
             <div className="min-h-[65vh]">{children}</div>
