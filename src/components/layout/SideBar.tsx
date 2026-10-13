@@ -29,7 +29,7 @@ import {
    DropdownMenuSeparator,
    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Bell, ChevronDown, LogOut, Settings, User, ChartArea } from "lucide-react";
+import { ChevronDown, LogOut, Settings, User, ChartArea, FolderKanban, PlusCircle, ExternalLink } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux-store";
@@ -51,7 +51,24 @@ const navItems: NavItem[] = [
    {
       title: "Projects",
       href: "/dashboard/sohag/projects",
-      icon: <Bell className="h-4 w-4" />,
+      icon: <FolderKanban className="h-4 w-4" />,
+      subItems: [
+         {
+            title: "Project List & Serial",
+            href: "/dashboard/sohag/projects",
+            icon: <FolderKanban className="h-3.5 w-3.5" />,
+         },
+         {
+            title: "Add New Project",
+            href: "/dashboard/sohag/projects/add",
+            icon: <PlusCircle className="h-3.5 w-3.5" />,
+         },
+      ],
+   },
+   {
+      title: "Live Portfolio",
+      href: "/portfolio",
+      icon: <ExternalLink className="h-4 w-4" />,
    },
 ];
 

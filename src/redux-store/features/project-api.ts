@@ -55,6 +55,16 @@ const projectApi = apiSlice.injectEndpoints({
          }),
          invalidatesTags: ["project"],
       }),
+
+      // REORDER projects
+      reorderProjects: builder.mutation({
+         query: (body: { projectIds: string[] }) => ({
+            url: `/project/reorder`,
+            method: "PUT",
+            body,
+         }),
+         invalidatesTags: ["project"],
+      }),
    }),
 });
 
@@ -65,4 +75,5 @@ export const {
    useCreateProjectMutation,
    useUpdateProjectMutation,
    useDeleteProjectMutation,
+   useReorderProjectsMutation,
 } = projectApi;
