@@ -1,7 +1,19 @@
 "use client";
 
-import React, { useRef, useLayoutEffect, useState } from "react";
-import { Globe, Server, PenTool, Layers, CheckCircle2 } from "lucide-react";
+import React, { useRef, useLayoutEffect, useState, useMemo } from "react";
+import {
+   Globe,
+   Server,
+   Database,
+   Wrench,
+   Search,
+   CheckCircle,
+   Sparkles,
+   Code2,
+   Cpu,
+   Layers,
+   X,
+} from "lucide-react";
 import SectionHeading from "@/components/ui/section-heading";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,101 +22,321 @@ if (typeof window !== "undefined") {
    gsap.registerPlugin(ScrollTrigger);
 }
 
-const skillCategories = [
+interface SkillItem {
+   name: string;
+   category: "frontend" | "backend" | "database" | "tools";
+   categoryName: string;
+   level: number; // percentage
+   badge: "Expert" | "Advanced" | "Proficient";
+   useCase: string;
+   color: string;
+}
+
+const skillsData: SkillItem[] = [
+   // Frontend
+   {
+      name: "React.js",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 95,
+      badge: "Expert",
+      useCase: "Component architecture, hooks, custom state & virtual DOM",
+      color: "from-cyan-500 to-blue-500",
+   },
+   {
+      name: "Next.js",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 92,
+      badge: "Expert",
+      useCase: "App Router, Server Components, SSR/SSG & Turbopack",
+      color: "from-slate-700 to-slate-900",
+   },
+   {
+      name: "TypeScript",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 90,
+      badge: "Expert",
+      useCase: "Strict type safety, generic interfaces & scalable codebases",
+      color: "from-blue-600 to-indigo-600",
+   },
+   {
+      name: "JavaScript (ES6+)",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 95,
+      badge: "Expert",
+      useCase: "Modern async/await, closures, prototypes & DOM APIs",
+      color: "from-amber-400 to-amber-600",
+   },
+   {
+      name: "Tailwind CSS",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 95,
+      badge: "Expert",
+      useCase: "Responsive utility styling, design tokens & dark mode",
+      color: "from-teal-400 to-cyan-600",
+   },
+   {
+      name: "Redux Toolkit & RTK Query",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 88,
+      badge: "Advanced",
+      useCase: "Global state slices, normalized caching & query hooks",
+      color: "from-purple-500 to-violet-700",
+   },
+   {
+      name: "TanStack Query",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 85,
+      badge: "Advanced",
+      useCase: "Server state synchronization, pagination & optimistic updates",
+      color: "from-rose-500 to-red-600",
+   },
+   {
+      name: "GSAP 3 & Framer Motion",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 88,
+      badge: "Advanced",
+      useCase: "60fps ScrollTrigger timelines, micro-interactions & physics",
+      color: "from-emerald-500 to-green-600",
+   },
+   {
+      name: "Shadcn UI & Radix",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 92,
+      badge: "Expert",
+      useCase: "Accessible WAI-ARIA primitives, modal dialogs & dropdowns",
+      color: "from-slate-800 to-black",
+   },
+   {
+      name: "HTML5 & Semantic Web",
+      category: "frontend",
+      categoryName: "Frontend",
+      level: 95,
+      badge: "Expert",
+      useCase: "SEO semantic tags, web accessibility (a11y) & rich metadata",
+      color: "from-orange-500 to-amber-600",
+   },
+
+   // Backend
+   {
+      name: "Node.js",
+      category: "backend",
+      categoryName: "Backend",
+      level: 90,
+      badge: "Expert",
+      useCase: "Event-driven runtime, non-blocking I/O & microservices",
+      color: "from-green-600 to-emerald-700",
+   },
+   {
+      name: "Express.js",
+      category: "backend",
+      categoryName: "Backend",
+      level: 88,
+      badge: "Advanced",
+      useCase: "REST routing, custom middleware, error handling & controllers",
+      color: "from-slate-600 to-slate-800",
+   },
+   {
+      name: "REST API Design",
+      category: "backend",
+      categoryName: "Backend",
+      level: 92,
+      badge: "Expert",
+      useCase: "Idempotent endpoints, HTTP status standards & JSON contracts",
+      color: "from-indigo-500 to-blue-600",
+   },
+   {
+      name: "JWT Authentication",
+      category: "backend",
+      categoryName: "Backend",
+      level: 90,
+      badge: "Expert",
+      useCase: "Stateless bearer tokens, refresh tokens & role-based RBAC",
+      color: "from-violet-500 to-purple-700",
+   },
+   {
+      name: "Socket.io / WebSockets",
+      category: "backend",
+      categoryName: "Backend",
+      level: 80,
+      badge: "Proficient",
+      useCase: "Bi-directional real-time events, room broadcasting & alerts",
+      color: "from-slate-700 to-slate-900",
+   },
+
+   // Database & Cloud
+   {
+      name: "MongoDB",
+      category: "database",
+      categoryName: "Databases",
+      level: 90,
+      badge: "Expert",
+      useCase: "NoSQL document collections, aggregation pipelines & indexing",
+      color: "from-emerald-500 to-green-700",
+   },
+   {
+      name: "Mongoose ODM",
+      category: "database",
+      categoryName: "Databases",
+      level: 90,
+      badge: "Expert",
+      useCase: "Schema validation, pre/post hooks, virtuals & population",
+      color: "from-red-600 to-amber-700",
+   },
+   {
+      name: "PostgreSQL & MySQL",
+      category: "database",
+      categoryName: "Databases",
+      level: 82,
+      badge: "Proficient",
+      useCase: "Relational queries, primary/foreign keys & ACID transactions",
+      color: "from-blue-600 to-sky-700",
+   },
+   {
+      name: "Cloudinary CDN",
+      category: "database",
+      categoryName: "Cloud & Media",
+      level: 88,
+      badge: "Advanced",
+      useCase: "Secure multipart asset uploads, responsive image optimization",
+      color: "from-blue-500 to-indigo-600",
+   },
+
+   // Tools & DevOps
+   {
+      name: "Git & GitHub",
+      category: "tools",
+      categoryName: "Tools & DevOps",
+      level: 92,
+      badge: "Expert",
+      useCase: "Version control, feature branching, pull requests & code reviews",
+      color: "from-orange-600 to-red-600",
+   },
+   {
+      name: "Docker Containers",
+      category: "tools",
+      categoryName: "Tools & DevOps",
+      level: 78,
+      badge: "Proficient",
+      useCase: "Containerized development environments & multi-stage builds",
+      color: "from-blue-500 to-sky-600",
+   },
+   {
+      name: "Vercel & Cloud Deploy",
+      category: "tools",
+      categoryName: "Tools & DevOps",
+      level: 90,
+      badge: "Expert",
+      useCase: "Edge deployments, environment variables, CI/CD pipelines",
+      color: "from-black to-slate-800",
+   },
+   {
+      name: "VS Code Suite",
+      category: "tools",
+      categoryName: "Tools & DevOps",
+      level: 95,
+      badge: "Expert",
+      useCase: "Debugging, snippets, linting, prettier & workflow acceleration",
+      color: "from-blue-600 to-indigo-700",
+   },
+   {
+      name: "Chrome & Redux DevTools",
+      category: "tools",
+      categoryName: "Tools & DevOps",
+      level: 92,
+      badge: "Expert",
+      useCase: "Network waterfall profiling, memory leak detection & state inspect",
+      color: "from-amber-500 to-blue-500",
+   },
+];
+
+const categoryTabs = [
+   { id: "all", label: "All Skills", icon: Layers, count: skillsData.length },
    {
       id: "frontend",
-      name: "Frontend Engineering",
-      icon: <Globe className="w-6 h-6" />,
-      description: "Modern UI architecture, responsive design systems & dynamic client state",
-      skills: [
-         { name: "React.js", level: "Expert", color: "from-cyan-500 to-blue-500" },
-         { name: "Next.js", level: "Expert", color: "from-slate-700 to-slate-900" },
-         { name: "TypeScript", level: "Advanced", color: "from-blue-600 to-indigo-600" },
-         { name: "JavaScript (ES6+)", level: "Expert", color: "from-amber-400 to-amber-600" },
-         { name: "Tailwind CSS", level: "Expert", color: "from-teal-400 to-cyan-600" },
-         { name: "Redux / RTK Query", level: "Advanced", color: "from-purple-500 to-violet-700" },
-         { name: "TanStack Query", level: "Advanced", color: "from-rose-500 to-red-600" },
-         { name: "HTML5 / Semantic", level: "Expert", color: "from-orange-500 to-amber-600" },
-         { name: "CSS3 / Animations", level: "Expert", color: "from-blue-500 to-cyan-500" },
-         { name: "Shadcn UI", level: "Expert", color: "from-slate-800 to-black" },
-         { name: "Framer Motion", level: "Advanced", color: "from-pink-500 to-violet-600" },
-         { name: "GSAP 3", level: "Advanced", color: "from-emerald-500 to-green-600" },
-         { name: "React Hook Form", level: "Advanced", color: "from-pink-600 to-rose-700" },
-         { name: "Recharts", level: "Proficient", color: "from-teal-500 to-emerald-600" },
-      ],
+      label: "Frontend & UI",
+      icon: Globe,
+      count: skillsData.filter((s) => s.category === "frontend").length,
    },
    {
       id: "backend",
-      name: "Backend & Systems",
-      icon: <Server className="w-6 h-6" />,
-      description: "Scalable REST APIs, authentication security, databases & microservices",
-      skills: [
-         { name: "Node.js", level: "Advanced", color: "from-green-600 to-emerald-700" },
-         { name: "Express.js", level: "Advanced", color: "from-slate-600 to-slate-800" },
-         { name: "MongoDB", level: "Advanced", color: "from-emerald-500 to-green-700" },
-         { name: "Mongoose ODM", level: "Advanced", color: "from-red-600 to-amber-700" },
-         { name: "PostgreSQL", level: "Proficient", color: "from-blue-600 to-sky-700" },
-         { name: "RESTful APIs", level: "Expert", color: "from-indigo-500 to-blue-600" },
-         { name: "JWT Auth", level: "Expert", color: "from-violet-500 to-purple-700" },
-         { name: "Socket.io", level: "Proficient", color: "from-slate-700 to-slate-900" },
-      ],
+      label: "Backend & APIs",
+      icon: Server,
+      count: skillsData.filter((s) => s.category === "backend").length,
+   },
+   {
+      id: "database",
+      label: "Databases & Cloud",
+      icon: Database,
+      count: skillsData.filter((s) => s.category === "database").length,
    },
    {
       id: "tools",
-      name: "DevOps & Tooling",
-      icon: <PenTool className="w-6 h-6" />,
-      description: "Version control, containerization, deployments & developer workflows",
-      skills: [
-         { name: "Git & GitHub", level: "Expert", color: "from-orange-600 to-red-600" },
-         { name: "Docker", level: "Proficient", color: "from-blue-500 to-sky-600" },
-         { name: "Vercel / Cloud", level: "Advanced", color: "from-black to-slate-800" },
-         { name: "VS Code Suite", level: "Expert", color: "from-blue-600 to-indigo-700" },
-         { name: "Chrome DevTools", level: "Expert", color: "from-amber-500 to-blue-500" },
-         { name: "Postman / Thunder", level: "Advanced", color: "from-orange-500 to-amber-600" },
-         { name: "Figma (UI/UX)", level: "Proficient", color: "from-purple-500 to-pink-500" },
-      ],
+      label: "DevOps & Tools",
+      icon: Wrench,
+      count: skillsData.filter((s) => s.category === "tools").length,
    },
 ];
 
 export default function SkillsSection() {
    const sectionRef = useRef<HTMLElement | null>(null);
    const [activeTab, setActiveTab] = useState<string>("all");
+   const [searchQuery, setSearchQuery] = useState<string>("");
+
+   // Filter skills based on tab and search query
+   const filteredSkills = useMemo(() => {
+      return skillsData.filter((skill) => {
+         const matchesTab = activeTab === "all" || skill.category === activeTab;
+         const matchesSearch =
+            searchQuery.trim() === "" ||
+            skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            skill.useCase.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            skill.categoryName.toLowerCase().includes(searchQuery.toLowerCase());
+         return matchesTab && matchesSearch;
+      });
+   }, [activeTab, searchQuery]);
 
    useLayoutEffect(() => {
       const section = sectionRef.current;
       if (!section) return;
 
       const ctx = gsap.context(() => {
-         // Staggered reveal for category boxes
+         // Animate skill cards entering viewport
          gsap.fromTo(
-            ".gsap-skill-box",
-            { opacity: 0, y: 40, scale: 0.95 },
+            ".gsap-skill-card",
+            { opacity: 0, y: 30, scale: 0.95 },
             {
                opacity: 1,
                y: 0,
                scale: 1,
-               duration: 0.8,
-               stagger: 0.15,
+               duration: 0.6,
+               stagger: 0.04,
                ease: "power3.out",
                scrollTrigger: {
                   trigger: section,
-                  start: "top 80%",
+                  start: "top 78%",
                   toggleActions: "play none none reverse",
                },
             }
          );
 
-         // Staggered pop-in for skill badges
+         // Animate progress bars filling
          gsap.fromTo(
-            ".gsap-skill-badge",
-            { opacity: 0, scale: 0.8, y: 15 },
+            ".gsap-skill-progress",
+            { width: "0%" },
             {
-               opacity: 1,
-               scale: 1,
-               y: 0,
-               duration: 0.5,
-               stagger: 0.02,
-               ease: "back.out(1.7)",
+               width: (index, target) => target.dataset.level || "80%",
+               duration: 1.1,
+               ease: "power2.out",
+               stagger: 0.03,
                scrollTrigger: {
                   trigger: section,
                   start: "top 75%",
@@ -112,134 +344,229 @@ export default function SkillsSection() {
                },
             }
          );
-
-         // Floating micro-animation on highlight badges
-         gsap.to(".gsap-float-pill", {
-            y: -6,
-            duration: 2.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            stagger: 0.2,
-         });
       }, sectionRef);
 
       return () => ctx.revert();
-   }, []);
-
-   const displayedCategories =
-      activeTab === "all"
-         ? skillCategories
-         : skillCategories.filter((cat) => cat.id === activeTab);
+   }, [filteredSkills]);
 
    return (
       <section
          ref={sectionRef}
-         className="py-24 relative overflow-hidden bg-white dark:bg-slate-950">
-         {/* Background Orbs */}
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
+         className="py-24 relative overflow-hidden bg-slate-50/50 dark:bg-slate-950">
+         {/* Background Glows */}
+         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/5 rounded-full blur-[140px]" />
 
          <div className="main-container relative z-10">
             <SectionHeading
-               badge="Engineering Stack"
-               icon={Layers}
+               badge="Core Competencies"
+               icon={Code2}
                title="Technical Skills &"
                highlight="Competencies"
-               description="A specialized toolkit refined over years of production engineering — designed for speed, robustness, and delightful user experiences."
+               description="A transparent breakdown of my core technical proficiencies, production experience, and engineering toolchain."
             />
 
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-               <button
-                  onClick={() => setActiveTab("all")}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
-                     activeTab === "all"
-                        ? "bg-slate-900 text-white shadow-md dark:bg-white dark:text-slate-900"
-                        : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
-                  }`}>
-                  All Technologies ({skillCategories.flatMap((c) => c.skills).length})
-               </button>
-               {skillCategories.map((cat) => (
-                  <button
-                     key={cat.id}
-                     onClick={() => setActiveTab(cat.id)}
-                     className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
-                        activeTab === cat.id
-                           ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                           : "bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
-                     }`}>
-                     {cat.name}
-                  </button>
-               ))}
+            {/* Top Spotlight Banner: Primary Daily Drivers */}
+            <div className="mb-12 overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/90">
+               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                  <div>
+                     <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+                        <Sparkles className="h-3.5 w-3.5" /> Tier 1 Production Drivers
+                     </span>
+                     <h3 className="mt-2 text-xl font-bold text-slate-900 dark:text-white">
+                        Specialized Core Stack
+                     </h3>
+                     <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                        The primary languages and frameworks I use every day to deliver enterprise applications.
+                     </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                     <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1.5 rounded-full">
+                        <CheckCircle className="h-4 w-4" /> 3+ Years Hands-on Experience
+                     </span>
+                  </div>
+               </div>
+
+               {/* Quick Highlight Pillars */}
+               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div className="rounded-2xl border border-blue-100 bg-blue-50/40 p-4 dark:border-blue-900/40 dark:bg-blue-950/20">
+                     <div className="text-sm font-bold text-slate-900 dark:text-white">
+                        React & Next.js
+                     </div>
+                     <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-0.5">
+                        Frontend Architecture
+                     </div>
+                     <p className="text-[11px] text-slate-500 mt-2 leading-tight">
+                        App Router, SSR/SSG & component systems
+                     </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-indigo-100 bg-indigo-50/40 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+                     <div className="text-sm font-bold text-slate-900 dark:text-white">
+                        TypeScript
+                     </div>
+                     <div className="text-xs text-indigo-600 dark:text-indigo-400 font-medium mt-0.5">
+                        Type-Safe Systems
+                     </div>
+                     <p className="text-[11px] text-slate-500 mt-2 leading-tight">
+                        Generics, strict typing & safe contracts
+                     </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20">
+                     <div className="text-sm font-bold text-slate-900 dark:text-white">
+                        Node & Express
+                     </div>
+                     <div className="text-xs text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">
+                        Scalable Backends
+                     </div>
+                     <p className="text-[11px] text-slate-500 mt-2 leading-tight">
+                        RESTful APIs, JWT & async pipelines
+                     </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-violet-100 bg-violet-50/40 p-4 dark:border-violet-900/40 dark:bg-violet-950/20">
+                     <div className="text-sm font-bold text-slate-900 dark:text-white">
+                        MongoDB & PostgreSQL
+                     </div>
+                     <div className="text-xs text-violet-600 dark:text-violet-400 font-medium mt-0.5">
+                        Modern Databases
+                     </div>
+                     <p className="text-[11px] text-slate-500 mt-2 leading-tight">
+                        Aggregation pipelines, indexing & ACID
+                     </p>
+                  </div>
+               </div>
             </div>
 
-            {/* Grid of Categories */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-               {displayedCategories.map((category) => (
+            {/* Controls Bar: Category Tabs & Search Box */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-8">
+               {/* Category Tabs */}
+               <div className="flex flex-wrap items-center justify-center gap-2">
+                  {categoryTabs.map((tab) => {
+                     const Icon = tab.icon;
+                     const isActive = activeTab === tab.id;
+                     return (
+                        <button
+                           key={tab.id}
+                           onClick={() => setActiveTab(tab.id)}
+                           className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 ${
+                              isActive
+                                 ? "bg-slate-900 text-white shadow-md shadow-slate-900/10 dark:bg-white dark:text-slate-900"
+                                 : "border border-slate-200/80 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:text-white"
+                           }`}>
+                           <Icon className="h-3.5 w-3.5" />
+                           <span>{tab.label}</span>
+                           <span
+                              className={`ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                                 isActive
+                                    ? "bg-white/20 text-white dark:bg-slate-900/20 dark:text-slate-900"
+                                    : "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400"
+                              }`}>
+                              {tab.count}
+                           </span>
+                        </button>
+                     );
+                  })}
+               </div>
+
+               {/* Quick Search Box */}
+               <div className="relative w-full sm:w-72">
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                  <input
+                     type="text"
+                     placeholder="Search skill (e.g. Next.js)..."
+                     value={searchQuery}
+                     onChange={(e) => setSearchQuery(e.target.value)}
+                     className="w-full rounded-full border border-slate-200/90 bg-white py-2 pl-9 pr-9 text-xs text-slate-900 shadow-xs outline-none transition-all placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
+                  />
+                  {searchQuery && (
+                     <button
+                        onClick={() => setSearchQuery("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                        <X className="h-3.5 w-3.5" />
+                     </button>
+                  )}
+               </div>
+            </div>
+
+            {/* Skills Grid: Clear, User-Friendly Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+               {filteredSkills.map((skill) => (
                   <div
-                     key={category.id}
-                     className="gsap-skill-box relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-200/80 bg-slate-50/50 p-6 sm:p-7 shadow-xs backdrop-blur-xl transition-all duration-300 hover:border-blue-300 hover:bg-white hover:shadow-xl dark:border-slate-800 dark:bg-slate-900/60 dark:hover:border-blue-500/40 dark:hover:bg-slate-900">
+                     key={skill.name}
+                     className="gsap-skill-card group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900/80 dark:hover:border-blue-500/40">
                      <div>
-                        {/* Header */}
-                        <div className="flex items-center gap-3.5 mb-3">
-                           <div className="p-3 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rounded-2xl border border-blue-100 dark:border-blue-900/40 shadow-xs">
-                              {category.icon}
+                        {/* Top Row: Name + Badge */}
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                           <div className="flex items-center gap-2">
+                              <span
+                                 className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${skill.color} shadow-xs flex-shrink-0`}
+                              />
+                              <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                 {skill.name}
+                              </h4>
                            </div>
-                           <div>
-                              <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-                                 {category.name}
-                              </h3>
-                              <span className="text-[11px] font-medium text-blue-600 dark:text-blue-400">
-                                 {category.skills.length} core tools
-                              </span>
-                           </div>
+                           <span
+                              className={`text-[10px] font-semibold px-2 py-0.5 rounded-md ${
+                                 skill.badge === "Expert"
+                                    ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/40"
+                                    : skill.badge === "Advanced"
+                                    ? "bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40"
+                                    : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                              }`}>
+                              {skill.badge}
+                           </span>
                         </div>
 
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
-                           {category.description}
+                        {/* Practical Use Case */}
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed min-h-[34px] line-clamp-2 mb-4">
+                           {skill.useCase}
                         </p>
-
-                        {/* Skill Badges */}
-                        <div className="flex flex-wrap gap-2">
-                           {category.skills.map((skill) => {
-                              const isHighlight =
-                                 skill.name === "React.js" ||
-                                 skill.name === "Next.js" ||
-                                 skill.name === "TypeScript" ||
-                                 skill.name === "Node.js" ||
-                                 skill.name === "GSAP 3";
-
-                              return (
-                                 <div
-                                    key={skill.name}
-                                    className={`gsap-skill-badge ${
-                                       isHighlight ? "gsap-float-pill" : ""
-                                    } group inline-flex items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-3 py-2 text-xs font-semibold text-slate-800 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-md dark:border-slate-800 dark:bg-slate-950/70 dark:text-slate-200 dark:hover:border-blue-400`}>
-                                    <span
-                                       className={`h-2 w-2 rounded-full bg-gradient-to-r ${skill.color} shadow-xs`}
-                                    />
-                                    <span>{skill.name}</span>
-                                    <span className="text-[10px] font-normal text-slate-400 dark:text-slate-500 ml-0.5">
-                                       {skill.level}
-                                    </span>
-                                 </div>
-                              );
-                           })}
-                        </div>
                      </div>
 
-                     {/* Footer stats badge */}
-                     <div className="mt-8 pt-4 border-t border-slate-200/60 dark:border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                        <span className="flex items-center gap-1 text-[11px]">
-                           <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> Production Verified
-                        </span>
-                        <span className="text-[11px] font-mono font-medium text-slate-500">
-                           Tier 1 Stack
-                        </span>
+                     {/* Bottom: Proficiency Bar with percentage */}
+                     <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                        <div className="flex items-center justify-between text-[11px] mb-1.5 font-medium">
+                           <span className="text-slate-400 dark:text-slate-500 font-mono">
+                              {skill.categoryName}
+                           </span>
+                           <span className="text-slate-700 dark:text-slate-300 font-mono font-semibold">
+                              {skill.level}%
+                           </span>
+                        </div>
+                        <div className="h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                           <div
+                              data-level={`${skill.level}%`}
+                              className={`gsap-skill-progress h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-300`}
+                              style={{ width: `${skill.level}%` }}
+                           />
+                        </div>
                      </div>
                   </div>
                ))}
             </div>
+
+            {/* Empty Search State */}
+            {filteredSkills.length === 0 && (
+               <div className="my-12 rounded-3xl border border-dashed border-slate-300 bg-white/60 p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
+                  <Cpu className="mx-auto h-10 w-10 text-slate-400 mb-2" />
+                  <p className="text-base font-semibold text-slate-700 dark:text-slate-300">
+                     No skills found matching &ldquo;{searchQuery}&rdquo;
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                     Try adjusting your search query or reset the category filter.
+                  </p>
+                  <button
+                     onClick={() => {
+                        setSearchQuery("");
+                        setActiveTab("all");
+                     }}
+                     className="mt-5 inline-flex items-center rounded-full bg-slate-900 px-5 py-2 text-xs font-semibold text-white transition-all hover:bg-blue-600 dark:bg-white dark:text-slate-900">
+                     Reset Filters
+                  </button>
+               </div>
+            )}
          </div>
       </section>
    );
