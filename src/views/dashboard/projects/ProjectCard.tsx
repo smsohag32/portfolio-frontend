@@ -42,16 +42,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
    handleDelete,
    isDeleting,
 }) => {
-   const [deleteProjectImage, { isLoading }] = useDeleteProjectImageMutation();
+   const [deleteProjectImage] = useDeleteProjectImageMutation();
+   const [removingImage, setRemovingImage] = React.useState<string | null>(null);
 
-
-   
    const handleRemoveImage = async (projectId: string, imageUrl: string) => {
-      // Logic to remove image
+      if (!window.confirm("Remove this image permanently?")) return;
+      setRemovingImage(imageUrl);
       try {
-         await deleteProjectImage({ projectId, imageUrl });
-      } catch {
-         toast.error("Failed to remove image.");
+         await deleteProjectImage({ projectId, imageUrl }).unwrap();
+         toast.success("Image removed.");
+      } catch (err: any) {
+         toast.error(err?.data?.message || "Failed to remove image.");
+      } finally {
+         setRemovingImage(null);
       }
    };
 
@@ -77,10 +80,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                         <Button
                            variant="destructive"
                            size="icon"
-                           disabled={isLoading}
+                           disabled={removingImage === img}
                            className="absolute top-2 right-2 z-10"
                            onClick={() => handleRemoveImage(project._id, img)}>
-                           <X className="h-4 w-4" />
+                           {removingImage === img ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                           ) : (
+                              <X className="h-4 w-4" />
+                           )}
                         </Button>
                      </div>
                   ))
